@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { FilterType } from '@types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { FilterType, VisibilityFilters } from '@types';
 
 const filterInitialState = {
-  value: 'SHOW_ALL' as FilterType, // replace with enum
+  //   value: 'SHOW_ALL' as FilterType,
+  value: VisibilityFilters.SHOW_ALL,
 };
 
 // export type filterInitialStateType = typeof filterInitialState;
@@ -11,8 +12,7 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState: filterInitialState,
   reducers: {
-    // setFilterAC: (state, { payload }: PayloadAction<FilterType>) => payload,
-    setFilterAC(state, action) {
+    setFilterAC(state, action: PayloadAction<FilterType>) {
       state.value = action.payload;
     },
   },

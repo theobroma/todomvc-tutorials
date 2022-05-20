@@ -1,11 +1,8 @@
+import MainApp from '@views/MainView';
 import React from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <span>app</span>
-    </div>
-  );
+  return <MainApp />;
 }
 
 export default App;

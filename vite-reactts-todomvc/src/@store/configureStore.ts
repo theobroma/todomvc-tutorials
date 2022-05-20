@@ -2,12 +2,14 @@ import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
+import { filterReducer, filterSlice } from './filter/slice';
+
 const logger = createLogger({
   collapsed: true,
 });
 
 const reducers = {
-  //   [uiSlice.name]: uiReducer,
+  [filterSlice.name]: filterReducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);

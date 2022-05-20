@@ -14,6 +14,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { filterReducer, filterSlice } from './filter/slice';
+import { todosReducer, todosSlice } from './todos/slice';
 
 const logger = createLogger({
   collapsed: true,
@@ -21,6 +22,7 @@ const logger = createLogger({
 
 const reducers = {
   [filterSlice.name]: filterReducer,
+  [todosSlice.name]: todosReducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);

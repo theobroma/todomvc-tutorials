@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-import { FilterType } from '../../@types';
+import { FilterType } from '@types';
 
 const filterInitialState = {
   value: 'SHOW_ALL' as FilterType, // replace with enum

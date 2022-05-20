@@ -1,7 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TodoType } from '@types';
 
 const todosInitialState = {
-  list: [] as any,
+  list: [
+    {
+      id: '1',
+      title: 'drink coffee',
+      completed: false,
+    },
+    {
+      id: '2',
+      title: 'be awesome',
+      completed: true,
+    },
+  ] as TodoType[],
   editingTodoId: null,
   editingTodoTitle: '',
 };

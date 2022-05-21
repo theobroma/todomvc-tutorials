@@ -1,19 +1,16 @@
 import { useAppSelector } from '@store/configureStore';
-import { visibleTodosSelector } from '@store/todos/selectors';
+import { todosSelector, visibleTodosSelector } from '@store/todos/selectors';
 import React from 'react';
 
 import TodoItem from './TodoItem';
 
-const List = (props) => {
+const List = () => {
   const todos = useAppSelector(visibleTodosSelector);
+  const { editingTodoId } = useAppSelector(todosSelector);
 
   const renderTodos = () => {
     return todos.map((todo) => (
-      <TodoItem
-        key={todo.id}
-        todo={todo}
-      // isEditing={editingTodoId === todo._id}
-      />
+      <TodoItem key={todo.id} todo={todo} isEditing={editingTodoId === todo.id} />
     ));
   };
 

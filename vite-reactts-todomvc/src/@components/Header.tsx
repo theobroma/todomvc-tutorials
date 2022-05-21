@@ -1,4 +1,5 @@
 import { useAppDispatch } from '@store/configureStore';
+import { addTaskAC } from '@store/todos/slice';
 import React from 'react';
 
 import TodoTextInput from './TodoTextInput';
@@ -6,10 +7,9 @@ import TodoTextInput from './TodoTextInput';
 const Header = (props) => {
   const dispatch = useAppDispatch();
   const handleSave = (text: string) => {
-    console.log(text);
-    // if (text.length !== 0) {
-    //   dispatch(actions.addTodo(text));
-    // }
+    if (text.length !== 0) {
+      dispatch(addTaskAC(text));
+    }
   };
 
   return (

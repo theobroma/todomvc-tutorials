@@ -25,7 +25,7 @@ export const todosSlice = createSlice({
   name: 'todos',
   initialState: todosInitialState,
   reducers: {
-    addTaskAC: (state, action) => {
+    addTodoAC: (state, action) => {
       const newTask = {
         id: uuidv4(),
         title: action.payload,
@@ -33,11 +33,17 @@ export const todosSlice = createSlice({
       };
       state.list.push(newTask);
     },
-    deleteTaskAC: (state, action) => {
+    deleteTodoAC: (state, action) => {
       state.list = state.list.filter((item) => item.id !== action.payload);
+    },
+    toggleTodoAC: (state, action) => {
+      const toggledTodo = state.list.find((todo) => todo.id === action.payload);
+      if (toggledTodo) {
+        toggledTodo.completed = !toggledTodo.completed;
+      }
     },
   },
 });
 
 export const todosReducer = todosSlice.reducer;
-export const { addTaskAC, deleteTaskAC } = todosSlice.actions;
+export const { addTodoAC, deleteTodoAC, toggleTodoAC } = todosSlice.actions;

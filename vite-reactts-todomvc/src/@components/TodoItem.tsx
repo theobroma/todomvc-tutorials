@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@store/configureStore';
-import { deleteTaskAC } from '@store/todos/slice';
+import { deleteTodoAC, toggleTodoAC } from '@store/todos/slice';
 import { TodoType } from '@types';
 import clsx from 'clsx';
 import React from 'react';
@@ -18,7 +18,7 @@ const TodoItem = ({ todo, isEditing }: Props) => {
         className="toggle"
         type="checkbox"
         checked={todo.completed}
-      // onChange={() => dispatch(actions.handleTodoToggle(todo._id))}
+        onChange={() => dispatch(toggleTodoAC(todo.id))}
       />
       <label
         htmlFor="itself"
@@ -29,7 +29,7 @@ const TodoItem = ({ todo, isEditing }: Props) => {
       <button
         type="button"
         className="destroy"
-        onClick={() => dispatch(deleteTaskAC(todo.id))}
+        onClick={() => dispatch(deleteTodoAC(todo.id))}
       />
     </div>
   );

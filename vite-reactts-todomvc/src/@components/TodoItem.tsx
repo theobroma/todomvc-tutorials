@@ -1,4 +1,5 @@
 import { useAppDispatch } from '@store/configureStore';
+import { deleteTaskAC } from '@store/todos/slice';
 import { TodoType } from '@types';
 import clsx from 'clsx';
 import React from 'react';
@@ -28,7 +29,7 @@ const TodoItem = ({ todo, isEditing }: Props) => {
       <button
         type="button"
         className="destroy"
-      // onClick={() => dispatch(actions.handleTodoRemove(todo._id))}
+        onClick={() => dispatch(deleteTaskAC(todo.id))}
       />
     </div>
   );

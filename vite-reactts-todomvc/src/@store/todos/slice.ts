@@ -33,11 +33,11 @@ export const todosSlice = createSlice({
       };
       state.list.push(newTask);
     },
-    // deleteTask: (state, action) => {
-    //   return state.list.filter((item) => item.id !== action.payload.id);
-    // },
+    deleteTaskAC: (state, action) => {
+      state.list = state.list.filter((item) => item.id !== action.payload);
+    },
   },
 });
 
 export const todosReducer = todosSlice.reducer;
-export const { addTaskAC } = todosSlice.actions;
+export const { addTaskAC, deleteTaskAC } = todosSlice.actions;

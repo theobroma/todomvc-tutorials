@@ -42,6 +42,11 @@ export const todosSlice = createSlice({
         toggledTodo.completed = !toggledTodo.completed;
       }
     },
+    toggleAllTodoAC: (state, action) => {
+      state.list = state.list.map((todo) => {
+        return { ...todo, completed: action.payload };
+      });
+    },
     removeCompletedAC: (state) => {
       state.list = state.list.filter((todo) => !todo.completed);
     },
@@ -49,5 +54,10 @@ export const todosSlice = createSlice({
 });
 
 export const todosReducer = todosSlice.reducer;
-export const { addTodoAC, deleteTodoAC, toggleTodoAC, removeCompletedAC } =
-  todosSlice.actions;
+export const {
+  addTodoAC,
+  deleteTodoAC,
+  toggleTodoAC,
+  toggleAllTodoAC,
+  removeCompletedAC,
+} = todosSlice.actions;

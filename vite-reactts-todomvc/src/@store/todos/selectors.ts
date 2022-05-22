@@ -17,10 +17,16 @@ export const activeTodoCountSelector = createSelector(todosListSelector, (todos)
   }, 0),
 );
 
+export const completedTodoCountSelector = createSelector(todosListSelector, (todos) =>
+  todos.reduce((accum, todo) => {
+    return todo.completed ? accum + 1 : accum;
+  }, 0),
+);
+
 export const visibleTodosSelector = createSelector(
   [todosListSelector, filterSelector],
   (todosList, filter) => {
-    switch (filter.value) {
+    switch (filter) {
       case VisibilityFilters.SHOW_ALL:
         return todosList;
       case VisibilityFilters.SHOW_COMPLETED:

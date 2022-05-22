@@ -9,7 +9,7 @@ interface Props {
   isEditing: boolean;
 }
 
-const TodoItem = ({ todo, isEditing }: Props) => {
+const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
   const dispatch = useAppDispatch();
 
   const element = (
@@ -46,6 +46,6 @@ const TodoItem = ({ todo, isEditing }: Props) => {
       {/* {isEditing ? <TodoEditInput /> : null} */}
     </li>
   );
-};
+});
 
 export default TodoItem;

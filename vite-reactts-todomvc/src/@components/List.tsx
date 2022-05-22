@@ -9,7 +9,7 @@ import React from 'react';
 
 import TodoItem from './TodoItem';
 
-const List = () => {
+const List = React.memo(function List() {
   const dispatch = useAppDispatch();
   const todos = useAppSelector(visibleTodosSelector);
   const { editingTodoId } = useAppSelector(todosSelector);
@@ -47,9 +47,9 @@ const List = () => {
   return (
     <section className="main">
       {renderToggleAll()}
-      <ul className="todo-list">{renderTodos()}</ul>
+      <ul className="todo-list"> {renderTodos()}</ul>
     </section>
   );
-};
+});
 
 export default List;

@@ -3,6 +3,7 @@ import {
   activeTodoCountSelector,
   completedTodoCountSelector,
 } from '@store/todos/selectors';
+import { removeCompletedAC } from '@store/todos/slice';
 import { pluralize } from '@utils/pluralize';
 import React from 'react';
 
@@ -14,7 +15,7 @@ const Footer = () => {
   const completedTodoCount = useAppSelector(completedTodoCountSelector);
 
   const handleButtonClick = () => {
-    // dispatch(actions.removeCompleted());
+    dispatch(removeCompletedAC());
   };
 
   const renderClearButton = () => {

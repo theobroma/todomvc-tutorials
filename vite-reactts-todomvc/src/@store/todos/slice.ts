@@ -15,8 +15,8 @@ const todosInitialState = {
       completed: true,
     },
   ] as TodoType[],
-  editingTodoId: null,
-  editingTodoTitle: '',
+  editingTodoId: null as TodoType['id'] | null,
+  // editingTodoTitle: '',
 };
 
 // export type todosInitialStateType = typeof todosInitialState;
@@ -50,6 +50,17 @@ export const todosSlice = createSlice({
     removeCompletedAC: (state) => {
       state.list = state.list.filter((todo) => !todo.completed);
     },
+    editTodoAC: (state, action) => {
+      state.editingTodoId = action.payload;
+    },
+    cancelEditTodoAC: (state) => {
+      state.editingTodoId = null;
+    },
+    saveEditTodoAC: (state, action) => {
+      const index = state.list.findIndex((element) => element.id === state.editingTodoId);
+      state.list[index].title = action.payload;
+      state.editingTodoId = null;
+    },
   },
 });
 
@@ -60,4 +71,7 @@ export const {
   toggleTodoAC,
   toggleAllTodoAC,
   removeCompletedAC,
+  editTodoAC,
+  cancelEditTodoAC,
+  saveEditTodoAC,
 } = todosSlice.actions;

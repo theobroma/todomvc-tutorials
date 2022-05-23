@@ -1,8 +1,10 @@
 import { useAppDispatch } from '@store/configureStore';
-import { deleteTodoAC, toggleTodoAC } from '@store/todos/slice';
+import { deleteTodoAC, editTodoAC, toggleTodoAC } from '@store/todos/slice';
 import { TodoType } from '@types';
 import clsx from 'clsx';
 import React from 'react';
+
+import TodoEditInput from './TodoEditInput';
 
 interface Props {
   todo: TodoType;
@@ -20,10 +22,7 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
         checked={todo.completed}
         onChange={() => dispatch(toggleTodoAC(todo.id))}
       />
-      <label
-        htmlFor="itself"
-      // onDoubleClick={() => dispatch(actions.editTodo(todo._id))}
-      >
+      <label htmlFor="itself" onDoubleClick={() => dispatch(editTodoAC(todo.id))}>
         {todo.title}
       </label>
       <button
@@ -43,7 +42,7 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
     >
       {element}
       {/* isEditing */}
-      {/* {isEditing ? <TodoEditInput /> : null} */}
+      {isEditing ? <TodoEditInput /> : null}
     </li>
   );
 });

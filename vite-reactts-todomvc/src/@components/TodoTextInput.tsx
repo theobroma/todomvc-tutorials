@@ -25,7 +25,7 @@ const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: Props
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();
-    if (event.which === 13) {
+    if (event.key === 'Enter') {
       onSave(value);
       setText(' ');
     }

@@ -23,18 +23,19 @@ const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: Props
     setText(value);
   };
 
-  const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  // TODO: escape press also triggers this
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value.trim();
+    onSave(value);
+    setText(' ');
+  };
+
+  const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();
     if (event.key === 'Enter') {
       onSave(value);
       setText(' ');
     }
-  };
-
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value.trim();
-    onSave(value);
-    setText(' ');
   };
 
   return (
@@ -47,7 +48,7 @@ const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: Props
         value={text}
         onBlur={handleBlur}
         onChange={handleChange}
-        onKeyDown={handleSubmit}
+        onKeyDown={handleKey}
       />
     </>
   );

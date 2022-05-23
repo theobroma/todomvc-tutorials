@@ -2,13 +2,13 @@ import { useAppDispatch, useAppSelector } from '@store/configureStore';
 import { cancelEditTodoAC, saveEditTodoAC } from '@store/todos/slice';
 import React, { useEffect, useRef, useState } from 'react';
 
-// import { actions } from '../@store/todos/actions';
 import { todosSelector } from '../@store/todos/selectors';
 
 const TodoEditInput = () => {
   const dispatch = useAppDispatch();
-  const { editingTodoId } = useAppSelector(todosSelector);
-  const [text, setText] = useState('');
+  const { editingTodoId, list } = useAppSelector(todosSelector);
+  const editingTodoIndex = list.findIndex((element) => element.id === editingTodoId);
+  const [text, setText] = useState(list[editingTodoIndex].title);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,24 +23,28 @@ const TodoEditInput = () => {
     setText(value);
   };
 
+  // TODO: escape press also triggers this
+  const handleBlur = () => {
+    dispatch(saveEditTodoAC(text));
+  };
+
+  const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // TODO: not working
+    if (event.key === 'Escape') {
+      dispatch(cancelEditTodoAC());
+    }
+    if (event.key === 'Enter') {
+      dispatch(saveEditTodoAC(text));
+    }
+  };
+
   return (
     <input
       className="edit"
       value={text}
-      // onBlur={() => dispatch(actions.saveEditingTodoTitle())}
-      // onChange={(event) =>
-      //   dispatch(actions.changeEditingTodoTitle(event.currentTarget.value))
-      // }
       onChange={handleChange}
-      onKeyDown={(event) => {
-        console.log('event.code', event.code);
-        console.log('event.key', event.key);
-        if (event.key === 'Escape') {
-          dispatch(cancelEditTodoAC());
-        } else if (event.key === 'Enter') {
-          dispatch(saveEditTodoAC(text));
-        }
-      }}
+      onBlur={handleBlur}
+      onKeyDown={handleKey}
       ref={inputRef}
     />
   );

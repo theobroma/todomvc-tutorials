@@ -10,9 +10,11 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { filterReducer } from './modules/filter/filter.reducer';
 import { todosReducer } from './modules/todos/todos.reducer';
+import { TodoComponent } from './todo/todo.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent],
+  declarations: [AppComponent, FooterComponent, TodoComponent, TodoListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

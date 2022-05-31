@@ -1,0 +1,24 @@
+<footer class="footer">
+    <span class="todo-count">
+      <!-- {{ countTodos }} -->
+       items left
+    </span>
+    <ul class="filters">
+        <li>
+            <a [routerLink]="['/']" [class.selected]="(currentFilter$ | async)== 'SHOW_ALL'">
+            All
+          </a>
+        </li>
+        <li>
+            <a [routerLink]="['/','active']" [class.selected]="(currentFilter$ | async) == 'SHOW_ACTIVE'">
+        Active
+      </a>
+        </li>
+        <li>
+            <a [routerLink]="['/','completed']" [class.selected]="(currentFilter$ | async) == 'SHOW_COMPLETED'">
+        Completed
+      </a>
+        </li>
+    </ul>
+    <!-- <button class="clear-completed" (click)="clearCompleted()">Clear completed</button> -->
+</footer>

@@ -22,15 +22,8 @@ const initialState = {
 
 export const todosReducer = createReducer(
   initialState,
-  on(addTodoAC, (state, { title }) => ({
+  on(addTodoAC, (state, todo) => ({
     ...state,
-    list: [
-      ...state.list,
-      {
-        id: uuidv4(),
-        title: title,
-        completed: false,
-      },
-    ],
+    list: [...state.list, todo],
   }))
 );

@@ -1,1 +1,10 @@
-<p>todo works!</p>
+<li [class.completed]="todo.completed">
+    <div class="view">
+        <!-- <input class="toggle" type="checkbox" [formControl]="checkField" /> -->
+        <label>
+      {{ todo.title }}
+    </label>
+        <button class="destroy"></button>
+    </div>
+    <!-- <input class="edit" type="text" #textInput (keyup.enter)="updateText()" (blur)="updateText()" [formControl]="textField" [hidden]="editing" /> -->
+</li>

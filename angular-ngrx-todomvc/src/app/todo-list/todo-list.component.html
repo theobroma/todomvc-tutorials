@@ -2,6 +2,6 @@
     <!-- <input class="toggle-all" type="checkbox" [formControl]="checkField"> -->
     <!-- <label (click)="toggleAll()">Mark all as complete</label> -->
     <ul class="todo-list">
-        <app-todo [todo]="todo" *ngFor="let todo of (todos$ | async)"></app-todo>
+        <app-todo [todo]="todo" *ngFor="let todo of (todosList$ | async)"></app-todo>
     </ul>
 </section>

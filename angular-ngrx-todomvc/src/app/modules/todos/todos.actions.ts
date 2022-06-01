@@ -10,6 +10,11 @@ export const addTodoAC = createAction(
   })
 );
 
+export const toggleTodoAC = createAction(
+  '[Todos] Toggle Todo',
+  (id: string) => ({ id })
+);
+
 export const deleteTodoAC = createAction(
   '[Todos] Delete Todo',
   (id: string) => ({ id })

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Todo } from '../modules/todos/todo.model';
-import { deleteTodoAC } from '../modules/todos/todos.actions';
+import { deleteTodoAC, toggleTodoAC } from '../modules/todos/todos.actions';
 
 @Component({
   selector: 'app-todo',
@@ -15,8 +16,15 @@ export class TodoComponent implements OnInit {
     completed: false,
   };
 
+  checkField: FormControl;
+
   constructor(private store: Store<any>) {
     // this.textField = new FormControl('', [Validators.required]);
+    this.checkField = new FormControl(false);
+    this.checkField.valueChanges.subscribe((state) => {
+      // console.log(state);
+      this.store.dispatch(toggleTodoAC(this.todo.id));
+    });
   }
 
   ngOnInit(): void {}

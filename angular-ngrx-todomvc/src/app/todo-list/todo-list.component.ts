@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../modules/todos/todo.model';
+import { listSelector } from '../modules/todos/todos.selectors';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,10 +14,7 @@ export class TodoListComponent implements OnInit {
   todosList$: Observable<Todo[]>;
 
   constructor(private store: Store<{ todos: Todo[] }>) {
-    const getTodos = (state: any) => state.todos;
-    const getList = (state: any) => state.list;
-
-    this.todosList$ = store.select((state) => getList(getTodos(state)));
+    this.todosList$ = store.select(listSelector);
     // this.todosList$.subscribe((res) => console.log(res));
   }
 

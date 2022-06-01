@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { addTodoAC } from '../modules/todos/todos.actions';
 
 @Component({
   selector: 'app-add-todo',
@@ -19,7 +20,7 @@ export class AddTodoComponent implements OnInit {
   saveTodo() {
     if (this.textField.valid) {
       const text = this.textField.value;
-      // this.store.dispatch(new TodoActions.AddTodoAction(text));
+      this.store.dispatch(addTodoAC(text));
       this.textField.setValue('');
     }
   }

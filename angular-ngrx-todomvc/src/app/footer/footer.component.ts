@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { setFilterAC } from '../modules/filter/filter.actions';
+import { clearCompletedTodoAC } from '../modules/todos/todos.actions';
 
 @Component({
   selector: 'app-footer',
@@ -29,9 +30,9 @@ export class FooterComponent implements OnInit {
     this.store.dispatch(setFilterAC('SHOW_COMPLETED'));
   }
 
-  // clearCompleted() {
-  //   this.store.dispatch(new TodoActions.ClearCompletedAction());
-  // }
+  clearCompleted() {
+    this.store.dispatch(clearCompletedTodoAC());
+  }
 
   // completedAll() {
   //   this.store.dispatch(new TodoActions.CompletedAllAction());

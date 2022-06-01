@@ -14,3 +14,7 @@ export const deleteTodoAC = createAction(
   '[Todos] Delete Todo',
   (id: string) => ({ id })
 );
+
+export const clearCompletedTodoAC = createAction(
+  '[Todos] Clear Completed Todo'
+);

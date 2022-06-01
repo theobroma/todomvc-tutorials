@@ -2,7 +2,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { v4 as uuidv4 } from 'uuid';
 import { Todo } from './todo.model';
-import { addTodoAC, deleteTodoAC } from './todos.actions';
+import { addTodoAC, clearCompletedTodoAC, deleteTodoAC } from './todos.actions';
 
 const initialState = {
   list: [
@@ -29,5 +29,9 @@ export const todosReducer = createReducer(
   on(deleteTodoAC, (state, { id }) => ({
     ...state,
     list: state.list.filter((todo) => id !== todo.id),
+  })),
+  on(clearCompletedTodoAC, (state) => ({
+    ...state,
+    list: state.list.filter((todo) => !todo.completed),
   }))
 );

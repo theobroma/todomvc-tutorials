@@ -9,3 +9,8 @@ export const addTodoAC = createAction(
     completed: false,
   })
 );
+
+export const deleteTodoAC = createAction(
+  '[Todos] Delete Todo',
+  (id: string) => ({ id })
+);

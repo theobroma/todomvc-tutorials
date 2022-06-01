@@ -4,7 +4,7 @@
         <label>
       {{ todo.title }}
     </label>
-        <button class="destroy"></button>
+        <button class="destroy" (click)="deleteTodo()"></button>
     </div>
     <!-- <input class="edit" type="text" #textInput (keyup.enter)="updateText()" (blur)="updateText()" [formControl]="textField" [hidden]="editing" /> -->
 </li>

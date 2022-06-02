@@ -5,7 +5,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../modules/todos/todo.model';
 import { toggleAllTodoAC } from '../modules/todos/todos.actions';
-import { listSelector } from '../modules/todos/todos.selectors';
+import {
+  activeTodoCountSelector,
+  listSelector,
+} from '../modules/todos/todos.selectors';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,12 +16,18 @@ import { listSelector } from '../modules/todos/todos.selectors';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
+  activeTodoCount$: Observable<number>;
+  activeTodoCount: number;
   todosList$: Observable<Todo[]>;
   checkField: FormControl;
 
   constructor(private store: Store<{ todos: Todo[] }>) {
     this.todosList$ = store.select(listSelector);
     // this.todosList$.subscribe((res) => console.log(res));
+
+    this.activeTodoCount$ = store.select(activeTodoCountSelector);
+    this.activeTodoCount$.subscribe((res) => (this.activeTodoCount = res));
+    this.activeTodoCount = 0;
 
     this.checkField = new FormControl(false);
     this.checkField.valueChanges.subscribe((state) => {
@@ -30,7 +39,6 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {}
 
   toggleAll() {
-    console.log('toggleAll');
-    this.store.dispatch(toggleAllTodoAC(true));
+    this.store.dispatch(toggleAllTodoAC(this.activeTodoCount !== 0));
   }
 }

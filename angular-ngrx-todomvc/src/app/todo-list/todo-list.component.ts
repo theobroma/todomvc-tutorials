@@ -1,6 +1,7 @@
 // https://stackoverflow.com/questions/39044156/how-can-i-console-log-the-value-of-a-observable
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Todo } from '../modules/todos/todo.model';
@@ -21,7 +22,15 @@ export class TodoListComponent implements OnInit {
   todosList$: Observable<Todo[]>;
   checkField: FormControl;
 
-  constructor(private store: Store<{ todos: Todo[] }>) {
+  constructor(
+    private store: Store<{ todos: Todo[] }>,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      // this.setFilter(params.filter);
+    });
+
     this.todosList$ = store.select(listSelector);
     // this.todosList$.subscribe((res) => console.log(res));
 

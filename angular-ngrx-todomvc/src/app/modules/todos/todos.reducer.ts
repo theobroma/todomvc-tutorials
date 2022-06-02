@@ -6,6 +6,7 @@ import {
   addTodoAC,
   clearCompletedTodoAC,
   deleteTodoAC,
+  toggleAllTodoAC,
   toggleTodoAC,
 } from './todos.actions';
 
@@ -40,6 +41,15 @@ export const todosReducer = createReducer(
     const newList = state.list.map((value, index) =>
       index === toggledIndex ? { ...value, completed: !value.completed } : value
     );
+    return {
+      ...state,
+      list: newList,
+    };
+  }),
+  on(toggleAllTodoAC, (state, { bool }) => {
+    const newList = state.list.map((todo) => {
+      return { ...todo, completed: bool };
+    });
     return {
       ...state,
       list: newList,

@@ -15,6 +15,11 @@ export const toggleTodoAC = createAction(
   (id: string) => ({ id })
 );
 
+export const toggleAllTodoAC = createAction(
+  '[Todos] Toggle All Todos',
+  (bool: boolean) => ({ bool })
+);
+
 export const deleteTodoAC = createAction(
   '[Todos] Delete Todo',
   (id: string) => ({ id })

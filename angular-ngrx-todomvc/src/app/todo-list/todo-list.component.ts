@@ -9,7 +9,7 @@ import { Todo } from '../modules/todos/todo.model';
 import { toggleAllTodoAC } from '../modules/todos/todos.actions';
 import {
   activeTodoCountSelector,
-  listSelector,
+  visibleTodosSelector,
 } from '../modules/todos/todos.selectors';
 
 @Component({
@@ -32,7 +32,7 @@ export class TodoListComponent implements OnInit {
       this.setFilter(params.filter);
     });
 
-    this.todosList$ = store.select(listSelector);
+    this.todosList$ = store.select(visibleTodosSelector);
     // this.todosList$.subscribe((res) => console.log(res));
 
     this.activeTodoCount$ = store.select(activeTodoCountSelector);

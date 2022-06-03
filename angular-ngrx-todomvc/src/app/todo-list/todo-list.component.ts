@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { setFilterAC } from '../modules/filter/filter.actions';
 import { Todo } from '../modules/todos/todo.model';
 import { toggleAllTodoAC } from '../modules/todos/todos.actions';
 import {
@@ -27,8 +28,8 @@ export class TodoListComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      // this.setFilter(params.filter);
+      // console.log(params);
+      this.setFilter(params.filter);
     });
 
     this.todosList$ = store.select(listSelector);
@@ -40,7 +41,7 @@ export class TodoListComponent implements OnInit {
 
     this.checkField = new FormControl(false);
     this.checkField.valueChanges.subscribe((state) => {
-      console.log(state);
+      // console.log(state);
       // this.store.dispatch(toggleTodoAC(this.todo.id));
     });
   }
@@ -49,5 +50,22 @@ export class TodoListComponent implements OnInit {
 
   toggleAll() {
     this.store.dispatch(toggleAllTodoAC(this.activeTodoCount !== 0));
+  }
+
+  private setFilter(filter: string) {
+    switch (filter) {
+      case 'active': {
+        this.store.dispatch(setFilterAC('SHOW_ACTIVE'));
+        break;
+      }
+      case 'completed': {
+        this.store.dispatch(setFilterAC('SHOW_COMPLETED'));
+        break;
+      }
+      default: {
+        this.store.dispatch(setFilterAC('SHOW_ALL'));
+        break;
+      }
+    }
   }
 }

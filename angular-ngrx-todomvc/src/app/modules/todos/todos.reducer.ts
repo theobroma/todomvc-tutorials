@@ -8,6 +8,7 @@ import {
   deleteTodoAC,
   toggleAllTodoAC,
   toggleTodoAC,
+  updateTodoAC,
 } from './todos.actions';
 
 const initialState = {
@@ -37,9 +38,9 @@ export const todosReducer = createReducer(
     list: state.list.filter((todo) => id !== todo.id),
   })),
   on(toggleTodoAC, (state, { id }) => {
-    const toggledIndex = state.list.findIndex((todo) => todo.id === id);
+    const todoIndex = state.list.findIndex((todo) => todo.id === id);
     const newList = state.list.map((value, index) =>
-      index === toggledIndex ? { ...value, completed: !value.completed } : value
+      index === todoIndex ? { ...value, completed: !value.completed } : value
     );
     return {
       ...state,
@@ -55,6 +56,18 @@ export const todosReducer = createReducer(
       list: newList,
     };
   }),
+
+  on(updateTodoAC, (state, { id, newTitle }) => {
+    const todoIndex = state.list.findIndex((todo) => todo.id === id);
+    const newList = state.list.map((value, index) =>
+      index === todoIndex ? { ...value, title: newTitle } : value
+    );
+    return {
+      ...state,
+      list: newList,
+    };
+  }),
+
   on(clearCompletedTodoAC, (state) => ({
     ...state,
     list: state.list.filter((todo) => !todo.completed),

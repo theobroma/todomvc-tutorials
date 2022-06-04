@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from '../modules/rootReducer';
 import { clearCompletedTodoAC } from '../modules/todos/todos.actions';
 import { activeTodoCountSelector } from '../modules/todos/todos.selectors';
 
@@ -13,7 +14,7 @@ export class FooterComponent implements OnInit {
   currentFilter$: Observable<string>;
   countTodos$: Observable<number>;
 
-  constructor(private store: Store<{ filter: string }>) {
+  constructor(private store: Store<AppState>) {
     this.currentFilter$ = store.select('filter');
     this.countTodos$ = store.select(activeTodoCountSelector);
   }

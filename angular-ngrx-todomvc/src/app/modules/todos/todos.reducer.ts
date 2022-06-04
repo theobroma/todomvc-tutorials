@@ -11,7 +11,11 @@ import {
   updateTodoAC,
 } from './todos.actions';
 
-const initialState = {
+export interface TodosState {
+  list: Todo[];
+}
+
+const initialState: TodosState = {
   list: [
     {
       id: uuidv4(),
@@ -23,7 +27,7 @@ const initialState = {
       title: 'be awesome',
       completed: true,
     },
-  ] as Todo[],
+  ],
   // editingTodoId: null as TodoType['id'] | null,
 };
 

@@ -1,13 +1,11 @@
 import { createSelector } from '@ngrx/store';
+import { AppState } from '../rootReducer';
 import { Todo } from './todo.model';
 
-export const getState = (state: any) => state;
-export const getTodos = (state: any) => state.todos;
+export const getState = (state: AppState) => state;
+export const getTodos = (state: AppState) => state.todos;
 
-export const listSelector = createSelector(
-  getTodos,
-  (state: any) => state.list
-);
+export const listSelector = createSelector(getTodos, (state) => state.list);
 
 export const visibleTodosSelector = createSelector(getState, (state: any) => {
   switch (state.filter) {
@@ -21,7 +19,7 @@ export const visibleTodosSelector = createSelector(getState, (state: any) => {
 });
 
 export const activeTodoCountSelector = createSelector(listSelector, (todos) =>
-  todos.reduce((accum: any, todo: any) => {
+  todos.reduce((accum, todo) => {
     return todo.completed ? accum : accum + 1;
   }, 0)
 );

@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppState } from '../modules/rootReducer';
 import { Todo } from '../modules/todos/todo.model';
 import {
   deleteTodoAC,
@@ -24,7 +25,7 @@ export class TodoComponent implements OnInit {
   checkField: FormControl;
   editing: boolean;
 
-  constructor(private store: Store<any>) {
+  constructor(private store: Store<AppState>) {
     this.editing = false;
     this.textField = new FormControl('', [Validators.required]);
     this.checkField = new FormControl(false);

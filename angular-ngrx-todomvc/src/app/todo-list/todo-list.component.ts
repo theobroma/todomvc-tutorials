@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { setFilterAC } from '../modules/filter/filter.actions';
+import { AppState } from '../modules/rootReducer';
 import { Todo } from '../modules/todos/todo.model';
 import { toggleAllTodoAC } from '../modules/todos/todos.actions';
 import {
@@ -23,10 +24,7 @@ export class TodoListComponent implements OnInit {
   todosList$: Observable<Todo[]>;
   checkField: FormControl;
 
-  constructor(
-    private store: Store<{ todos: Todo[] }>,
-    private route: ActivatedRoute
-  ) {
+  constructor(private store: Store<AppState>, private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
       // console.log(params);
       this.setFilter(params.filter);

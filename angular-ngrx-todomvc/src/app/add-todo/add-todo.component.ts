@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../modules/rootReducer';
 import { addTodoAC } from '../modules/todos/todos.actions';
@@ -10,10 +10,10 @@ import { addTodoAC } from '../modules/todos/todos.actions';
   styleUrls: ['./add-todo.component.scss'],
 })
 export class AddTodoComponent implements OnInit {
-  textField: FormControl;
+  textField: UntypedFormControl;
 
   constructor(private store: Store<AppState>) {
-    this.textField = new FormControl('', [Validators.required]);
+    this.textField = new UntypedFormControl('', [Validators.required]);
   }
 
   ngOnInit() {}

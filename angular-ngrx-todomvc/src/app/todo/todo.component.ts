@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../modules/rootReducer';
 import { Todo } from '../modules/todos/todo.model';
@@ -21,14 +21,14 @@ export class TodoComponent implements OnInit {
     completed: false,
   };
   // @ViewChild('textInput') textInput: ElementRef;
-  textField: FormControl;
-  checkField: FormControl;
+  textField: UntypedFormControl;
+  checkField: UntypedFormControl;
   editing: boolean;
 
   constructor(private store: Store<AppState>) {
     this.editing = false;
-    this.textField = new FormControl('', [Validators.required]);
-    this.checkField = new FormControl(false);
+    this.textField = new UntypedFormControl('', [Validators.required]);
+    this.checkField = new UntypedFormControl(false);
     this.checkField.valueChanges.subscribe((state) => {
       // console.log(state);
       this.store.dispatch(toggleTodoAC(this.todo.id));

@@ -5,7 +5,6 @@ import {
 } from '@store/todos/selectors';
 import { removeCompletedAC } from '@store/todos/slice';
 import { pluralize } from '@utils/pluralize';
-import React from 'react';
 
 import FilterLink from './FilterLink';
 

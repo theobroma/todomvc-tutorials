@@ -1,6 +1,5 @@
 import { useAppDispatch } from '@store/configureStore';
 import { addTodoAC } from '@store/todos/slice';
-import React from 'react';
 
 import TodoTextInput from './TodoTextInput';
 

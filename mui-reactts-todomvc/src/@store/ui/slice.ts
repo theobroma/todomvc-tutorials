@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ThemeColorsType, ThemeColors } from '../../@types';
+import {
+  // ThemeColorsType,
+  ThemeColors,
+} from '../../@types';
 
 const uiInitialState = {
   theme: ThemeColors.LIGHT,

@@ -2,10 +2,7 @@
 import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
-import { forecastReducer, forecastSlice } from './forecast/slice';
-import { searchReducer, searchSlice } from './search/slice';
 import { uiReducer, uiSlice } from './ui/slice';
-import { сoordinatesReducer, сoordinatesSlice } from './сoordinates/slice';
 // import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 
 const logger = createLogger({
@@ -13,9 +10,6 @@ const logger = createLogger({
 });
 
 const reducers = {
-  [сoordinatesSlice.name]: сoordinatesReducer,
-  [forecastSlice.name]: forecastReducer,
-  [searchSlice.name]: searchReducer,
   [uiSlice.name]: uiReducer,
 };
 

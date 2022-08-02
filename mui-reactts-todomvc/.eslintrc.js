@@ -1,5 +1,6 @@
 module.exports = {
   extends: ['airbnb-typescript-prettier'],
+  plugins: ['simple-import-sort'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
@@ -30,5 +31,35 @@ module.exports = {
     'react/react-in-jsx-scope': 0, // Since React 18 "react-jsx"
     'react/require-default-props': 0, // Since we do not use prop-types
     'react/state-in-constructor': 0,
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
   },
+  overrides: [
+    {
+      files: ['**/*.js', '**/*.ts', '**/*.tsx'],
+      rules: {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            groups: [
+              // `react` first, `next` second, then packages starting with a character
+              ['^react$', '^next', '^[a-z]'],
+              // Packages starting with `@`
+              ['^@'],
+              // Packages starting with `~`
+              ['^~'],
+              // Imports starting with `../`
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              // Imports starting with `./`
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              // Style imports
+              ['^.+\\.s?css$'],
+              // Side effect imports
+              ['^\\u0000'],
+            ],
+          },
+        ],
+      },
+    },
+  ],
 };

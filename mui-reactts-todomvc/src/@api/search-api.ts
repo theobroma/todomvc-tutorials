@@ -1,4 +1,5 @@
 import { SearchPlaceResponseType } from '../@types';
+
 import { weatherAxiosInstance } from './api';
 
 export const searchAPI = {

@@ -52,4 +52,4 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export { Main, AppBar, DrawerHeader, drawerWidth };
+export { AppBar, DrawerHeader, drawerWidth, Main };

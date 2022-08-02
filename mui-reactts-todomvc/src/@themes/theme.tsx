@@ -1,9 +1,11 @@
+import React from 'react';
+
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React from 'react';
+
 import { useAppSelector } from '../@store/configureStore';
 import { themeSelector } from '../@store/ui/selectors';
 

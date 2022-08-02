@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
+import { useSnackbar } from 'notistack';
+
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { Box, IconButton, Menu, MenuItem } from '@mui/material';
-import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
+
 import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { themeSelector } from '../../../@store/ui/selectors';

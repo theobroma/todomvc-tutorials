@@ -1,4 +1,4 @@
-import { GridProps, Grid, Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Grid, GridProps } from '@mui/material';
 
 type GridProgressProps = {
   loading: boolean;

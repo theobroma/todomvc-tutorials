@@ -1,4 +1,4 @@
-import { ConditionType, DayType, AstroType, HourType } from './general';
+import { AstroType, ConditionType, DayType, HourType } from './general';
 
 export type CurrentWeatherType = {
   cloud: number;

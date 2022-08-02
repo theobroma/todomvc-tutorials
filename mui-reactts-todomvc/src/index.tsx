@@ -1,13 +1,14 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+
+import SnackBarProvider from './@components/UI/SnackBar';
+import { AppContainer } from './@routes/AppContainer';
 import { store } from './@store/configureStore';
 import AppThemeProvider from './@themes/theme';
-import { AppContainer } from './@routes/AppContainer';
-import SnackBarProvider from './@components/UI/SnackBar';
-import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import './index.css';
 // Open Source fonts
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';

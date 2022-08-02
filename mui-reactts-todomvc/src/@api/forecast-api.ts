@@ -1,4 +1,5 @@
 import { ForecastResponseType } from '../@types';
+
 import { weatherAxiosInstance } from './api';
 
 export const forecastAPI = {

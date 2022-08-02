@@ -44,7 +44,7 @@ const PersistentDrawerLeft = ({ children }: { children?: React.ReactNode }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Weather App
+            TodoMVC
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {/* Theme Menu */}

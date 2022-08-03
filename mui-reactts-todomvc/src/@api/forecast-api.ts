@@ -1,4 +1,4 @@
-import { ForecastResponseType } from '../@types';
+import type { ForecastResponseType } from '../@types';
 
 import { weatherAxiosInstance } from './api';
 

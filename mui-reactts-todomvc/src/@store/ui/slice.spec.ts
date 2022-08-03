@@ -1,4 +1,5 @@
-import { ThemeColors, ThemeColorsType } from '../../@types';
+import type { ThemeColorsType } from '../../@types';
+import { ThemeColors } from '../../@types';
 
 import { setThemeAC, uiReducer } from './slice';
 

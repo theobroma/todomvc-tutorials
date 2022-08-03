@@ -1,4 +1,4 @@
-import { SearchPlaceResponseType } from '../@types';
+import type { SearchPlaceResponseType } from '../@types';
 
 import { weatherAxiosInstance } from './api';
 

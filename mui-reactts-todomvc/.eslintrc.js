@@ -1,14 +1,17 @@
 module.exports = {
   extends: ['airbnb-typescript-prettier'],
-  plugins: ['simple-import-sort'],
+  plugins: ['simple-import-sort', 'unused-imports'],
   rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/no-explicit-any': 1,
-    '@typescript-eslint/no-unused-vars': 1,
+    '@typescript-eslint/no-unused-vars': 0, // Use unused-imports/no-unused-vars instead
     '@typescript-eslint/no-use-before-define': 0,
+    // prettier-ignore
     'camelcase': 0,
+    'import/no-unused-modules': [1, { unusedExports: true }],
     'import/prefer-default-export': 0,
     'jsx-a11y/control-has-associated-label': 0,
     'jsx-a11y/label-has-associated-control': 0,
@@ -26,6 +29,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
     'react/jsx-props-no-spreading': 0,
     'react/prop-types': 0, // Since we do not use prop-types
     'react/react-in-jsx-scope': 0, // Since React 18 "react-jsx"
@@ -33,6 +37,16 @@ module.exports = {
     'react/state-in-constructor': 0,
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   overrides: [
     {

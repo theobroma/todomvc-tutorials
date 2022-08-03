@@ -10,7 +10,7 @@ import { useNonInitialEffect } from '../../../@hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { themeSelector } from '../../../@store/ui/selectors';
 import { setThemeAC } from '../../../@store/ui/slice';
-import { ThemeColorsType } from '../../../@types';
+import type { ThemeColorsType } from '../../../@types';
 
 const options = [
   'light',

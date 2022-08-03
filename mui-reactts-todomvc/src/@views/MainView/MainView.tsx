@@ -17,12 +17,9 @@ const MainView = () => {
               <Paper elevation={3}>paper</Paper>
             </Box>
           </Grid>
-          <Grid item xs={12}>
-            <Box mb={1}>
-              <TodoList />
-            </Box>
-          </Grid>
         </Grid>
+        {/*  */}
+        <TodoList />
       </Box>
     </Container>
   );

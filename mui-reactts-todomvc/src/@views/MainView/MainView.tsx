@@ -1,7 +1,17 @@
+import { useEffect } from 'react';
+
 import { Container, Grid, Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 
+import { useAppDispatch } from '../../@store/configureStore';
+import { getTodosTC } from '../../@store/todos/slice';
+
 const MainView = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getTodosTC());
+  }, [dispatch]);
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ flexGrow: 1 }}>

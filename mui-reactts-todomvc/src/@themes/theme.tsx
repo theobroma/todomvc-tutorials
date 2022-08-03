@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppSelector } from '../@store/configureStore';
 import { themeSelector } from '../@store/ui/selectors';
 
-export const muiCache = createCache({
+const muiCache = createCache({
   key: 'mui',
   prepend: true,
 });

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// eslint-disable-next-line import/no-unused-modules
 export default function useDebounce(value: string, delay: number): string {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState(value);

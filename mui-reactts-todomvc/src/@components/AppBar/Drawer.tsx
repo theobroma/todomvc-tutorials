@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';

@@ -2,11 +2,11 @@ import type { AnyAction, PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { todosAPI } from '../../@api/todos-api';
+import type { TodoType } from '../../@types';
 import { waitForMe } from '../../@utils/waitforme';
 
 const todosInitialState = {
-  data: [] as any,
-  pictureSearch: 'nature',
+  data: [] as TodoType[],
   // utils
   isFetching: false,
   isSuccess: false,
@@ -14,30 +14,31 @@ const todosInitialState = {
   error: '' as string | null,
 };
 
-export const getTodosTC = createAsyncThunk<any, void, { rejectValue: string }>(
-  'todos/getTodosTC',
-  async (param, thunkAPI) => {
-    try {
-      await waitForMe(1000);
-      const res = await todosAPI.getAllTodos();
+export const getTodosTC = createAsyncThunk<
+  TodoType[],
+  void,
+  { rejectValue: string }
+>('todos/getTodosTC', async (param, thunkAPI) => {
+  try {
+    await waitForMe(1000);
+    const res = await todosAPI.getAllTodos();
 
-      // ZOD validation
-      //   try {
-      //     PicturesDataResponseSchema.parse(res.data);
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
+    // ZOD validation
+    //   try {
+    //     PicturesDataResponseSchema.parse(res.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
 
-      return res.data;
-    } catch (err: any) {
-      // return thunkAPI.rejectWithValue(err.response.data);
-      return thunkAPI.rejectWithValue(
-        `Server Error fetching todos. Error:
+    return res.data;
+  } catch (err: any) {
+    // return thunkAPI.rejectWithValue(err.response.data);
+    return thunkAPI.rejectWithValue(
+      `Server Error fetching todos. Error:
       ${JSON.stringify(err.response.data)}`,
-      );
-    }
-  },
-);
+    );
+  }
+});
 
 export const todosSlice = createSlice({
   name: 'todos',

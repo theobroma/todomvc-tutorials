@@ -36,7 +36,7 @@ const TodoList = () => {
     <Box p={3}>
       <GridProgress container spacing={1} loading={isFetching}>
         <Grid item xs={12}>
-          {todos && (
+          {!!todos && (
             <Paper style={{ margin: 16 }}>
               {/* {BoxBlock} */}
               <List style={{ overflow: 'scroll' }}>

@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
@@ -20,20 +18,6 @@ interface Props {
 
 const CheckboxList = ({ todos }: Props) => {
   const dispatch = useAppDispatch();
-  const [checked, setChecked] = React.useState([3]);
-
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
 
   const removeTodo = (id: TodoType['id']) => () => {
     dispatch(deleteTodoTC({ id }));
@@ -50,12 +34,13 @@ const CheckboxList = ({ todos }: Props) => {
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {todos.map((todo) => {
+      {todos.map((todo, idx) => {
         const labelId = `checkbox-list-label-${todo.id}`;
 
         return (
           <ListItem
             key={nanoid()}
+            divider={idx !== todos.length - 1}
             secondaryAction={
               <IconButton
                 edge="end"
@@ -67,24 +52,20 @@ const CheckboxList = ({ todos }: Props) => {
             }
             disablePadding
           >
-            <ListItemButton
-              role={undefined}
-              onClick={handleToggle(todo.id)}
-              dense
-            >
+            <ListItemButton role={undefined} onClick={toggleTodo(todo)} dense>
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  onClick={toggleTodo(todo)}
-                  //   checked={checked.indexOf(value) !== -1}
                   checked={todo.completed}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemIcon>
-              {/* <ListItemText id={labelId} primary={`Line item ${value + 1}`} /> */}
-              <ListItemText id={labelId} primary={todo.title} />
+              <ListItemText
+                id={labelId}
+                primary={`${todo.id}) ${todo.title}`}
+              />
             </ListItemButton>
           </ListItem>
         );

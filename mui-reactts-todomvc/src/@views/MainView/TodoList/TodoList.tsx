@@ -49,7 +49,7 @@ const TodoList = () => {
                   />
                 ))}
               </List> */}
-              <CheckboxList todos={todos} />
+              <CheckboxList todos={todos || []} />
             </Paper>
           )}
         </Grid>

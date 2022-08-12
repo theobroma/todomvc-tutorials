@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import CommentIcon from '@mui/icons-material/Comment';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -12,9 +12,10 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import type { TodoType } from '../../../@types';
 
-type Props = {
+interface Props {
   todos: TodoType[];
-};
+}
+
 const CheckboxList = ({ todos }: Props) => {
   const [checked, setChecked] = React.useState([3]);
 
@@ -41,7 +42,7 @@ const CheckboxList = ({ todos }: Props) => {
             key={nanoid()}
             secondaryAction={
               <IconButton edge="end" aria-label="comments">
-                <CommentIcon />
+                <DeleteOutlineIcon />
               </IconButton>
             }
             disablePadding

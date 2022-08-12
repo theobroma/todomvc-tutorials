@@ -20,7 +20,7 @@ export const getTodosTC = createAsyncThunk<
   { rejectValue: string }
 >('todos/getTodosTC', async (param, thunkAPI) => {
   try {
-    await waitForMe(1000);
+    await waitForMe(300);
     const res = await todosAPI.getAllTodos();
 
     // ZOD validation
@@ -35,6 +35,26 @@ export const getTodosTC = createAsyncThunk<
     // return thunkAPI.rejectWithValue(err.response.data);
     return thunkAPI.rejectWithValue(
       `Server Error fetching todos. Error:
+      ${JSON.stringify(err.response.data)}`,
+    );
+  }
+});
+
+export const deleteTodoTC = createAsyncThunk<
+  // TodoType[],
+  Record<string, never>,
+  { id: TodoType['id'] },
+  { rejectValue: string }
+>('todos/deleteTodoTC', async (param, thunkAPI) => {
+  try {
+    await waitForMe(100);
+    const res = await todosAPI.deleteTodoByID(param.id);
+
+    return res.data;
+  } catch (err: any) {
+    // return thunkAPI.rejectWithValue(err.response.data);
+    return thunkAPI.rejectWithValue(
+      `Server Error deleting todo. Error:
       ${JSON.stringify(err.response.data)}`,
     );
   }
@@ -60,6 +80,18 @@ export const todosSlice = createSlice({
         }
         state.isFetching = false;
         state.isSuccess = true;
+      })
+      // delete
+      .addCase(deleteTodoTC.pending, (state, action) => {
+        state.isFetching = true;
+        // console.log(action.meta.arg);
+      })
+      .addCase(deleteTodoTC.fulfilled, (state, action) => {
+        state.isFetching = false;
+        // console.log(action.meta.arg);
+        state.data = state.data.filter(
+          (item) => item.id !== action.meta.arg.id,
+        );
       })
       // error
       .addMatcher(isError, (state, action: PayloadAction<string>) => {

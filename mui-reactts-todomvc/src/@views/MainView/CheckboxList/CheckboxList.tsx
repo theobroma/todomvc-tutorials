@@ -10,6 +10,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { nanoid } from '@reduxjs/toolkit';
 
+import { useAppDispatch } from '../../../@store/configureStore';
+import { deleteTodoTC } from '../../../@store/todos/slice';
 import type { TodoType } from '../../../@types';
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 }
 
 const CheckboxList = ({ todos }: Props) => {
+  const dispatch = useAppDispatch();
   const [checked, setChecked] = React.useState([3]);
 
   const handleToggle = (value: number) => () => {
@@ -32,6 +35,10 @@ const CheckboxList = ({ todos }: Props) => {
     setChecked(newChecked);
   };
 
+  const removeTodo = (id: TodoType['id']) => () => {
+    dispatch(deleteTodoTC({ id }));
+  };
+
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {todos.map((todo) => {
@@ -41,7 +48,11 @@ const CheckboxList = ({ todos }: Props) => {
           <ListItem
             key={nanoid()}
             secondaryAction={
-              <IconButton edge="end" aria-label="comments">
+              <IconButton
+                edge="end"
+                aria-label="comments"
+                onClick={removeTodo(todo.id)}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             }

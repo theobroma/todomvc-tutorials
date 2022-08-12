@@ -60,6 +60,25 @@ export const deleteTodoTC = createAsyncThunk<
   }
 });
 
+export const patchTodoTC = createAsyncThunk<
+  TodoType,
+  { id: TodoType['id']; partialTodo: Partial<TodoType> },
+  { rejectValue: string }
+>('todos/patchTodoTC', async (param, thunkAPI) => {
+  try {
+    await waitForMe(100);
+    const res = await todosAPI.patchTodoByID(param.id, param.partialTodo);
+
+    return res.data;
+  } catch (err: any) {
+    // return thunkAPI.rejectWithValue(err.response.data);
+    return thunkAPI.rejectWithValue(
+      `Server Error patching todo. Error:
+      ${JSON.stringify(err.response.data)}`,
+    );
+  }
+});
+
 export const todosSlice = createSlice({
   name: 'todos',
   initialState: todosInitialState,
@@ -80,6 +99,19 @@ export const todosSlice = createSlice({
         }
         state.isFetching = false;
         state.isSuccess = true;
+      })
+      // patch
+      .addCase(patchTodoTC.pending, (state, action) => {
+        state.isFetching = true;
+      })
+      .addCase(patchTodoTC.fulfilled, (state, action) => {
+        state.isFetching = false;
+        const toggledTodo = state.data.find(
+          (todo) => todo.id === action.meta.arg.id,
+        );
+        if (toggledTodo) {
+          toggledTodo.completed = !toggledTodo.completed;
+        }
       })
       // delete
       .addCase(deleteTodoTC.pending, (state, action) => {

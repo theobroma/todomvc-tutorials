@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { nanoid } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from '../../../@store/configureStore';
-import { deleteTodoTC } from '../../../@store/todos/slice';
+import { deleteTodoTC, patchTodoTC } from '../../../@store/todos/slice';
 import type { TodoType } from '../../../@types';
 
 interface Props {
@@ -37,6 +37,15 @@ const CheckboxList = ({ todos }: Props) => {
 
   const removeTodo = (id: TodoType['id']) => () => {
     dispatch(deleteTodoTC({ id }));
+  };
+
+  const toggleTodo = (todo: TodoType) => () => {
+    dispatch(
+      patchTodoTC({
+        id: todo.id,
+        partialTodo: { ...todo, completed: !todo.completed },
+      }),
+    );
   };
 
   return (
@@ -66,6 +75,7 @@ const CheckboxList = ({ todos }: Props) => {
               <ListItemIcon>
                 <Checkbox
                   edge="start"
+                  onClick={toggleTodo(todo)}
                   //   checked={checked.indexOf(value) !== -1}
                   checked={todo.completed}
                   tabIndex={-1}

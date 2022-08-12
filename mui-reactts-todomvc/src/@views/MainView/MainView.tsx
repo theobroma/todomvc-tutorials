@@ -1,7 +1,6 @@
 import { Container, Grid, Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import CheckboxList from './CheckboxList';
 import TodoList from './TodoList';
 
 const MainView = () => {
@@ -20,7 +19,6 @@ const MainView = () => {
           </Grid>
         </Grid>
         {/*  */}
-        <CheckboxList />
         <TodoList />
       </Box>
     </Container>

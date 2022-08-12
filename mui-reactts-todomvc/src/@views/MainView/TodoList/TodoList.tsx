@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
 
-import { Box, Grid, List, Paper } from '@mui/material';
-import { nanoid } from '@reduxjs/toolkit';
+import { Box, Grid, Paper } from '@mui/material';
 
 import GridProgress from '../../../@components/UI/GridProgress';
 import { useAppDispatch, useAppSelector } from '../../../@store/configureStore';
 import { todosSelector } from '../../../@store/todos/selectors';
 import { getTodosTC } from '../../../@store/todos/slice';
-import type { TodoType } from '../../../@types';
-import TodoListItem from '../TodoListItem';
+import CheckboxList from '../CheckboxList';
 
 const TodoList = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +37,7 @@ const TodoList = () => {
           {!!todos && (
             <Paper style={{ margin: 16 }}>
               {/* {BoxBlock} */}
-              <List style={{ overflow: 'scroll' }}>
+              {/* <List style={{ overflow: 'scroll' }}>
                 {todos.map((todo: TodoType, idx: number) => (
                   <TodoListItem
                     todo={todo}
@@ -50,7 +48,8 @@ const TodoList = () => {
                     // onCheckBoxToggle={() => props.onItemCheck(idx)}
                   />
                 ))}
-              </List>
+              </List> */}
+              <CheckboxList todos={todos} />
             </Paper>
           )}
         </Grid>

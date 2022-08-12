@@ -8,9 +8,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { nanoid } from '@reduxjs/toolkit';
 
-const CheckboxList = () => {
-  const [checked, setChecked] = React.useState([0]);
+import type { TodoType } from '../../../@types';
+
+type Props = {
+  todos: TodoType[];
+};
+const CheckboxList = ({ todos }: Props) => {
+  const [checked, setChecked] = React.useState([3]);
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value);
@@ -27,12 +33,12 @@ const CheckboxList = () => {
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
+      {todos.map((todo) => {
+        const labelId = `checkbox-list-label-${todo.id}`;
 
         return (
           <ListItem
-            key={value}
+            key={nanoid()}
             secondaryAction={
               <IconButton edge="end" aria-label="comments">
                 <CommentIcon />
@@ -42,19 +48,21 @@ const CheckboxList = () => {
           >
             <ListItemButton
               role={undefined}
-              onClick={handleToggle(value)}
+              onClick={handleToggle(todo.id)}
               dense
             >
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked.indexOf(value) !== -1}
+                  //   checked={checked.indexOf(value) !== -1}
+                  checked={todo.completed}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              {/* <ListItemText id={labelId} primary={`Line item ${value + 1}`} /> */}
+              <ListItemText id={labelId} primary={todo.title} />
             </ListItemButton>
           </ListItem>
         );

@@ -5,6 +5,7 @@ import { createLogger } from 'redux-logger';
 import type { Reducer } from '@reduxjs/toolkit';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import { filterSlice } from './filter/slice';
 import { todosSlice } from './todos/slice';
 import { uiReducer, uiSlice } from './ui/slice';
 // import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
@@ -14,6 +15,7 @@ const logger = createLogger({
 });
 
 const reducers = {
+  [filterSlice.name]: filterSlice.reducer,
   [todosSlice.name]: todosSlice.reducer,
   [uiSlice.name]: uiReducer,
 };

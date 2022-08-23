@@ -1,22 +1,11 @@
-import { useForm } from 'react-hook-form';
-
-import { Button, Container, Grid, Paper } from '@mui/material';
+import { Container, Grid, Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 
-import TextFieldElement from '../../@components/Forms/FormInputText';
-
+import TodoForm from './TodoForm/TodoForm';
 import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
 
-const defaultValues = {
-  textValue: '',
-};
-
 const MainView = () => {
-  const methods = useForm<any>({ defaultValues });
-  const { handleSubmit, reset, control, setValue, watch } = methods;
-  const onSubmit = (data: any) => console.log(data);
-
   return (
     <Container maxWidth="lg">
       <Box sx={{ flexGrow: 1 }}>
@@ -28,22 +17,9 @@ const MainView = () => {
           <Grid item xs={12}>
             <Paper elevation={3}>
               <Box p={3}>
-                <Box
-                  style={{
-                    display: 'flex',
-                    gap: '20px',
-                  }}
-                >
-                  <TextFieldElement
-                    name="name"
-                    label="Name"
-                    control={control}
-                    fullWidth
-                  />
-                  <Button onClick={handleSubmit(onSubmit)} variant="contained">
-                    Submit
-                  </Button>
-                </Box>
+                <TodoForm />
+              </Box>
+              <Box p={3}>
                 <TodoFilter />
                 <TodoList />
               </Box>

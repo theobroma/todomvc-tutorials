@@ -23,15 +23,21 @@ const TodoFilter = () => {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box
+      sx={{ minWidth: 120 }}
+      style={{
+        display: 'flex',
+        gap: '20px',
+      }}
+    >
       <FilterListIcon />
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Filter</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={filterValue}
-          label="Age"
+          label="Filter"
           onChange={handleChange}
         >
           <MenuItem value={VisibilityFilters.SHOW_ALL}>All</MenuItem>

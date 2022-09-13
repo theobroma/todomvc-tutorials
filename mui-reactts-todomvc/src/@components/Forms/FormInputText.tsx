@@ -1,4 +1,4 @@
-// https://github.com/dohomi/react-hook-form-mui/blob/master/src/TextFieldElement.tsx
+// https://github.com/dohomi/react-hook-form-mui/blob/master/packages/rhf-mui/src/TextFieldElement.tsx
 /* eslint-disable no-useless-escape */
 import type {
   Control,
@@ -12,14 +12,17 @@ import type { FieldValues } from 'react-hook-form/dist/types/fields';
 import type { TextFieldProps } from '@mui/material';
 import { TextField } from '@mui/material';
 
-type TextFieldElementProps<T> = Omit<TextFieldProps, 'name'> & {
+type TextFieldElementProps<T extends FieldValues = FieldValues> = Omit<
+  TextFieldProps,
+  'name'
+> & {
   validation?: ControllerProps['rules'];
   name: Path<T>;
   parseError?: (error: FieldError) => string;
   control?: Control<T>;
 };
 
-const TextFieldElement = <TFieldValues extends FieldValues>({
+const TextFieldElement = <TFieldValues extends FieldValues = FieldValues>({
   validation = {},
   parseError,
   type,

@@ -1,18 +1,11 @@
 import * as React from 'react';
 
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
 import type { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useAppSelector } from '../@store/configureStore';
 import { themeSelector } from '../@store/ui/selectors';
-
-const muiCache = createCache({
-  key: 'mui',
-  prepend: true,
-});
 
 // A custom theme for this app
 const LIGHT_THEME = {
@@ -99,12 +92,10 @@ const AppThemeProvider = ({ children }: { children?: React.ReactNode }) => {
   const theme = createTheme(themeMap[currentTheme]);
   // const theme = createTheme(LIGHT_THEME);
   return (
-    <CacheProvider value={muiCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
-    </CacheProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
   );
 };
 

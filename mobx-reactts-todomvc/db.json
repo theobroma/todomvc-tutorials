@@ -1,76 +1,14 @@
 {
-  "users": [
+  "todos": [
     {
-      "id": "5a07bc6ba958450408b4e74a",
-      "name": "Svetlana Sorokovnikova",
-      "discountType": "SILVER",
-      "spentSum": 11111,
-      "discountProcent": 18,
-      "gender": "FEMALE"
+      "id": "1",
+      "title": "drink coffee",
+      "completed": false
     },
     {
-      "id": "5a07bc6ba958450408b4e74b",
-      "name": "Sergei Pluhin",
-      "discountType": "GOLD",
-      "spentSum": 555,
-      "discountProcent": 17,
-      "gender": "MALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74c",
-      "name": "Greta Holodnaia",
-      "discountType": "WOOD",
-      "spentSum": 333777,
-      "discountProcent": 10,
-      "gender": "FEMALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74d",
-      "name": "Andrei Stelia",
-      "discountType": "SILVER",
-      "spentSum": 124,
-      "discountProcent": 11,
-      "gender": "MALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74e",
-      "name": "Alex Bulavka",
-      "discountType": "WOOD",
-      "spentSum": 101,
-      "discountProcent": 8,
-      "gender": "MALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74f",
-      "name": "Igor Shumilovec",
-      "discountType": "SILVER",
-      "spentSum": 44,
-      "discountProcent": 23,
-      "gender": "FEMALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74g",
-      "name": "Semen Bluher",
-      "discountType": "SILVER",
-      "spentSum": 543,
-      "discountProcent": 15,
-      "gender": "MALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74h",
-      "name": "Irina Chernisheva",
-      "discountType": "SILVER",
-      "spentSum": 126,
-      "discountProcent": 9,
-      "gender": "FEMALE"
-    },
-    {
-      "id": "5a07bc6ba958450408b4e74j",
-      "name": "Dasha Savelieva",
-      "discountType": "WOOD",
-      "spentSum": 221,
-      "discountProcent": 18,
-      "gender": "FEMALE"
+      "id": "2",
+      "title": "be awesome",
+      "completed": true
     }
   ]
 }

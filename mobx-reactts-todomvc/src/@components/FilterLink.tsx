@@ -1,11 +1,8 @@
-// import { useAppDispatch, useAppSelector } from '@store/configureStore';
-// import { filterSelector } from '@store/filter/selectors';
-// import { setFilterAC } from '@store/filter/slice';
-// import { FilterType } from '@types';
-// import clsx from 'clsx';
-import React from 'react';
+import React, { useContext } from 'react';
+import clsx from 'clsx';
 
 import type { FilterType } from '../@types';
+import FilterStore from '../stores/FilterStore';
 
 interface Props {
   type: FilterType;
@@ -13,14 +10,16 @@ interface Props {
 }
 
 const FilterLink = ({ type, children }: Props) => {
-  // const dispatch = useAppDispatch();
-  // const filter = useAppSelector(filterSelector);
+  const todoStore = useContext(FilterStore);
+  const { filter, setFilter } = todoStore;
   return (
     <li>
       <a
         href="#/"
-        // onClick={() => dispatch(setFilterAC(type))}
-        // className={clsx({ selected: filter === type })}
+        onClick={() => {
+          setFilter(type);
+        }}
+        className={clsx({ selected: filter === type })}
       >
         {children}
       </a>

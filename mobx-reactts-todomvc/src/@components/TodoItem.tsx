@@ -4,17 +4,14 @@ import clsx from 'clsx';
 import type { TodoType } from '../@types';
 import TodoStore from '../stores/TodoStore';
 
-// import TodoEditInput from './TodoEditInput';
+import TodoEditInput from './TodoEditInput';
 
 interface Props {
   todo: TodoType;
-  // isEditing: boolean;
+  isEditing: boolean;
 }
 
-const TodoItem = React.memo(function TodoItem({
-  todo,
-}: // isEditing
-Props) {
+const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
   const todoStore = useContext(TodoStore);
   const { toggleTodo, removeTodo, editTodo } = todoStore;
 
@@ -41,12 +38,12 @@ Props) {
     <li
       className={clsx({
         completed: todo.completed,
-        // editing: isEditing,
+        editing: isEditing,
       })}
     >
       {element}
       {/* isEditing */}
-      {/* {isEditing ? <TodoEditInput /> : null} */}
+      {isEditing ? <TodoEditInput /> : null}
     </li>
   );
 });

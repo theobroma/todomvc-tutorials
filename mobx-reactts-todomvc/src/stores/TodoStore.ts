@@ -37,6 +37,18 @@ class TodoStore {
     this.editingTodoId = id;
   };
 
+  @action cancelEditTodo = () => {
+    this.editingTodoId = null;
+  };
+
+  @action saveEditTodo = (title: TodoType['title']) => {
+    const index = this.todos.findIndex(
+      (element) => element.id === this.editingTodoId,
+    );
+    this.todos[index].title = title;
+    this.editingTodoId = null;
+  };
+
   @action setFilter = (value: FilterType) => {
     this.filter = value;
   };

@@ -11,6 +11,7 @@ const List = () => {
     // todos,
     filteredTodos: todos,
     toggleAllTodo,
+    editingTodoId,
     info: { activeTodoCount },
   } = todoStore;
 
@@ -39,7 +40,7 @@ const List = () => {
       <TodoItem
         key={todo.id}
         todo={todo}
-        // isEditing={editingTodoId === todo.id}
+        isEditing={editingTodoId === todo.id}
       />
     ));
   };

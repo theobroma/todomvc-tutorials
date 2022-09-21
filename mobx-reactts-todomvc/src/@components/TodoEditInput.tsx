@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+
 import TodoStore from '../stores/TodoStore';
 
 const TodoEditInput = () => {
   const todoStore = useContext(TodoStore);
-  const { todos, editingTodoId } = todoStore;
+  const { todos, editingTodoId, saveEditTodo, cancelEditTodo } = todoStore;
   const editingTodoIndex = todos.findIndex(
     (element) => element.id === editingTodoId,
   );
@@ -24,16 +25,16 @@ const TodoEditInput = () => {
 
   // TODO: escape press also triggers this
   const handleBlur = () => {
-    // dispatch(saveEditTodoAC(text));
+    saveEditTodo(text);
   };
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // TODO: not working
     if (event.key === 'Escape') {
-      // dispatch(cancelEditTodoAC());
+      cancelEditTodo();
     }
     if (event.key === 'Enter') {
-      // dispatch(saveEditTodoAC(text));
+      saveEditTodo(text);
     }
   };
 

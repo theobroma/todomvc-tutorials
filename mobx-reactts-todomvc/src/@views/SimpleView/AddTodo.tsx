@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { observer } from 'mobx-react';
 
-import TodoStore from '../stores/TodoStore';
+import TodoStore from '../../stores/TodoStore';
 
 const AddTodo = () => {
   const [title, setTitle] = useState('');

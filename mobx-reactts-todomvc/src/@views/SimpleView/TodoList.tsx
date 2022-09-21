@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { observer } from 'mobx-react';
 
-import TodoStore from '../stores/TodoStore';
+import TodoStore from '../../stores/TodoStore';
 
 const TodoList = () => {
   const todoStore = useContext(TodoStore);

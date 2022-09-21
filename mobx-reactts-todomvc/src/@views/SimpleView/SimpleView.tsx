@@ -1,6 +1,6 @@
 // https://codesandbox.io/s/dreamy-raman-k0r7f?file=/package.json
-import AddTodo from '../../components/AddTodo';
-import TodoList from '../../components/TodoList';
+import AddTodo from './AddTodo';
+import TodoList from './TodoList';
 
 const SimpleView = () => {
   return (

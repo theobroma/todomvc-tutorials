@@ -8,7 +8,8 @@ import TodoItem from './TodoItem';
 const List = () => {
   const todoStore = useContext(TodoStore);
   const {
-    todos,
+    // todos,
+    filteredTodos: todos,
     toggleAllTodo,
     info: { activeTodoCount },
   } = todoStore;

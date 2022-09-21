@@ -9,6 +9,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 
 import type { FilterType, TodoType } from '../@types';
+import { VisibilityFilters } from '../@types';
 
 class TodoStore {
   constructor() {
@@ -79,6 +80,19 @@ class TodoStore {
       activeTodoCount: this.todos.filter((todo) => !todo.completed).length,
       completedTodoCount: this.todos.filter((todo) => todo.completed).length,
     };
+  }
+
+  @computed get filteredTodos() {
+    switch (this.filter) {
+      case VisibilityFilters.SHOW_ALL:
+        return this.todos;
+      case VisibilityFilters.SHOW_COMPLETED:
+        return this.todos.filter((todo) => todo.completed);
+      case VisibilityFilters.SHOW_ACTIVE:
+        return this.todos.filter((todo) => !todo.completed);
+      default:
+        throw new Error(`Unknown filter: ${this.filter}`);
+    }
   }
 }
 

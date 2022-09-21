@@ -1,3 +1,4 @@
+import Header from '../../@components/Header';
 import List from '../../@components/List';
 
 const MainApp = () => {
@@ -5,7 +6,7 @@ const MainApp = () => {
     <div className="App">
       <section className="todoapp">
         <div>
-          {/* <Header /> */}
+          <Header />
           <List />
           {/* <Footer /> */}
         </div>

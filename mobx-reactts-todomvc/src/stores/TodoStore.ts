@@ -8,7 +8,7 @@ import {
 } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
-import type { TodoType } from '../@types';
+import type { FilterType, TodoType } from '../@types';
 
 class TodoStore {
   constructor() {
@@ -27,6 +27,12 @@ class TodoStore {
     { id: uuidv4(), title: 'Item #5', completed: true },
     { id: uuidv4(), title: 'Item #6', completed: false },
   ];
+
+  @observable filter: FilterType = 'SHOW_ALL';
+
+  @action setFilter = (value: FilterType) => {
+    this.filter = value;
+  };
 
   @action addTodo = (title: TodoType['title']) => {
     this.todos.push({ title, id: uuidv4(), completed: false });

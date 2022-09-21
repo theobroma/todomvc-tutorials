@@ -7,6 +7,7 @@
 // import { pluralize } from '@utils/pluralize';
 
 import { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react';
 
 import { pluralize } from '../@utils/pluralize';
 import TodoStore from '../stores/TodoStore';
@@ -64,4 +65,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default observer(Footer);

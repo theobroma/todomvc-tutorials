@@ -45,9 +45,9 @@ class TodoStore {
   };
 
   @action removeTodo = (id: TodoType['id']) => {
-    console.log(id);
+    // console.log(id);
     this.todos = this.todos.filter((todo) => todo.id !== id);
-    console.log(this.todos);
+    // console.log(this.todos);
   };
 
   @computed get info() {

@@ -16,7 +16,7 @@ const TodoItem = React.memo(function TodoItem({
 }: // isEditing
 Props) {
   const todoStore = useContext(TodoStore);
-  const { toggleTodo, removeTodo } = todoStore;
+  const { toggleTodo, removeTodo, editTodo } = todoStore;
 
   const element = (
     <div className="view">
@@ -26,10 +26,7 @@ Props) {
         checked={todo.completed}
         onClick={(_) => toggleTodo(todo.id!)}
       />
-      <label
-        htmlFor="itself"
-        //  onDoubleClick={() => dispatch(editTodoAC(todo.id))}
-      >
+      <label htmlFor="itself" onDoubleClick={() => editTodo(todo.id)}>
         {todo.title}
       </label>
       <button

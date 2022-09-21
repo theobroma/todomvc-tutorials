@@ -31,6 +31,12 @@ class TodoStore {
 
   @observable filter: FilterType = 'SHOW_ALL';
 
+  @observable editingTodoId: TodoType['id'] | null = null;
+
+  @action editTodo = (id: TodoType['id']) => {
+    this.editingTodoId = id;
+  };
+
   @action setFilter = (value: FilterType) => {
     this.filter = value;
   };

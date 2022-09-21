@@ -50,6 +50,10 @@ class TodoStore {
     // console.log(this.todos);
   };
 
+  @action removeCompleted = () => {
+    this.todos = this.todos.filter((todo) => !todo.completed);
+  };
+
   @computed get info() {
     return {
       // just for back compatibility

@@ -1,11 +1,3 @@
-// import { useAppDispatch, useAppSelector } from '@store/configureStore';
-// import {
-//   activeTodoCountSelector,
-//   completedTodoCountSelector,
-// } from '@store/todos/selectors';
-// import { removeCompletedAC } from '@store/todos/slice';
-// import { pluralize } from '@utils/pluralize';
-
 import { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react';
 
@@ -17,6 +9,7 @@ import FilterLink from './FilterLink';
 const Footer = () => {
   const todoStore = useContext(TodoStore);
   const {
+    removeCompleted,
     info: { total, activeTodoCount, completedTodoCount },
   } = todoStore;
 
@@ -26,24 +19,24 @@ const Footer = () => {
     console.log('completedTodoCount :>> ', completedTodoCount);
   }, [total, activeTodoCount, completedTodoCount]);
 
-  // const dispatch = useAppDispatch();
-  // const activeTodoCount = useAppSelector(activeTodoCountSelector);
-  // const completedTodoCount = useAppSelector(completedTodoCountSelector);
+  const handleButtonClick = () => {
+    removeCompleted();
+  };
 
-  // const handleButtonClick = () => {
-  //   dispatch(removeCompletedAC());
-  // };
-
-  // const renderClearButton = () => {
-  //   if (completedTodoCount > 0) {
-  //     return (
-  //       <button type="button" className="clear-completed" onClick={handleButtonClick}>
-  //         Clear completed
-  //       </button>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const renderClearButton = () => {
+    if (completedTodoCount > 0) {
+      return (
+        <button
+          type="button"
+          className="clear-completed"
+          onClick={handleButtonClick}
+        >
+          Clear completed
+        </button>
+      );
+    }
+    return null;
+  };
 
   return (
     <>
@@ -58,7 +51,7 @@ const Footer = () => {
             <FilterLink type="SHOW_ACTIVE">Active</FilterLink>
             <FilterLink type="SHOW_COMPLETED">Completed</FilterLink>
           </ul>
-          {/* {renderClearButton()} */}
+          {renderClearButton()}
         </footer>
       ) : null}
     </>

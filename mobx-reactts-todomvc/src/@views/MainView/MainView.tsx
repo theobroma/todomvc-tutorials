@@ -1,3 +1,4 @@
+import Footer from '../../@components/Footer';
 import Header from '../../@components/Header';
 import List from '../../@components/List';
 
@@ -8,7 +9,7 @@ const MainApp = () => {
         <div>
           <Header />
           <List />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </section>
     </div>

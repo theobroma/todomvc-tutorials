@@ -32,7 +32,7 @@ class TodoStore {
     this.todos.push({ title, id: uuidv4(), completed: false });
   };
 
-  @action toggleTodo = (id: string) => {
+  @action toggleTodo = (id: TodoType['id']) => {
     this.todos = this.todos.map((todo) => {
       if (todo.id === id) {
         return {
@@ -44,7 +44,7 @@ class TodoStore {
     });
   };
 
-  @action removeTodo = (id: string) => {
+  @action removeTodo = (id: TodoType['id']) => {
     console.log(id);
     this.todos = this.todos.filter((todo) => todo.id !== id);
     console.log(this.todos);
@@ -52,9 +52,13 @@ class TodoStore {
 
   @computed get info() {
     return {
+      // just for back compatibility
       total: this.todos.length,
       completed: this.todos.filter((todo) => todo.completed).length,
       notCompleted: this.todos.filter((todo) => !todo.completed).length,
+      // new
+      activeTodoCount: this.todos.filter((todo) => !todo.completed).length,
+      completedTodoCount: this.todos.filter((todo) => todo.completed).length,
     };
   }
 }

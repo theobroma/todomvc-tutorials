@@ -44,6 +44,14 @@ class TodoStore {
     });
   };
 
+  @action toggleAllTodo = () => {
+    // TODO: mb use computed
+    const activeTodoCount = this.todos.filter((todo) => !todo.completed).length;
+    this.todos = this.todos.map((todo) => {
+      return { ...todo, completed: activeTodoCount !== 0 };
+    });
+  };
+
   @action removeTodo = (id: TodoType['id']) => {
     // console.log(id);
     this.todos = this.todos.filter((todo) => todo.id !== id);

@@ -1,6 +1,3 @@
-// import { useAppDispatch } from '@store/configureStore';
-// import { deleteTodoAC, editTodoAC, toggleTodoAC } from '@store/todos/slice';
-
 import React, { useContext } from 'react';
 import clsx from 'clsx';
 
@@ -18,7 +15,6 @@ const TodoItem = React.memo(function TodoItem({
   todo,
 }: // isEditing
 Props) {
-  // const dispatch = useAppDispatch();
   const todoStore = useContext(TodoStore);
   const { toggleTodo, removeTodo } = todoStore;
 
@@ -28,7 +24,6 @@ Props) {
         className="toggle"
         type="checkbox"
         checked={todo.completed}
-        // onChange={() => dispatch(toggleTodoAC(todo.id))}
         onClick={(_) => toggleTodo(todo.id!)}
       />
       <label
@@ -40,7 +35,6 @@ Props) {
       <button
         type="button"
         className="destroy"
-        // onClick={() => dispatch(deleteTodoAC(todo.id))}
         onClick={(_) => removeTodo(todo.id!)}
       />
     </div>

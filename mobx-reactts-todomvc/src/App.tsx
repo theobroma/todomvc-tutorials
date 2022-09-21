@@ -1,17 +1,9 @@
-import AddTodo from './components/AddTodo';
-import TodoList from './components/TodoList';
+// import MainView from './@views/MainView';
+import SimpleView from './@views/SimpleView';
 
 const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>MobX TodoMVC</h1>
-      </header>
-      <AddTodo />
-      <br />
-      <TodoList />
-    </div>
-  );
+  // return <MainView />;
+  return <SimpleView />;
 };
 
 export default App;

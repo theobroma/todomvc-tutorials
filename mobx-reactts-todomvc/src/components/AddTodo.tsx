@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { observer } from 'mobx-react';
 
 import TodoStore from '../stores/TodoStore';
@@ -38,10 +38,7 @@ const AddTodo = () => {
           type="button"
           className="btn btn-primary"
           onClick={(_) => {
-            addTodo({
-              title,
-              completed: false,
-            });
+            addTodo(title);
             setTitle('');
           }}
         >

@@ -8,11 +8,7 @@ import {
 } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
-export interface Todo {
-  id?: string;
-  title: string;
-  completed: boolean;
-}
+import type { TodoType } from '../@types';
 
 class TodoStore {
   constructor() {
@@ -23,7 +19,7 @@ class TodoStore {
     );
   }
 
-  @observable todos: Todo[] = [
+  @observable todos: TodoType[] = [
     { id: uuidv4(), title: 'Item #1', completed: false },
     { id: uuidv4(), title: 'Item #2', completed: false },
     { id: uuidv4(), title: 'Item #3', completed: false },
@@ -32,8 +28,8 @@ class TodoStore {
     { id: uuidv4(), title: 'Item #6', completed: false },
   ];
 
-  @action addTodo = (todo: Todo) => {
-    this.todos.push({ ...todo, id: uuidv4() });
+  @action addTodo = (title: TodoType['title']) => {
+    this.todos.push({ title, id: uuidv4(), completed: false });
   };
 
   @action toggleTodo = (id: string) => {

@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "drink coffee",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "be awesome",
+      "completed": true
+    }
+  ]
+}

@@ -20,6 +20,10 @@ This project was built using these technologies.
 - [json-server params](https://blog.logrocket.com/how-to-bootstrap-your-project-with-json-server/)
 - [concurrently](https://dev.to/numtostr/running-react-and-node-js-in-one-shot-with-concurrently-2oac)
 
+### MobX
+
+-[Async Action with MobX](https://labs.factorialhr.com/posts/async-action-with-mobx)
+
 ## 🛠 Quick Start
 
 ```bash

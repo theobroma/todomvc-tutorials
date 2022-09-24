@@ -1,117 +1,72 @@
-import { createContext } from 'react';
-import {
-  action,
-  computed,
-  makeAutoObservable,
-  observable,
-  reaction,
-} from 'mobx';
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { action, makeObservable, observable, runInAction, toJS } from 'mobx';
 
-import type { FilterType, TodoType } from '../@types';
-import { VisibilityFilters } from '../@types';
+import type { TodoType } from '../@types/todos';
 
-class TodoStore {
+const baseUrl = 'http://localhost:4000';
+class BlogModel {
+  posts: TodoType[] = [];
+
   constructor() {
-    makeAutoObservable(this);
-    reaction(
-      () => this.todos,
-      (_) => console.log(this.todos.length),
-    );
+    makeObservable(this, {
+      posts: observable,
+      // addPost: action,
+      // deletePost: action,
+      allPosts: action,
+      getPost: action,
+    });
   }
 
-  @observable todos: TodoType[] = [
-    { id: uuidv4(), title: 'Item #1', completed: false },
-    { id: uuidv4(), title: 'Item #2', completed: false },
-    { id: uuidv4(), title: 'Item #3', completed: false },
-    { id: uuidv4(), title: 'Item #4', completed: false },
-    { id: uuidv4(), title: 'Item #5', completed: true },
-    { id: uuidv4(), title: 'Item #6', completed: false },
-  ];
-
-  @observable filter: FilterType = 'SHOW_ALL';
-
-  @observable editingTodoId: TodoType['id'] | null = null;
-
-  @action editTodo = (id: TodoType['id']) => {
-    this.editingTodoId = id;
-  };
-
-  @action cancelEditTodo = () => {
-    this.editingTodoId = null;
-  };
-
-  @action saveEditTodo = (title: TodoType['title']) => {
-    const index = this.todos.findIndex(
-      (element) => element.id === this.editingTodoId,
-    );
-    this.todos[index].title = title;
-    this.editingTodoId = null;
-  };
-
-  @action setFilter = (value: FilterType) => {
-    this.filter = value;
-  };
-
-  @action addTodo = (title: TodoType['title']) => {
-    this.todos.push({ title, id: uuidv4(), completed: false });
-  };
-
-  @action toggleTodo = (id: TodoType['id']) => {
-    this.todos = this.todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-      }
-      return todo;
-    });
-  };
-
-  @action toggleAllTodo = () => {
-    // TODO: mb use computed
-    const activeTodoCount = this.todos.filter((todo) => !todo.completed).length;
-    //
-    this.todos = this.todos.map((todo) => {
-      return { ...todo, completed: activeTodoCount !== 0 };
-    });
-  };
-
-  @action removeTodo = (id: TodoType['id']) => {
-    // console.log(id);
-    this.todos = this.todos.filter((todo) => todo.id !== id);
-    // console.log(this.todos);
-  };
-
-  @action removeCompleted = () => {
-    this.todos = this.todos.filter((todo) => !todo.completed);
-  };
-
-  @computed get info() {
-    return {
-      // just for back compatibility
-      total: this.todos.length,
-      completed: this.todos.filter((todo) => todo.completed).length,
-      notCompleted: this.todos.filter((todo) => !todo.completed).length,
-      // new
-      activeTodoCount: this.todos.filter((todo) => !todo.completed).length,
-      completedTodoCount: this.todos.filter((todo) => todo.completed).length,
-    };
+  getPost(id: TodoType['id']) {
+    return this.posts.find((post) => post.id === id);
   }
 
-  @computed get filteredTodos() {
-    switch (this.filter) {
-      case VisibilityFilters.SHOW_ALL:
-        return this.todos;
-      case VisibilityFilters.SHOW_COMPLETED:
-        return this.todos.filter((todo) => todo.completed);
-      case VisibilityFilters.SHOW_ACTIVE:
-        return this.todos.filter((todo) => !todo.completed);
-      default:
-        throw new Error(`Unknown filter: ${this.filter}`);
+  // addPost = async (post) => {
+  //   const res = await axios.post(`${baseUrl}/posts`, {
+  //     title: post.title,
+  //     body: post.body,
+  //   });
+  //   runInAction(() => {
+  //     this.posts.unshift(res.data);
+  //   });
+  // };
+
+  // updatePost = async ({ id, title, body }) => {
+  //   console.log(id, title, body);
+  //   const post = this.getPost(id);
+
+  //   await axios.put(`${baseUrl}/posts/${id}`, {
+  //     title,
+  //     body,
+  //   });
+
+  //   if (post) {
+  //     runInAction(() => {
+  //       post.title = title;
+  //       post.body = body;
+  //     });
+  //   }
+  // };
+
+  // deletePost = async (id) => {
+  //   await axios.delete(`${baseUrl}/posts/${id}`);
+  //   runInAction(() => {
+  //     const index = this.posts.findIndex((post) => post.id === id);
+  //     if (index > -1) this.posts.splice(index, 1);
+  //   });
+  // };
+
+  async allPosts() {
+    if (this.posts.length < 1) {
+      const res = await axios.get(`${baseUrl}/todos`);
+      runInAction(() => {
+        this.posts = res.data.reverse();
+      });
     }
+    console.log('this.posts', toJS(this.posts));
+    return toJS(this.posts);
   }
 }
 
-export default createContext(new TodoStore());
+const blogStore = new BlogModel();
+export default blogStore;

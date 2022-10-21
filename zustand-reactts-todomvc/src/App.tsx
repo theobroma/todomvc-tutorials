@@ -1,9 +1,7 @@
+import MainApp from './@views/MainView';
+
 const App = () => {
-  return (
-    <div className="App">
-      <span>todolist</span>
-    </div>
-  );
+  return <MainApp />;
 };
 
 export default App;

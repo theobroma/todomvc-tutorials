@@ -2,6 +2,8 @@ import React from 'react';
 
 import useStore from '../@store';
 
+import TodoItem from './TodoItem';
+
 const List = React.memo(function List() {
   const { todos } = useStore();
   // const dispatch = useAppDispatch();
@@ -44,10 +46,12 @@ const List = React.memo(function List() {
 
   const renderTodos = () => {
     return todos.map((todo) => (
-      <>
-        <span>{todo.title}</span>
-        <span>{todo.completed}</span>
-      </>
+      <TodoItem
+        key={todo.id}
+        todo={todo}
+        // isEditing={editingTodoId === todo.id}
+        isEditing={false}
+      />
     ));
   };
 

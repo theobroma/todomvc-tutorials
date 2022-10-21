@@ -3,6 +3,7 @@
 // import List from '@components/List';
 
 import Header from '../../@components/Header';
+import List from '../../@components/List';
 
 const MainApp = () => {
   return (
@@ -10,7 +11,7 @@ const MainApp = () => {
       <section className="todoapp">
         <div>
           <Header />
-          {/* <List /> */}
+          <List />
           {/* <Footer /> */}
         </div>
       </section>

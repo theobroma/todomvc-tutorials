@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import useTodosStore from '../@store';
+import useTodosStore from '../@store/useTodosStore';
 import type { TodoType } from '../@types';
 
 // import TodoEditInput from './TodoEditInput';

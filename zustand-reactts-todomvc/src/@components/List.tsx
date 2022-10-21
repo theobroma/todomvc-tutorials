@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useTodosStore from '../@store';
+import useTodosStore from '../@store/useTodosStore';
 
 import TodoItem from './TodoItem';
 

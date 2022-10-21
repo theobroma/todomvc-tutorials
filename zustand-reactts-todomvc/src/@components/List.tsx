@@ -1,11 +1,12 @@
 import React from 'react';
 
-import useStore from '../@store';
+import useTodosStore from '../@store';
 
 import TodoItem from './TodoItem';
 
 const List = React.memo(function List() {
-  const { todos } = useStore();
+  const { todos } = useTodosStore();
+  console.log('todos', todos);
   // const dispatch = useAppDispatch();
   // const todos = useAppSelector(visibleTodosSelector);
   // const { editingTodoId } = useAppSelector(todosSelector);

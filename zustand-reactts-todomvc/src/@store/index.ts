@@ -3,12 +3,19 @@ import create from 'zustand';
 
 import type { TodoType } from '../@types';
 
+const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
+  todos.map((todo) => ({
+    ...todo,
+    completed: todo.id === id ? !todo.completed : todo.completed,
+  }));
+
 // Zustand implementation
 type Store = {
   todos: TodoType[];
+  toggleTodo: (id: TodoType['id']) => void;
 };
 
-const useStore = create<Store>(
+const useTodosStore = create<Store>(
   (set): Store => ({
     todos: [
       {
@@ -38,11 +45,11 @@ const useStore = create<Store>(
     //     ...state,
     //     todos: updateTodo(state.todos, id, text),
     //   })),
-    // toggleTodo: (id: number) =>
-    //   set((state) => ({
-    //     ...state,
-    //     todos: toggleTodo(state.todos, id),
-    //   })),
+    toggleTodo: (id: TodoType['id']) =>
+      set((state) => ({
+        ...state,
+        todos: toggleTodo(state.todos, id),
+      })),
     // setNewTodo: (newTodo: string) =>
     //   set((state) => ({
     //     ...state,
@@ -57,4 +64,4 @@ const useStore = create<Store>(
   }),
 );
 
-export default useStore;
+export default useTodosStore;

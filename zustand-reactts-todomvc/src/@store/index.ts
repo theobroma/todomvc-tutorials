@@ -9,10 +9,14 @@ const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
     completed: todo.id === id ? !todo.completed : todo.completed,
   }));
 
+const removeTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
+  todos.filter((todo) => todo.id !== id);
+
 // Zustand implementation
 type Store = {
   todos: TodoType[];
   toggleTodo: (id: TodoType['id']) => void;
+  removeTodo: (id: TodoType['id']) => void;
 };
 
 const useTodosStore = create<Store>(
@@ -35,11 +39,11 @@ const useTodosStore = create<Store>(
     //     ...state,
     //     todos,
     //   })),
-    // removeTodo: (id: number) =>
-    //   set((state) => ({
-    //     ...state,
-    //     todos: removeTodo(state.todos, id),
-    //   })),
+    removeTodo: (id: TodoType['id']) =>
+      set((state) => ({
+        ...state,
+        todos: removeTodo(state.todos, id),
+      })),
     // updateTodo: (id: number, text: string) =>
     //   set((state) => ({
     //     ...state,

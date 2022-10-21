@@ -33,6 +33,7 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
         type="button"
         className="destroy"
         // onClick={() => dispatch(deleteTodoAC(todo.id))}
+        onClick={() => store.removeTodo(todo.id)}
       />
     </div>
   );

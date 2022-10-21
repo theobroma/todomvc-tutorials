@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import create from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
 
 import type { TodoType } from '../@types';
 
@@ -19,53 +20,60 @@ type Store = {
   removeTodo: (id: TodoType['id']) => void;
 };
 
-const useTodosStore = create<Store>(
-  (set): Store => ({
-    todos: [
+const useTodosStore = create<Store>()(
+  devtools(
+    persist(
+      (set): Store => ({
+        todos: [
+          {
+            id: uuidv4(),
+            title: 'drink coffee',
+            completed: false,
+          },
+          {
+            id: uuidv4(),
+            title: 'be awesome',
+            completed: true,
+          },
+        ],
+        // newTodo: '',
+        // setTodos: (todos: Todo[]) =>
+        //   set((state) => ({
+        //     ...state,
+        //     todos,
+        //   })),
+        removeTodo: (id: TodoType['id']) =>
+          set((state) => ({
+            ...state,
+            todos: removeTodo(state.todos, id),
+          })),
+        // updateTodo: (id: number, text: string) =>
+        //   set((state) => ({
+        //     ...state,
+        //     todos: updateTodo(state.todos, id, text),
+        //   })),
+        toggleTodo: (id: TodoType['id']) =>
+          set((state) => ({
+            ...state,
+            todos: toggleTodo(state.todos, id),
+          })),
+        // setNewTodo: (newTodo: string) =>
+        //   set((state) => ({
+        //     ...state,
+        //     newTodo,
+        //   })),
+        // addTodo: () =>
+        //   set((state) => ({
+        //     ...state,
+        //     todos: addTodo(state.todos, state.newTodo),
+        //     newTodo: '',
+        //   })),
+      }),
       {
-        id: uuidv4(),
-        title: 'drink coffee',
-        completed: false,
+        name: 'todo-app',
       },
-      {
-        id: uuidv4(),
-        title: 'be awesome',
-        completed: true,
-      },
-    ],
-    // newTodo: '',
-    // setTodos: (todos: Todo[]) =>
-    //   set((state) => ({
-    //     ...state,
-    //     todos,
-    //   })),
-    removeTodo: (id: TodoType['id']) =>
-      set((state) => ({
-        ...state,
-        todos: removeTodo(state.todos, id),
-      })),
-    // updateTodo: (id: number, text: string) =>
-    //   set((state) => ({
-    //     ...state,
-    //     todos: updateTodo(state.todos, id, text),
-    //   })),
-    toggleTodo: (id: TodoType['id']) =>
-      set((state) => ({
-        ...state,
-        todos: toggleTodo(state.todos, id),
-      })),
-    // setNewTodo: (newTodo: string) =>
-    //   set((state) => ({
-    //     ...state,
-    //     newTodo,
-    //   })),
-    // addTodo: () =>
-    //   set((state) => ({
-    //     ...state,
-    //     todos: addTodo(state.todos, state.newTodo),
-    //     newTodo: '',
-    //   })),
-  }),
+    ),
+  ),
 );
 
 export default useTodosStore;

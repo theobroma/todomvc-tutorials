@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useTodosStore } from '../@store';
+import useStore from '../@store';
 
 const List = React.memo(function List() {
-  const { todos } = useTodosStore();
+  const { todos } = useStore();
   // const dispatch = useAppDispatch();
   // const todos = useAppSelector(visibleTodosSelector);
   // const { editingTodoId } = useAppSelector(todosSelector);
@@ -43,7 +43,7 @@ const List = React.memo(function List() {
   // };
 
   const renderTodos = () => {
-    return todos.map((todo: any) => (
+    return todos.map((todo) => (
       <>
         <span>{todo.title}</span>
         <span>{todo.completed}</span>

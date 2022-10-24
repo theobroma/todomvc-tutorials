@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.0",
+    "@chakra-ui/react": "^2.3.6",
+    "@emotion/react": "^11.x",
+    "@emotion/styled": "^11.x",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,6 +14,8 @@
     "@types/node": "^16.x",
     "@types/react": "^18.x",
     "@types/react-dom": "^18.x",
+    "framer-motion": "^6.x",
+    "graphql": "^16.6.0",
     "react": "^18.x",
     "react-dom": "^18.x",
     "react-scripts": "5.0.1",
@@ -43,10 +49,12 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^7.5.0",
     "eslint": "^8.x",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "json-graphql-server": "^2.3.2",
     "prettier": "^2.7.1"
   },
   "engines": {

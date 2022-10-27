@@ -6,6 +6,7 @@ import { Spinner, VStack } from '@chakra-ui/react';
 import { ALL_TODO } from '../@apollo/todos';
 
 import TodoItem from './TodoItem';
+import TotalCount from './TotalCount';
 
 const TodoList = () => {
   const { loading, error, data } = useQuery<any>(ALL_TODO);
@@ -31,7 +32,7 @@ const TodoList = () => {
           />
         ))}
       </VStack>
-      {/* <TotalCount /> */}
+      <TotalCount />
     </>
   );
 };

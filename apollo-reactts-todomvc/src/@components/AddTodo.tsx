@@ -22,9 +22,11 @@ const AddTodo = () => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyPress={handleKey}
-        mr="8"
+        mr="4"
       />
-      <Button onClick={handleAddTodo}>Add todo</Button>
+      <Button onClick={handleAddTodo} colorScheme="teal">
+        Add todo
+      </Button>
     </FormControl>
   );
 };

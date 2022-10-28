@@ -11,7 +11,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 0,
     // prettier-ignore
     'camelcase': 0,
-    'import/no-unused-modules': [1, { unusedExports: true }], // no-unused-modules
+    'import/no-unused-modules': [0, { unusedExports: true }], // no-unused-modules
     'import/prefer-default-export': 0,
     'jsx-a11y/control-has-associated-label': 0,
     'jsx-a11y/label-has-associated-control': 0,

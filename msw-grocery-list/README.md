@@ -1,12 +1,13 @@
-# React Hook Form tutorials with Tailwind CSS
+## Grocery list
 
-- [React Hook Form](https://react-hook-form.com/)
+Simple web app that uses SWR and MSW to prototype a TODO list style application.
+
 - [Tailwind CSS](https://tailwindcss.com/docs/guides/create-react-app/)
+- [MSW](https://www.npmjs.com/package/msw)
+- [SWR](https://www.npmjs.com/package/swr)
 
 ## Usefull links
 
 ### Examples
 
-1. [7 Form Components For React Hook Form I Always Use](https://theodorusclarence.com/blog/rhf). [(Repo)](https://github.com/theodorusclarence/rhf-input/tree/main/components)
-2. [Styling a simple React Hook Form using Tailwind CSS](https://www.tonyvu.co/posts/react-hook-form-tailwind-css)
-3. [React Hook Form: Schema validation using Zod](https://articles.wesionary.team/react-hook-form-schema-validation-using-zod-80d406e22cd8)
+1. [Mocking REST APIs With MSW](https://frontend-digest.com/mocking-rest-apis-with-msw-af2353012daa).

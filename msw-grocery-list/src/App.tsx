@@ -23,7 +23,7 @@ const ItemApp = () => {
       <h1 className="pb-4 text-4xl font-semibold">Grocery List</h1>
       <CreateItem
         disabled={loading}
-        mutate={mutate}
+        // mutate={mutate}
         onCreate={(newItem: any) => {
           mutate([...items, newItem]);
         }}

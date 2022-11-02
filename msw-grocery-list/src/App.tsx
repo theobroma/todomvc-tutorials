@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import useSWR from 'swr';
 
 import { CreateItem } from './@components/CreateItem';
@@ -34,7 +35,7 @@ const ItemApp = () => {
             return (
               <Item
                 item={item}
-                key={item.id}
+                key={nanoid()}
                 onUpdate={(newItem: any) => {
                   mutate(
                     items.map((listItem: any) => {

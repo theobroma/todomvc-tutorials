@@ -1,11 +1,10 @@
-import { rest, setupWorker } from 'msw';
+import { rest } from 'msw';
 
 const endpoint = 'http://localhost:3001/grocery-list';
 
 let items = [];
 
-// 2. Define request handlers and response resolvers
-const worker = setupWorker(
+export const handlers = [
   rest.get(endpoint, (req, res, ctx) => {
     return res(ctx.delay(500), ctx.status(200), ctx.json(items));
   }),
@@ -26,7 +25,8 @@ const worker = setupWorker(
   }),
   rest.post(endpoint, (req, res, ctx) => {
     // const id = items[items.length - 1]?.id + 1 || 1; //!
-    const id = items[items.length - 1].id + 1 || 1; // ! no-unsafe-optional-chaining
+    const lastId = items[items.length - 1]?.id;
+    const id = lastId + 1 || 1; // ! no-unsafe-optional-chaining
     const newItem = {
       id: id.toString(),
       description: req.body,
@@ -36,7 +36,4 @@ const worker = setupWorker(
     items = [...items, newItem];
     return res(ctx.delay(500), ctx.status(201), ctx.json(newItem));
   }),
-);
-
-// 3. Start the Service Worker
-worker.start();
+];

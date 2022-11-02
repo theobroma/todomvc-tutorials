@@ -11,8 +11,8 @@
     "@types/react": "^18.x",
     "@types/react-dom": "^18.x",
     "classnames": "^2.3.2",
-    "json-server": "^0.17.0",
     "msw": "^0.47.4",
+    "nanoid": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -48,7 +48,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.x",
-    "concurrently": "^7.5.0",
     "eslint": "^8.x",
     "eslint-config-airbnb-typescript-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
@@ -61,5 +60,8 @@
   },
   "engines": {
     "node": "^18.x"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

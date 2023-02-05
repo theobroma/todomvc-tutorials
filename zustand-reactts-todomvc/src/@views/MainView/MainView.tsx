@@ -7,7 +7,7 @@ import List from '../../@components/List';
 
 const MainApp = () => {
   return (
-    <div className="App">
+    <div className="app">
       <section className="todoapp">
         <div>
           <Header />

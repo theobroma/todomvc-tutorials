@@ -1,15 +1,27 @@
 import React from 'react';
 
 import useTodosStore from '../@store/useTodosStore';
+import { VisibilityFilters } from '../@types/filter';
 
 import TodoItem from './TodoItem';
 
 const List = React.memo(function List() {
   const store = useTodosStore();
-  const { todos } = store;
+  const { todos, filter } = store;
   const activeTodoCount = store.todos.filter(
     (item) => item.completed === false,
   ).length;
+
+  const filteredTodos = todos.filter((todo) => {
+    switch (filter) {
+      case VisibilityFilters.SHOW_ACTIVE:
+        return !todo.completed;
+      case VisibilityFilters.SHOW_COMPLETED:
+        return todo.completed;
+      default:
+        return true;
+    }
+  });
 
   console.log('todos', todos);
   // const dispatch = useAppDispatch();
@@ -22,7 +34,7 @@ const List = React.memo(function List() {
   };
 
   const renderToggleAll = () => {
-    if (todos.length) {
+    if (filteredTodos.length) {
       return (
         <>
           <input
@@ -40,7 +52,7 @@ const List = React.memo(function List() {
   };
 
   const renderTodos = () => {
-    return todos.map((todo) => (
+    return filteredTodos.map((todo) => (
       <TodoItem
         key={todo.id}
         todo={todo}

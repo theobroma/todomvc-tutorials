@@ -37,9 +37,10 @@ const addTodo = (todos: TodoType[], title: TodoType['title']): TodoType[] => [
 
 // Zustand implementation
 type Store = {
-  addTodo: (text: TodoType['title']) => void;
   todos: TodoType[];
   filter: FilterType;
+  addTodo: (text: TodoType['title']) => void;
+  setFilter: (newFilter: FilterType) => void;
   toggleTodo: (id: TodoType['id']) => void;
   toggleAllTodos: () => void;
   removeTodo: (id: TodoType['id']) => void;
@@ -62,6 +63,11 @@ const useTodosStore = create<Store>()(
           },
         ],
         filter: VisibilityFilters.SHOW_ALL,
+        setFilter: (newFilter: FilterType) =>
+          set((state) => ({
+            ...state,
+            filter: newFilter,
+          })),
         // setTodos: (todos: Todo[]) =>
         //   set((state) => ({
         //     ...state,

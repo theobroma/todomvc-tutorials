@@ -19,6 +19,7 @@ const FilterLink = ({ type, children }: PropsWithChildren<Props>) => {
       <a
         href="#/"
         // onClick={() => dispatch(setFilterAC(type))}
+        onClick={() => store.setFilter(type)}
         className={clsx({ selected: filter === type })}
       >
         {children}

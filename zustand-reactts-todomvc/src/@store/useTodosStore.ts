@@ -10,6 +10,18 @@ const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
     completed: todo.id === id ? !todo.completed : todo.completed,
   }));
 
+const toggleAllTodos = (todos: TodoType[]): TodoType[] => {
+  const activeTodoCount = todos.filter(
+    (item) => item.completed === false,
+  ).length;
+  const bool = activeTodoCount !== 0;
+
+  return todos.map((todo) => ({
+    ...todo,
+    completed: bool,
+  }));
+};
+
 const removeTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
   todos.filter((todo) => todo.id !== id);
 
@@ -27,6 +39,7 @@ type Store = {
   addTodo: (text: TodoType['title']) => void;
   todos: TodoType[];
   toggleTodo: (id: TodoType['id']) => void;
+  toggleAllTodos: () => void;
   removeTodo: (id: TodoType['id']) => void;
 };
 
@@ -65,6 +78,11 @@ const useTodosStore = create<Store>()(
           set((state) => ({
             ...state,
             todos: toggleTodo(state.todos, id),
+          })),
+        toggleAllTodos: () =>
+          set((state) => ({
+            ...state,
+            todos: toggleAllTodos(state.todos),
           })),
         // setNewTodo: (newTodo: string) =>
         //   set((state) => ({

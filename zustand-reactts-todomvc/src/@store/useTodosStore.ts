@@ -2,7 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-import type { TodoType } from '../@types';
+import type { FilterType, TodoType } from '../@types';
+import { VisibilityFilters } from '../@types';
 
 const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
   todos.map((todo) => ({
@@ -38,6 +39,7 @@ const addTodo = (todos: TodoType[], title: TodoType['title']): TodoType[] => [
 type Store = {
   addTodo: (text: TodoType['title']) => void;
   todos: TodoType[];
+  filter: FilterType;
   toggleTodo: (id: TodoType['id']) => void;
   toggleAllTodos: () => void;
   removeTodo: (id: TodoType['id']) => void;
@@ -59,6 +61,7 @@ const useTodosStore = create<Store>()(
             completed: true,
           },
         ],
+        filter: VisibilityFilters.SHOW_ALL,
         // setTodos: (todos: Todo[]) =>
         //   set((state) => ({
         //     ...state,

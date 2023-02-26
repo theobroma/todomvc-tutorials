@@ -15,41 +15,42 @@ import FilterLink from './FilterLink';
 const Footer = () => {
   const store = useTodosStore((state) => state);
   const { todos } = store;
-  const activeTodoCount = store.todos.filter(
+  const activeTodoCount = todos.filter(
     (item) => item.completed === false,
   ).length;
-  const completedTodoCount = store.todos.filter(
+  const completedTodoCount = todos.filter(
     (item) => item.completed === true,
   ).length;
   // const dispatch = useAppDispatch();
   // const activeTodoCount = useAppSelector(activeTodoCountSelector);
   // const completedTodoCount = useAppSelector(completedTodoCountSelector);
 
-  // const handleButtonClick = () => {
-  //   dispatch(removeCompletedAC());
-  // };
+  const handleButtonClick = () => {
+    // dispatch(removeCompletedAC());
+    store.removeCompleted();
+  };
 
-  // const renderClearButton = () => {
-  //   if (completedTodoCount > 0) {
-  //     return (
-  //       <button
-  //         type="button"
-  //         className="clear-completed"
-  //         onClick={handleButtonClick}
-  //       >
-  //         Clear completed
-  //       </button>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const renderClearButton = () => {
+    if (completedTodoCount > 0) {
+      return (
+        <button
+          type="button"
+          className="clear-completed"
+          onClick={handleButtonClick}
+        >
+          Clear completed
+        </button>
+      );
+    }
+    return null;
+  };
 
   return (
     <>
       {activeTodoCount || completedTodoCount ? (
         <footer className="footer">
           <span className="todo-count">
-            <strong>{activeTodoCount}</strong>{' '}
+            <strong>{activeTodoCount}</strong>&nbsp;
             {pluralize(activeTodoCount, 'item')} left
           </span>
           <ul className="filters">
@@ -59,7 +60,7 @@ const Footer = () => {
               Completed
             </FilterLink>
           </ul>
-          {/* {renderClearButton()} */}
+          {renderClearButton()}
         </footer>
       ) : null}
     </>

@@ -13,8 +13,18 @@ const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
 const removeTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
   todos.filter((todo) => todo.id !== id);
 
+const addTodo = (todos: TodoType[], title: TodoType['title']): TodoType[] => [
+  ...todos,
+  {
+    id: uuidv4(),
+    title,
+    completed: false,
+  },
+];
+
 // Zustand implementation
 type Store = {
+  addTodo: (text: TodoType['title']) => void;
   todos: TodoType[];
   toggleTodo: (id: TodoType['id']) => void;
   removeTodo: (id: TodoType['id']) => void;
@@ -36,7 +46,6 @@ const useTodosStore = create<Store>()(
             completed: true,
           },
         ],
-        // newTodo: '',
         // setTodos: (todos: Todo[]) =>
         //   set((state) => ({
         //     ...state,
@@ -62,12 +71,11 @@ const useTodosStore = create<Store>()(
         //     ...state,
         //     newTodo,
         //   })),
-        // addTodo: () =>
-        //   set((state) => ({
-        //     ...state,
-        //     todos: addTodo(state.todos, state.newTodo),
-        //     newTodo: '',
-        //   })),
+        addTodo: (text: TodoType['title']) =>
+          set((state) => ({
+            ...state,
+            todos: addTodo(state.todos, text),
+          })),
       }),
       {
         name: 'todo-app',

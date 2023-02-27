@@ -20,12 +20,10 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
         className="toggle"
         type="checkbox"
         checked={todo.completed}
-        // onChange={() => dispatch(toggleTodoAC(todo.id))}
         onChange={() => store.toggleTodo(todo.id)}
       />
       <label
         htmlFor="itself"
-        // onDoubleClick={() => dispatch(editTodoAC(todo.id))}
         onDoubleClick={() => store.setEditTodoID(todo.id)}
       >
         {todo.title}
@@ -33,7 +31,6 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
       <button
         type="button"
         className="destroy"
-        // onClick={() => dispatch(deleteTodoAC(todo.id))}
         onClick={() => store.removeTodo(todo.id)}
       />
     </div>

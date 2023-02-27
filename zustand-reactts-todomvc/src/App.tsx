@@ -1,7 +1,5 @@
-import MainApp from './@views/MainView';
+import MainApp from './@views/MainView/MainView';
 
-const App = () => {
-  return <MainApp />;
-};
+const App = () => <MainApp />;
 
 export default App;

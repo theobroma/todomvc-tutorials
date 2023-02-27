@@ -23,12 +23,6 @@ const List = React.memo(function List() {
     }
   });
 
-  console.log('todos', todos);
-  // const dispatch = useAppDispatch();
-  // const todos = useAppSelector(visibleTodosSelector);
-  // const { editingTodoId } = useAppSelector(todosSelector);
-  // const activeTodoCount = useAppSelector(activeTodoCountSelector);
-
   const _handleTodoToggleAll = () => {
     store.toggleAllTodos();
   };
@@ -57,7 +51,6 @@ const List = React.memo(function List() {
         key={todo.id}
         todo={todo}
         isEditing={editingTodoId === todo.id}
-        // isEditing={false}
       />
     ));
   };

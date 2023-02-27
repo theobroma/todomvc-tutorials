@@ -1,11 +1,8 @@
-// import { cancelEditTodoAC, saveEditTodoAC } from '@store/todos/slice';
 import React, { useEffect, useRef, useState } from 'react';
 
 import useTodosStore from '../@store/useTodosStore';
 
 const TodoEditInput = () => {
-  // const dispatch = useAppDispatch();
-  // const { editingTodoId, list } = useAppSelector(todosSelector);
   const store = useTodosStore();
   const { todos, editingTodoId } = store;
   const editingTodoIndex = todos.findIndex(
@@ -28,7 +25,6 @@ const TodoEditInput = () => {
 
   // TODO: escape press also triggers this
   const handleBlur = () => {
-    // dispatch(saveEditTodoAC(text));
     store.saveEditTodo(text);
   };
 
@@ -38,7 +34,6 @@ const TodoEditInput = () => {
       // dispatch(cancelEditTodoAC());
     }
     if (event.key === 'Enter') {
-      // dispatch(saveEditTodoAC(text));
       store.saveEditTodo(text);
     }
   };

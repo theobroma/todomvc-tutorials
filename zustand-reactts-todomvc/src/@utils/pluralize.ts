@@ -1,3 +1,2 @@
-export function pluralize(count: number, word: string) {
-  return count === 1 ? word : `${word}s`;
-}
+export const pluralize = (count: number, word: string) =>
+  count === 1 ? word : `${word}s`;

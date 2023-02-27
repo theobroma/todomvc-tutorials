@@ -91,11 +91,6 @@ const useTodosStore = create<Store>()(
             ...state,
             editingTodoId: id,
           })),
-        // setTodos: (todos: Todo[]) =>
-        //   set((state) => ({
-        //     ...state,
-        //     todos,
-        //   })),
         removeTodo: (id: TodoType['id']) =>
           set((state) => ({
             ...state,
@@ -106,11 +101,6 @@ const useTodosStore = create<Store>()(
             ...state,
             todos: removeCompleted(state.todos),
           })),
-        // updateTodo: (id: number, text: string) =>
-        //   set((state) => ({
-        //     ...state,
-        //     todos: updateTodo(state.todos, id, text),
-        //   })),
         toggleTodo: (id: TodoType['id']) =>
           set((state) => ({
             ...state,
@@ -121,11 +111,6 @@ const useTodosStore = create<Store>()(
             ...state,
             todos: toggleAllTodos(state.todos),
           })),
-        // setNewTodo: (newTodo: string) =>
-        //   set((state) => ({
-        //     ...state,
-        //     newTodo,
-        //   })),
         addTodo: (text: TodoType['title']) =>
           set((state) => ({
             ...state,

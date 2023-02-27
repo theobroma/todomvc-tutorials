@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import useTodosStore from '../@store/useTodosStore';
 import type { TodoType } from '../@types';
 
-// import TodoEditInput from './TodoEditInput';
+import TodoEditInput from './TodoEditInput';
 
 interface Props {
   todo: TodoType;
@@ -26,6 +26,7 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
       <label
         htmlFor="itself"
         // onDoubleClick={() => dispatch(editTodoAC(todo.id))}
+        onDoubleClick={() => store.setEditTodoID(todo.id)}
       >
         {todo.title}
       </label>
@@ -47,7 +48,7 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
     >
       {element}
       {/* isEditing */}
-      {/* {isEditing ? <TodoEditInput /> : null} */}
+      {isEditing ? <TodoEditInput /> : null}
     </li>
   );
 });

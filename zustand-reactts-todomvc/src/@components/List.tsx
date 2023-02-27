@@ -7,7 +7,7 @@ import TodoItem from './TodoItem';
 
 const List = React.memo(function List() {
   const store = useTodosStore();
-  const { todos, filter } = store;
+  const { todos, filter, editingTodoId } = store;
   const activeTodoCount = store.todos.filter(
     (item) => item.completed === false,
   ).length;
@@ -56,8 +56,8 @@ const List = React.memo(function List() {
       <TodoItem
         key={todo.id}
         todo={todo}
-        // isEditing={editingTodoId === todo.id}
-        isEditing={false}
+        isEditing={editingTodoId === todo.id}
+        // isEditing={false}
       />
     ));
   };

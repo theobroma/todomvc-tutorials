@@ -29,6 +29,7 @@ const TodoEditInput = () => {
   // TODO: escape press also triggers this
   const handleBlur = () => {
     // dispatch(saveEditTodoAC(text));
+    store.saveEditTodo(text);
   };
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,6 +39,7 @@ const TodoEditInput = () => {
     }
     if (event.key === 'Enter') {
       // dispatch(saveEditTodoAC(text));
+      store.saveEditTodo(text);
     }
   };
 

@@ -38,12 +38,23 @@ const addTodo = (todos: TodoType[], title: TodoType['title']): TodoType[] => [
   },
 ];
 
+const saveEditTodo = (
+  todos: TodoType[],
+  editingTodoId: TodoType['id'] | null,
+  newTitle: TodoType['title'],
+): TodoType[] => {
+  const index = todos.findIndex((element) => element.id === editingTodoId);
+  todos[index].title = newTitle;
+  return todos;
+};
+
 // Zustand implementation
 type Store = {
   todos: TodoType[];
   filter: FilterType;
   editingTodoId: TodoType['id'] | null;
   addTodo: (text: TodoType['title']) => void;
+  saveEditTodo: (text: TodoType['title']) => void;
   setFilter: (newFilter: FilterType) => void;
   setEditTodoID: (id: TodoType['id']) => void;
   toggleTodo: (id: TodoType['id']) => void;
@@ -119,6 +130,12 @@ const useTodosStore = create<Store>()(
           set((state) => ({
             ...state,
             todos: addTodo(state.todos, text),
+          })),
+        saveEditTodo: (text: TodoType['title']) =>
+          set((state) => ({
+            ...state,
+            todos: saveEditTodo(state.todos, state.editingTodoId, text),
+            editingTodoId: null,
           })),
       }),
       {

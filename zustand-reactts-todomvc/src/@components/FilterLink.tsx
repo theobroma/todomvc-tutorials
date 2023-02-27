@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
 
 import useTodosStore from '../@store/useTodosStore';
-import type { FilterType } from '../@types';
+import type { FilterEnum } from '../@types';
 
 interface Props {
-  type: FilterType;
+  type: FilterEnum;
 }
 
 const FilterLink = ({ type, children }: PropsWithChildren<Props>) => {

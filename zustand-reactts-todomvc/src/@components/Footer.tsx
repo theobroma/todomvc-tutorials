@@ -7,7 +7,7 @@
 // import { pluralize } from '@utils/pluralize';
 
 import useTodosStore from '../@store/useTodosStore';
-import { VisibilityFilters } from '../@types/filter';
+import { FilterEnum } from '../@types';
 import { pluralize } from '../@utils/pluralize';
 
 import FilterLink from './FilterLink';
@@ -54,11 +54,9 @@ const Footer = () => {
             {pluralize(activeTodoCount, 'item')} left
           </span>
           <ul className="filters">
-            <FilterLink type={VisibilityFilters.SHOW_ALL}>All</FilterLink>
-            <FilterLink type={VisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
-            <FilterLink type={VisibilityFilters.SHOW_COMPLETED}>
-              Completed
-            </FilterLink>
+            <FilterLink type={FilterEnum.SHOW_ALL}>All</FilterLink>
+            <FilterLink type={FilterEnum.SHOW_ACTIVE}>Active</FilterLink>
+            <FilterLink type={FilterEnum.SHOW_COMPLETED}>Completed</FilterLink>
           </ul>
           {renderClearButton()}
         </footer>

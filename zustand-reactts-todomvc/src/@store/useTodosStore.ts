@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
-import type { FilterType, TodoType } from '../@types';
-import { VisibilityFilters } from '../@types';
+import type { TodoType } from '../@types';
+import { FilterEnum } from '../@types';
 
 const toggleTodo = (todos: TodoType[], id: TodoType['id']): TodoType[] =>
   todos.map((todo) => ({
@@ -51,11 +51,11 @@ const saveEditTodo = (
 // Zustand implementation
 type Store = {
   todos: TodoType[];
-  filter: FilterType;
+  filter: FilterEnum;
   editingTodoId: TodoType['id'] | null;
   addTodo: (text: TodoType['title']) => void;
   saveEditTodo: (text: TodoType['title']) => void;
-  setFilter: (newFilter: FilterType) => void;
+  setFilter: (newFilter: FilterEnum) => void;
   setEditTodoID: (id: TodoType['id']) => void;
   toggleTodo: (id: TodoType['id']) => void;
   toggleAllTodos: () => void;
@@ -79,9 +79,9 @@ const useTodosStore = create<Store>()(
             completed: true,
           },
         ],
-        filter: VisibilityFilters.SHOW_ALL,
+        filter: FilterEnum.SHOW_ALL,
         editingTodoId: null,
-        setFilter: (newFilter: FilterType) =>
+        setFilter: (newFilter: FilterEnum) =>
           set((state) => ({
             ...state,
             filter: newFilter,

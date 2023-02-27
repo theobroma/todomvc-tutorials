@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useTodosStore from '../@store/useTodosStore';
-import { VisibilityFilters } from '../@types/filter';
+import { FilterEnum } from '../@types';
 
 import TodoItem from './TodoItem';
 
@@ -14,9 +14,9 @@ const List = React.memo(function List() {
 
   const filteredTodos = todos.filter((todo) => {
     switch (filter) {
-      case VisibilityFilters.SHOW_ACTIVE:
+      case FilterEnum.SHOW_ACTIVE:
         return !todo.completed;
-      case VisibilityFilters.SHOW_COMPLETED:
+      case FilterEnum.SHOW_COMPLETED:
         return todo.completed;
       default:
         return true;

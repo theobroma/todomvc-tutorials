@@ -1,22 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
+import { useFocus } from '../@hooks/use-focus';
 import useTodosStore from '../@store/useTodosStore';
 
 const TodoEditInput = () => {
+  const inputRef = useFocus();
   const store = useTodosStore();
   const { todos, editingTodoId } = store;
   const editingTodoIndex = todos.findIndex(
     (element) => element.id === editingTodoId,
   );
   const [text, setText] = useState(todos[editingTodoIndex].title);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [inputRef]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();

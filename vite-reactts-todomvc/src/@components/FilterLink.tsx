@@ -1,16 +1,15 @@
 import { useAppDispatch, useAppSelector } from '@store/configureStore';
 import { filterSelector } from '@store/filter/selectors';
 import { setFilterAC } from '@store/filter/slice';
-import { FilterType } from '@types';
+import { FilterEnum } from '@types';
 import clsx from 'clsx';
-import React from 'react';
+import { PropsWithChildren } from 'react';
 
 interface Props {
-  type: FilterType;
-  children: React.ReactNode;
+  type: FilterEnum;
 }
 
-const FilterLink = ({ type, children }: Props) => {
+const FilterLink = ({ type, children }: PropsWithChildren<Props>) => {
   const dispatch = useAppDispatch();
   const filter = useAppSelector(filterSelector);
   return (

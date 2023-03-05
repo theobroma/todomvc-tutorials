@@ -16,10 +16,7 @@ const todosInitialState = {
     },
   ] as TodoType[],
   editingTodoId: null as TodoType['id'] | null,
-  // editingTodoTitle: '',
 };
-
-// export type todosInitialStateType = typeof todosInitialState;
 
 export const todosSlice = createSlice({
   name: 'todos',

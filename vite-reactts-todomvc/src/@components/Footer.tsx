@@ -4,6 +4,7 @@ import {
   completedTodoCountSelector,
 } from '@store/todos/selectors';
 import { removeCompletedAC } from '@store/todos/slice';
+import { FilterEnum } from '@types';
 import { pluralize } from '@utils/pluralize';
 
 import FilterLink from './FilterLink';
@@ -36,9 +37,9 @@ const Footer = () => {
             <strong>{activeTodoCount}</strong> {pluralize(activeTodoCount, 'item')} left
           </span>
           <ul className="filters">
-            <FilterLink type="SHOW_ALL">All</FilterLink>
-            <FilterLink type="SHOW_ACTIVE">Active</FilterLink>
-            <FilterLink type="SHOW_COMPLETED">Completed</FilterLink>
+            <FilterLink type={FilterEnum.SHOW_ALL}>All</FilterLink>
+            <FilterLink type={FilterEnum.SHOW_ACTIVE}>Active</FilterLink>
+            <FilterLink type={FilterEnum.SHOW_COMPLETED}>Completed</FilterLink>
           </ul>
           {renderClearButton()}
         </footer>

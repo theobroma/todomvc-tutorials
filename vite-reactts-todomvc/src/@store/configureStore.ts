@@ -13,16 +13,16 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { filterReducer, filterSlice } from './filter/slice';
-import { todosReducer, todosSlice } from './todos/slice';
+import { filterSlice } from './filter/slice';
+import { todosSlice } from './todos/slice';
 
 const logger = createLogger({
   collapsed: true,
 });
 
 const reducers = {
-  [filterSlice.name]: filterReducer,
-  [todosSlice.name]: todosReducer,
+  [filterSlice.name]: filterSlice.reducer,
+  [todosSlice.name]: todosSlice.reducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);

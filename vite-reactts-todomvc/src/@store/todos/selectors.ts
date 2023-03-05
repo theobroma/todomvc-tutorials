@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '@store/configureStore';
 import { filterSelector } from '@store/filter/selectors';
-import { VisibilityFilters } from '@types';
+import { FilterEnum } from '@types';
 
 export const todosSelector = (state: RootState) => {
   return state.todos;
@@ -27,11 +27,11 @@ export const visibleTodosSelector = createSelector(
   [todosListSelector, filterSelector],
   (todosList, filter) => {
     switch (filter) {
-      case VisibilityFilters.SHOW_ALL:
+      case FilterEnum.SHOW_ALL:
         return todosList;
-      case VisibilityFilters.SHOW_COMPLETED:
+      case FilterEnum.SHOW_COMPLETED:
         return todosList.filter((todo) => todo.completed);
-      case VisibilityFilters.SHOW_ACTIVE:
+      case FilterEnum.SHOW_ACTIVE:
         return todosList.filter((todo) => !todo.completed);
       default:
         throw new Error(`Unknown filter: ${filter}`);

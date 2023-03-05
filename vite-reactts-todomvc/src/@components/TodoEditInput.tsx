@@ -1,22 +1,16 @@
+import { useFocus } from '@hooks/use-focus';
 import { useAppDispatch, useAppSelector } from '@store/configureStore';
 import { cancelEditTodoAC, saveEditTodoAC } from '@store/todos/slice';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { todosSelector } from '../@store/todos/selectors';
 
 const TodoEditInput = () => {
+  const inputRef = useFocus();
   const dispatch = useAppDispatch();
   const { editingTodoId, list } = useAppSelector(todosSelector);
   const editingTodoIndex = list.findIndex((element) => element.id === editingTodoId);
   const [text, setText] = useState(list[editingTodoIndex].title);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [inputRef]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();

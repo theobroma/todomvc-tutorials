@@ -1,7 +1,7 @@
-import MainApp from '@views/MainView';
+import MainApp from '@views/MainView/MainView';
 
-function App() {
+const App = () => {
   return <MainApp />;
-}
+};
 
 export default App;

@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import clsx from 'clsx';
 import { observer } from 'mobx-react';
+import type { PropsWithChildren } from 'react';
 
-import type { FilterType } from '../@types';
+import type { FilterEnum } from '../@types';
 import TodoStore from '../stores/TodoStore';
 
 interface Props {
-  type: FilterType;
-  children: React.ReactNode;
+  type: FilterEnum;
 }
 
-const FilterLink = ({ type, children }: Props) => {
+const FilterLink = ({ type, children }: PropsWithChildren<Props>) => {
   const todoStore = useContext(TodoStore);
   const { filter, setFilter } = todoStore;
+
   return (
     <li>
       <a

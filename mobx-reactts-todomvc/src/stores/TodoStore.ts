@@ -8,8 +8,8 @@ import {
 } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
-import type { FilterType, TodoType } from '../@types';
-import { VisibilityFilters } from '../@types';
+import type { TodoType } from '../@types';
+import { FilterEnum } from '../@types';
 
 class TodoStore {
   constructor() {
@@ -21,15 +21,13 @@ class TodoStore {
   }
 
   @observable todos: TodoType[] = [
-    { id: uuidv4(), title: 'Item #1', completed: false },
-    { id: uuidv4(), title: 'Item #2', completed: false },
-    { id: uuidv4(), title: 'Item #3', completed: false },
-    { id: uuidv4(), title: 'Item #4', completed: false },
-    { id: uuidv4(), title: 'Item #5', completed: true },
-    { id: uuidv4(), title: 'Item #6', completed: false },
+    { id: uuidv4(), title: 'drink coffee', completed: false },
+    { id: uuidv4(), title: 'be awesome', completed: true },
+    { id: uuidv4(), title: 'Task #3', completed: true },
+    { id: uuidv4(), title: 'Task #4', completed: false },
   ];
 
-  @observable filter: FilterType = 'SHOW_ALL';
+  @observable filter: FilterEnum = FilterEnum.SHOW_ALL;
 
   @observable editingTodoId: TodoType['id'] | null = null;
 
@@ -49,7 +47,7 @@ class TodoStore {
     this.editingTodoId = null;
   };
 
-  @action setFilter = (value: FilterType) => {
+  @action setFilter = (value: FilterEnum) => {
     this.filter = value;
   };
 
@@ -102,11 +100,11 @@ class TodoStore {
 
   @computed get filteredTodos() {
     switch (this.filter) {
-      case VisibilityFilters.SHOW_ALL:
+      case FilterEnum.SHOW_ALL:
         return this.todos;
-      case VisibilityFilters.SHOW_COMPLETED:
+      case FilterEnum.SHOW_COMPLETED:
         return this.todos.filter((todo) => todo.completed);
-      case VisibilityFilters.SHOW_ACTIVE:
+      case FilterEnum.SHOW_ACTIVE:
         return this.todos.filter((todo) => !todo.completed);
       default:
         throw new Error(`Unknown filter: ${this.filter}`);

@@ -20,8 +20,8 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
       <input
         className="toggle"
         type="checkbox"
-        // checked={todo.completed}
-        defaultChecked={todo.completed}
+        checked={todo.completed}
+        // defaultChecked={todo.completed}
         onClick={(_) => toggleTodo(todo.id)}
       />
       <label htmlFor="itself" onDoubleClick={() => editTodo(todo.id)}>

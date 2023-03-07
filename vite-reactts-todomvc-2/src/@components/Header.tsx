@@ -1,6 +1,5 @@
-import { useAppDispatch } from '@store/configureStore';
-import { addTodoAC } from '@store/todos/slice';
-
+import { useAppDispatch } from '@/@store/configureStore';
+import { addTodoAC } from '@/@store/todos/slice';
 import TodoTextInput from './TodoTextInput';
 
 const Header = () => {

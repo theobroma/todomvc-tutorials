@@ -1,10 +1,6 @@
-import { useAppDispatch, useAppSelector } from '@store/configureStore';
-import {
-  activeTodoCountSelector,
-  todosSelector,
-  visibleTodosSelector,
-} from '@store/todos/selectors';
-import { toggleAllTodoAC } from '@store/todos/slice';
+import { useAppDispatch, useAppSelector } from '@/@store/configureStore';
+import { visibleTodosSelector, todosSelector, activeTodoCountSelector } from '@/@store/todos/selectors';
+import { toggleAllTodoAC } from '@/@store/todos/slice';
 import React from 'react';
 
 import TodoItem from './TodoItem';

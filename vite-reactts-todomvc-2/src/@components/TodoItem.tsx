@@ -1,6 +1,6 @@
-import { useAppDispatch } from '@store/configureStore';
-import { deleteTodoAC, editTodoAC, toggleTodoAC } from '@store/todos/slice';
-import { TodoType } from '@types';
+import { useAppDispatch } from '@/@store/configureStore';
+import { toggleTodoAC, editTodoAC, deleteTodoAC } from '@/@store/todos/slice';
+import { TodoType } from '@/@types';
 import clsx from 'clsx';
 import React from 'react';
 

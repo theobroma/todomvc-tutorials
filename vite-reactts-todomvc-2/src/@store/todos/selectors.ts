@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '@store/configureStore';
-import { filterSelector } from '@store/filter/selectors';
-import { FilterEnum } from '@types';
+import { RootState } from '@/@store/configureStore';
+import { filterSelector } from '@/@store/filter/selectors';
+import { FilterEnum } from '@/@types';
 
 export const todosSelector = (state: RootState) => {
   return state.todos;

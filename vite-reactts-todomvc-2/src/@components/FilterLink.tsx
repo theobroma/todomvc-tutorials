@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@store/configureStore';
-import { filterSelector } from '@store/filter/selectors';
-import { setFilterAC } from '@store/filter/slice';
-import { FilterEnum } from '@types';
+import { useAppDispatch, useAppSelector } from '@/@store/configureStore';
+import { filterSelector } from '@/@store/filter/selectors';
+import { setFilterAC } from '@/@store/filter/slice';
+import { FilterEnum } from '@/@types';
 import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
 

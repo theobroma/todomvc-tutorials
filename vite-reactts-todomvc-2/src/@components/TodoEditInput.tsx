@@ -1,6 +1,6 @@
-import { useFocus } from '@hooks/use-focus';
-import { useAppDispatch, useAppSelector } from '@store/configureStore';
-import { cancelEditTodoAC, saveEditTodoAC } from '@store/todos/slice';
+import { useFocus } from '@/@hooks/use-focus';
+import { useAppDispatch, useAppSelector } from '@/@store/configureStore';
+import { saveEditTodoAC, cancelEditTodoAC } from '@/@store/todos/slice';
 import React, { useState } from 'react';
 
 import { todosSelector } from '../@store/todos/selectors';

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TodoType } from '@types';
+import { TodoType } from '@/@types';
 import { v4 as uuidv4 } from 'uuid';
 
 const todosInitialState = {

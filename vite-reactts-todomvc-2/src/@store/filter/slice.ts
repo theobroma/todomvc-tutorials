@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FilterEnum } from '@types';
+import { FilterEnum } from "@/@types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const filterInitialState = {
   value: FilterEnum.SHOW_ALL,

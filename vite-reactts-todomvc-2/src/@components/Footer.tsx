@@ -1,12 +1,8 @@
-import { useAppDispatch, useAppSelector } from '@store/configureStore';
-import {
-  activeTodoCountSelector,
-  completedTodoCountSelector,
-} from '@store/todos/selectors';
-import { removeCompletedAC } from '@store/todos/slice';
-import { FilterEnum } from '@types';
-import { pluralize } from '@utils/pluralize';
-
+import { useAppDispatch, useAppSelector } from '@/@store/configureStore';
+import { activeTodoCountSelector, completedTodoCountSelector } from '@/@store/todos/selectors';
+import { removeCompletedAC } from '@/@store/todos/slice';
+import { FilterEnum } from '@/@types';
+import { pluralize } from '@/@utils/pluralize';
 import FilterLink from './FilterLink';
 
 const Footer = () => {

@@ -1,4 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@store/configureStore';
+import { filterSelector } from '@store/filter/selectors';
+import { setFilterAC } from '@store/filter/slice';
 import {
   activeTodoCountSelector,
   completedTodoCountSelector,
@@ -11,12 +13,15 @@ import FilterLink from './FilterLink';
 
 const Footer = () => {
   const dispatch = useAppDispatch();
+  const currentFilter = useAppSelector(filterSelector);
   const activeTodoCount = useAppSelector(activeTodoCountSelector);
   const completedTodoCount = useAppSelector(completedTodoCountSelector);
 
   const handleButtonClick = () => {
     dispatch(removeCompletedAC());
   };
+
+  const handleFilterChange = (filter: FilterEnum) => () => dispatch(setFilterAC(filter));
 
   const renderClearButton = () => {
     if (completedTodoCount > 0) {
@@ -37,9 +42,27 @@ const Footer = () => {
             <strong>{activeTodoCount}</strong> {pluralize(activeTodoCount, 'item')} left
           </span>
           <ul className="filters">
-            <FilterLink type={FilterEnum.SHOW_ALL}>All</FilterLink>
-            <FilterLink type={FilterEnum.SHOW_ACTIVE}>Active</FilterLink>
-            <FilterLink type={FilterEnum.SHOW_COMPLETED}>Completed</FilterLink>
+            <FilterLink
+              filter={FilterEnum.SHOW_ALL}
+              currentFilter={currentFilter}
+              onClick={handleFilterChange}
+            >
+              All
+            </FilterLink>
+            <FilterLink
+              filter={FilterEnum.SHOW_ACTIVE}
+              currentFilter={currentFilter}
+              onClick={handleFilterChange}
+            >
+              Active
+            </FilterLink>
+            <FilterLink
+              filter={FilterEnum.SHOW_COMPLETED}
+              currentFilter={currentFilter}
+              onClick={handleFilterChange}
+            >
+              Completed
+            </FilterLink>
           </ul>
           {renderClearButton()}
         </footer>

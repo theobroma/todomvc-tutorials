@@ -9,7 +9,8 @@ import { removeCompletedAC } from '@store/todos/slice';
 import { FilterEnum } from '@types';
 import { pluralize } from '@utils/pluralize';
 
-import FilterLink from './FilterLink';
+import { ButtonClear } from './ButtonClear';
+import { FilterLink } from './FilterLink';
 
 const Footer = () => {
   const dispatch = useAppDispatch();
@@ -22,17 +23,6 @@ const Footer = () => {
   };
 
   const handleFilterChange = (filter: FilterEnum) => () => dispatch(setFilterAC(filter));
-
-  const renderClearButton = () => {
-    if (completedTodoCount > 0) {
-      return (
-        <button type="button" className="clear-completed" onClick={handleButtonClick}>
-          Clear completed
-        </button>
-      );
-    }
-    return null;
-  };
 
   const commonProps = {
     currentFilter: currentFilter,
@@ -57,7 +47,7 @@ const Footer = () => {
               Completed
             </FilterLink>
           </ul>
-          {renderClearButton()}
+          {completedTodoCount > 0 && <ButtonClear onClick={handleButtonClick} />}
         </footer>
       ) : null}
     </>

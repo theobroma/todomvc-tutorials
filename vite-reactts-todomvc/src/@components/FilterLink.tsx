@@ -8,7 +8,7 @@ interface Props {
   onClick: any;
 }
 
-const FilterLink = ({
+export const FilterLink = ({
   filter,
   currentFilter,
   onClick,
@@ -24,5 +24,3 @@ const FilterLink = ({
     </a>
   </li>
 );
-
-export default FilterLink;

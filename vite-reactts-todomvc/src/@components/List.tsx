@@ -5,7 +5,7 @@ import {
   visibleTodosSelector,
 } from '@store/todos/selectors';
 import { toggleAllTodoAC } from '@store/todos/slice';
-import React from 'react';
+import React, { memo } from 'react';
 
 import TodoItem from './TodoItem';
 

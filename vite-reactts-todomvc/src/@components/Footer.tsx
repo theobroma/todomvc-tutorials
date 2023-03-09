@@ -12,7 +12,7 @@ import { pluralize } from '@utils/pluralize';
 import { ButtonClear } from './ButtonClear';
 import { FilterLink } from './FilterLink';
 
-const Footer = () => {
+export const Footer = () => {
   const dispatch = useAppDispatch();
   const currentFilter = useAppSelector(filterSelector);
   const activeTodoCount = useAppSelector(activeTodoCountSelector);
@@ -34,7 +34,8 @@ const Footer = () => {
       {activeTodoCount || completedTodoCount ? (
         <footer className="footer">
           <span className="todo-count">
-            <strong>{activeTodoCount}</strong> {pluralize(activeTodoCount, 'item')} left
+            <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
+            &nbsp;left
           </span>
           <ul className="filters">
             <FilterLink filter={FilterEnum.SHOW_ALL} {...commonProps}>
@@ -53,5 +54,3 @@ const Footer = () => {
     </>
   );
 };
-
-export default Footer;

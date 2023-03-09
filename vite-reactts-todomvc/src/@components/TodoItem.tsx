@@ -4,14 +4,14 @@ import { TodoType } from '@types';
 import clsx from 'clsx';
 import React from 'react';
 
-import TodoEditInput from './TodoEditInput';
+import { TodoEditInput } from './TodoEditInput';
 
 interface Props {
   todo: TodoType;
   isEditing: boolean;
 }
 
-const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
+export const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
   const dispatch = useAppDispatch();
 
   const element = (
@@ -46,5 +46,3 @@ const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
     </li>
   );
 });
-
-export default TodoItem;

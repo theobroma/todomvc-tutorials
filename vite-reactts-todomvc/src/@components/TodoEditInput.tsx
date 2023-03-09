@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import { todosSelector } from '../@store/todos/selectors';
 
-const TodoEditInput = () => {
+export const TodoEditInput = () => {
   const inputRef = useFocus();
   const dispatch = useAppDispatch();
   const { editingTodoId, list } = useAppSelector(todosSelector);
@@ -43,5 +43,3 @@ const TodoEditInput = () => {
     />
   );
 };
-
-export default TodoEditInput;

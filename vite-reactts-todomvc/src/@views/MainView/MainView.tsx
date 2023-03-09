@@ -1,6 +1,6 @@
-import Footer from '@components/Footer';
-import Header from '@components/Header';
-import List from '@components/List';
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
+import { List } from '@components/List';
 
 const MainApp = () => (
   <div className="App">

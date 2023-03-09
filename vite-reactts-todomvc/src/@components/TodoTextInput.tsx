@@ -8,7 +8,10 @@ interface Props {
   onSave: (text: string) => void;
 }
 
-const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: Props) => {
+export const TodoTextInput = ({
+  placeholder = 'What needs to be done?',
+  onSave,
+}: Props) => {
   const inputRef = useFocus();
   const [text, setText] = useState('');
 
@@ -47,5 +50,3 @@ const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: Props
     </>
   );
 };
-
-export default TodoTextInput;

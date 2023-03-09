@@ -1,9 +1,9 @@
 import { useAppDispatch } from '@store/configureStore';
 import { addTodoAC } from '@store/todos/slice';
 
-import TodoTextInput from './TodoTextInput';
+import { TodoTextInput } from './TodoTextInput';
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useAppDispatch();
   const handleSave = (text: string) => {
     if (text.length !== 0) {
@@ -18,5 +18,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

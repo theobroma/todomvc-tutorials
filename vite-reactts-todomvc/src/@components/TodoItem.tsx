@@ -1,6 +1,7 @@
+// https://stackoverflow.com/questions/61229562/react-eslint-error-component-definition-is-missing-display-name
 import { TodoType } from '@types';
 import clsx from 'clsx';
-import React from 'react';
+import { memo } from 'react';
 
 import { TodoEditInput } from './TodoEditInput';
 
@@ -12,14 +13,8 @@ interface Props {
   onClick: any;
 }
 
-export const TodoItem = React.memo(function TodoItem({
-  todo,
-  isEditing,
-  onChange,
-  onDoubleClick,
-  onClick,
-}: Props) {
-  return (
+export const TodoItem = memo(
+  ({ todo, isEditing, onChange, onDoubleClick, onClick }: Props) => (
     <li
       className={clsx({
         completed: todo.completed,
@@ -41,5 +36,7 @@ export const TodoItem = React.memo(function TodoItem({
       {/* isEditing */}
       {isEditing ? <TodoEditInput /> : null}
     </li>
-  );
-});
+  ),
+);
+
+TodoItem.displayName = 'TodoItem';

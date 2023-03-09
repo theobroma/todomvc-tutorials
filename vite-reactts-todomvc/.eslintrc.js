@@ -33,9 +33,7 @@ module.exports = {
   plugins: ['simple-import-sort', 'prettier'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-    'react/react-in-jsx-scope': 'off',
     'jsx-a11y/accessible-emoji': 'off',
-    'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
@@ -47,5 +45,19 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+    'react/jsx-props-no-spreading': 0,
+    'react/prop-types': 0, // Since we do not use prop-types
+    'react/react-in-jsx-scope': 0, // Since React 18 "react-jsx"
+    'react/require-default-props': 0, // Since we do not use prop-types
+    'react/state-in-constructor': 0,
   },
 };

@@ -36,17 +36,15 @@ export const TodoTextInput = ({
   };
 
   return (
-    <>
-      <input
-        className="new-todo"
-        type="text"
-        placeholder={placeholder}
-        ref={inputRef}
-        value={text}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        onKeyDown={handleKey}
-      />
-    </>
+    <input
+      className="new-todo"
+      type="text"
+      placeholder={placeholder}
+      ref={inputRef}
+      value={text}
+      onBlur={handleBlur}
+      onChange={handleChange}
+      onKeyDown={handleKey}
+    />
   );
 };

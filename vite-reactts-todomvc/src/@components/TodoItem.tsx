@@ -1,5 +1,3 @@
-import { useAppDispatch } from '@store/configureStore';
-import { deleteTodoAC, editTodoAC, toggleTodoAC } from '@store/todos/slice';
 import { TodoType } from '@types';
 import clsx from 'clsx';
 import React from 'react';
@@ -9,30 +7,18 @@ import { TodoEditInput } from './TodoEditInput';
 interface Props {
   todo: TodoType;
   isEditing: boolean;
+  onChange: any;
+  onDoubleClick: any;
+  onClick: any;
 }
 
-export const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props) {
-  const dispatch = useAppDispatch();
-
-  const element = (
-    <div className="view">
-      <input
-        className="toggle"
-        type="checkbox"
-        checked={todo.completed}
-        onChange={() => dispatch(toggleTodoAC(todo.id))}
-      />
-      <label htmlFor="itself" onDoubleClick={() => dispatch(editTodoAC(todo.id))}>
-        {todo.title}
-      </label>
-      <button
-        type="button"
-        className="destroy"
-        onClick={() => dispatch(deleteTodoAC(todo.id))}
-      />
-    </div>
-  );
-
+export const TodoItem = React.memo(function TodoItem({
+  todo,
+  isEditing,
+  onChange,
+  onDoubleClick,
+  onClick,
+}: Props) {
   return (
     <li
       className={clsx({
@@ -40,7 +26,18 @@ export const TodoItem = React.memo(function TodoItem({ todo, isEditing }: Props)
         editing: isEditing,
       })}
     >
-      {element}
+      <div className="view">
+        <input
+          className="toggle"
+          type="checkbox"
+          checked={todo.completed}
+          onChange={onChange(todo.id)}
+        />
+        <label htmlFor="itself" onDoubleClick={onDoubleClick(todo.id)}>
+          {todo.title}
+        </label>
+        <button type="button" className="destroy" onClick={onClick(todo.id)} />
+      </div>
       {/* isEditing */}
       {isEditing ? <TodoEditInput /> : null}
     </li>

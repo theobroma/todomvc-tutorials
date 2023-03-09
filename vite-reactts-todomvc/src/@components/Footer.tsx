@@ -34,6 +34,11 @@ const Footer = () => {
     return null;
   };
 
+  const commonProps = {
+    currentFilter: currentFilter,
+    onClick: handleFilterChange,
+  };
+
   return (
     <>
       {activeTodoCount || completedTodoCount ? (
@@ -42,25 +47,13 @@ const Footer = () => {
             <strong>{activeTodoCount}</strong> {pluralize(activeTodoCount, 'item')} left
           </span>
           <ul className="filters">
-            <FilterLink
-              filter={FilterEnum.SHOW_ALL}
-              currentFilter={currentFilter}
-              onClick={handleFilterChange}
-            >
+            <FilterLink filter={FilterEnum.SHOW_ALL} {...commonProps}>
               All
             </FilterLink>
-            <FilterLink
-              filter={FilterEnum.SHOW_ACTIVE}
-              currentFilter={currentFilter}
-              onClick={handleFilterChange}
-            >
+            <FilterLink filter={FilterEnum.SHOW_ACTIVE} {...commonProps}>
               Active
             </FilterLink>
-            <FilterLink
-              filter={FilterEnum.SHOW_COMPLETED}
-              currentFilter={currentFilter}
-              onClick={handleFilterChange}
-            >
+            <FilterLink filter={FilterEnum.SHOW_COMPLETED} {...commonProps}>
               Completed
             </FilterLink>
           </ul>

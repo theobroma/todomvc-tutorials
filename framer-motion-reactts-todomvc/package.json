@@ -1,0 +1,50 @@
+{
+  "name": "framer-motion-reactts-todomvc",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
+    "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+    "lint": "yarn lint:format && yarn lint:fix ",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@vitejs/plugin-react": "^2.1.0",
+    "clsx": "^1.2.1",
+    "react": "^18.x",
+    "react-dom": "^18.x",
+    "react-redux": "^8.0.5",
+    "redux-logger": "^3.0.6",
+    "todomvc-app-css": "^2.4.2",
+    "uuid": "^9.0.0",
+    "vite-tsconfig-paths": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.x",
+    "@types/react-dom": "^18.x",
+    "@types/react-redux": "^7.1.25",
+    "@types/redux-logger": "^3.0.9",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5",
+    "vite": "^3.1.0"
+  },
+  "engines": {
+    "node": "^18.x"
+  },
+  "pre-commit": "lint"
+}

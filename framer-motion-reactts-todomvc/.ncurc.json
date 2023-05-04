@@ -1,0 +1,3 @@
+{
+  "reject": ["@types/node", "@vitejs/plugin-react", "vite-tsconfig-paths", "vite"]
+}

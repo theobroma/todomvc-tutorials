@@ -48,3 +48,7 @@ export default tseslint.config({
   },
 })
 ```
+
+## :link: Usefull links
+
+-[Starter with ESLint9](https://medium.com/@ihor.ivlievv/eslint-and-prettier-set-up-tutorial-37b523871ef8)

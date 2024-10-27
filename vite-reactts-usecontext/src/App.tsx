@@ -1,4 +1,5 @@
 import { TodosContextProvider } from './context/todos-context.provider';
+import { Header } from './header/header';
 import { TodoList } from './todo-list/todo-list';
 
 const App = () => (
@@ -6,7 +7,7 @@ const App = () => (
     <div className="App">
       <section className="todoapp">
         <div>
-          {/* <Header /> */}
+          <Header />
           <TodoList />
           {/* <Footer /> */}
         </div>

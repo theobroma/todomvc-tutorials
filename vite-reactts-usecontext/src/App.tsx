@@ -1,5 +1,5 @@
-import { TodosContextProvider } from "./context/todos-context.provider";
-import { TodoList } from "./todo-list/todo-list";
+import { TodosContextProvider } from './context/todos-context.provider';
+import { TodoList } from './todo-list/todo-list';
 
 const App = () => (
   <TodosContextProvider>
@@ -7,7 +7,7 @@ const App = () => (
       <section className="todoapp">
         <div>
           {/* <Header /> */}
-          <TodoList/>
+          <TodoList />
           {/* <Footer /> */}
         </div>
       </section>
@@ -15,4 +15,4 @@ const App = () => (
   </TodosContextProvider>
 );
 
-export default App
+export default App;

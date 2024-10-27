@@ -3,3 +3,8 @@ export interface TodoInterface {
   title: string;
   completed: boolean;
 }
+
+export interface TodosInterface {
+  todos: TodoInterface[];
+  onAddTodo: any;
+}

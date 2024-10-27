@@ -4,8 +4,7 @@ import { TodosContext } from '../context/todos-context';
 import { TodoItem } from '../todo-item/todo-item';
 
 export const TodoList = () => {
-  const todos = useContext(TodosContext);
-  console.log('🚀 ~ TodoList ~ todos:', todos);
+  const { todos } = useContext(TodosContext);
 
   return (
     <section className="main">

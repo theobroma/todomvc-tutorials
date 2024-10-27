@@ -1,9 +1,10 @@
 // TODO: try to replace with crypto.randomUUID()
 import { v4 as uuidv4 } from 'uuid';
 
-import { TodoInterface } from './todos-context.interface';
+import { TodoInterface, TodosInterface } from './todos-context.interface';
+import { noop } from '../utils/noop.util';
 
-export const initialTodosContext: TodoInterface[] = [
+export const initialTodos: TodoInterface[] = [
   {
     id: uuidv4(),
     title: 'drink coffee',
@@ -15,3 +16,8 @@ export const initialTodosContext: TodoInterface[] = [
     completed: true,
   },
 ];
+
+export const initialTodosContext: TodosInterface = {
+  todos: initialTodos,
+  onAddTodo: noop,
+};

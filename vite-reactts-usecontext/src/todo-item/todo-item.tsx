@@ -7,7 +7,7 @@ interface Props {
   // isEditing: boolean;
   // onChange: any;
   // onDoubleClick: any;
-  // onClick: any;
+  onClick: any;
 }
 
 export const TodoItem = ({
@@ -15,7 +15,7 @@ export const TodoItem = ({
   // isEditing,
   // onChange,
   // onDoubleClick,
-  // onClick
+  onClick,
 }: Props) => (
   <li
     className={clsx({
@@ -36,11 +36,7 @@ export const TodoItem = ({
       >
         {todo.title}
       </label>
-      <button
-        type="button"
-        className="destroy"
-        //   onClick={onClick(todo.id)}
-      />
+      <button type="button" className="destroy" onClick={onClick} />
     </div>
     {/* isEditing */}
     {/* {isEditing ? <TodoEditInput /> : null} */}

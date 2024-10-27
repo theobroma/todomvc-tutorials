@@ -2,9 +2,12 @@ import { useContext } from 'react';
 
 import { TodosContext } from '../context/todos-context';
 import { TodoItem } from '../todo-item/todo-item';
+import { TodoInterface } from '../context/todos-context.interface';
 
 export const TodoList = () => {
-  const { todos } = useContext(TodosContext);
+  const { todos, onDeleteTodo } = useContext(TodosContext);
+
+  const handleDeleteTodo = (id: TodoInterface['id']) => onDeleteTodo(id);
 
   return (
     <section className="main">
@@ -19,7 +22,7 @@ export const TodoList = () => {
             //   isEditing={editingTodoId === todo.id}
             //   onChange={handleToggleTodo}
             //   onDoubleClick={handleEditTodo}
-            //   onClick={handleDeleteTodo}
+            onClick={() => handleDeleteTodo(todo.id)}
           />
         ))}
       </ul>

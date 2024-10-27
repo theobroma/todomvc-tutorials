@@ -7,4 +7,5 @@ export interface TodoInterface {
 export interface TodosInterface {
   todos: TodoInterface[];
   onAddTodo: any;
+  onDeleteTodo: any;
 }

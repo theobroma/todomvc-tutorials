@@ -18,7 +18,14 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     setTodos([...todos, newTodo]);
   };
 
+  const onDeleteTodo = (id: string) => {
+    const filteredTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(filteredTodos);
+  };
+
   return (
-    <TodosContext.Provider value={{ todos, onAddTodo }}>{children}</TodosContext.Provider>
+    <TodosContext.Provider value={{ todos, onAddTodo, onDeleteTodo }}>
+      {children}
+    </TodosContext.Provider>
   );
 };

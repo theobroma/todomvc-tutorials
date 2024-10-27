@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { useFocus } from '../hooks/use-focus';
 
-interface Props {
+interface TodoTextInputProps {
   placeholder?: string;
   onSave: (text: string) => void;
 }
@@ -12,7 +12,7 @@ interface Props {
 export const TodoTextInput = ({
   placeholder = 'What needs to be done?',
   onSave,
-}: Props) => {
+}: TodoTextInputProps) => {
   const inputRef = useFocus();
   const [text, setText] = useState('');
 

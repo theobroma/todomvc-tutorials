@@ -1,13 +1,13 @@
 import { TodosContextProvider } from "./context/todos-context.provider";
+import { TodoList } from "./todo-list/todo-list";
 
 const App = () => (
   <TodosContextProvider>
     <div className="App">
       <section className="todoapp">
         <div>
-          todolist
           {/* <Header /> */}
-          {/* <List /> */}
+          <TodoList/>
           {/* <Footer /> */}
         </div>
       </section>

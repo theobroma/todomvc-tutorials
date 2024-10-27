@@ -20,5 +20,6 @@ export const initialTodos: TodoInterface[] = [
 export const initialTodosContext: TodosInterface = {
   todos: initialTodos,
   addTodo: noop,
+  toggleTodo: noop,
   deleteTodo: noop,
 };

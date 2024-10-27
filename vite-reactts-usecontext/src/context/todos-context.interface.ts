@@ -9,5 +9,6 @@ export interface TodoInterface {
 export interface TodosInterface {
   todos: TodoInterface[];
   addTodo: OnEventType<string>;
+  toggleTodo: OnEventType<string>;
   deleteTodo: OnEventType<string>;
 }

@@ -3,11 +3,11 @@ import { TodosContext } from '../context/todos-context';
 import { TodoTextInput } from '../todo-text-input/todo-text-input';
 
 export const Header = () => {
-  const { onAddTodo } = useContext(TodosContext);
+  const { addTodo } = useContext(TodosContext);
 
   const handleSave = (text: string) => {
     if (text.length !== 0) {
-      onAddTodo(text);
+      addTodo(text);
     }
   };
 

@@ -8,7 +8,7 @@ import { TodoInterface } from './todos-context.interface';
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);
 
-  const onAddTodo = (title: string) => {
+  const addTodo = (title: string) => {
     const newTodo = {
       id: uuidv4(),
       title,
@@ -18,13 +18,13 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     setTodos([...todos, newTodo]);
   };
 
-  const onDeleteTodo = (id: string) => {
+  const deleteTodo = (id: string) => {
     const filteredTodos = todos.filter((todo) => todo.id !== id);
     setTodos(filteredTodos);
   };
 
   return (
-    <TodosContext.Provider value={{ todos, onAddTodo, onDeleteTodo }}>
+    <TodosContext.Provider value={{ todos, addTodo, deleteTodo }}>
       {children}
     </TodosContext.Provider>
   );

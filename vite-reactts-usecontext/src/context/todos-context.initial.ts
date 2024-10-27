@@ -19,6 +19,6 @@ export const initialTodos: TodoInterface[] = [
 
 export const initialTodosContext: TodosInterface = {
   todos: initialTodos,
-  onAddTodo: noop,
-  onDeleteTodo: noop,
+  addTodo: noop,
+  deleteTodo: noop,
 };

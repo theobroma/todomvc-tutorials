@@ -1,3 +1,5 @@
+import { OnEventType } from '../types/on-event.type';
+
 export interface TodoInterface {
   id: string;
   title: string;
@@ -6,6 +8,6 @@ export interface TodoInterface {
 
 export interface TodosInterface {
   todos: TodoInterface[];
-  onAddTodo: any;
-  onDeleteTodo: any;
+  addTodo: OnEventType<string>;
+  deleteTodo: OnEventType<string>;
 }

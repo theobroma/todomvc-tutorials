@@ -5,9 +5,9 @@ import { TodoItem } from '../todo-item/todo-item';
 import { TodoInterface } from '../context/todos-context.interface';
 
 export const TodoList = () => {
-  const { todos, onDeleteTodo } = useContext(TodosContext);
+  const { todos, deleteTodo } = useContext(TodosContext);
 
-  const handleDeleteTodo = (id: TodoInterface['id']) => onDeleteTodo(id);
+  const handleDeleteTodo = (id: TodoInterface['id']) => deleteTodo(id);
 
   return (
     <section className="main">

@@ -1,4 +1,4 @@
-import { OnEventType } from '../types/on-event.type';
+import { OnEventType, OnEventEmptyType } from '../types/on-event.type';
 
 export interface TodoInterface {
   id: string;
@@ -11,5 +11,6 @@ export interface TodosInterface {
   activeTodoCount: number;
   addTodo: OnEventType<string>;
   toggleTodo: OnEventType<string>;
+  toggleTodos: OnEventEmptyType;
   deleteTodo: OnEventType<string>;
 }

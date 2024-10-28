@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TodosContext } from './todos-context';
@@ -32,8 +32,15 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     setTodos(filteredTodos);
   };
 
+  const activeTodoCount = useMemo(
+    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 1 : 0), 0),
+    [todos],
+  );
+
   return (
-    <TodosContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <TodosContext.Provider
+      value={{ todos, activeTodoCount, addTodo, toggleTodo, deleteTodo }}
+    >
       {children}
     </TodosContext.Provider>
   );

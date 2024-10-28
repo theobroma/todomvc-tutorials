@@ -19,6 +19,7 @@ export const initialTodos: TodoInterface[] = [
 
 export const initialTodosContext: TodosInterface = {
   todos: initialTodos,
+  activeTodoCount: 0,
   addTodo: noop,
   toggleTodo: noop,
   deleteTodo: noop,

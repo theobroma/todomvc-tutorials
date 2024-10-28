@@ -8,6 +8,7 @@ export interface TodoInterface {
 
 export interface TodosInterface {
   todos: TodoInterface[];
+  activeTodoCount: number;
   addTodo: OnEventType<string>;
   toggleTodo: OnEventType<string>;
   deleteTodo: OnEventType<string>;

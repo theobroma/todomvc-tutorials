@@ -9,6 +9,11 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);
 
   const activeTodoCount = useMemo(
+    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
+    [todos],
+  );
+
+  const completedTodoCount = useMemo(
     () => todos?.reduce((acc, todo) => acc + (todo.completed ? 1 : 0), 0),
     [todos],
   );
@@ -33,7 +38,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const toggleTodos = () => {
-    const areAllCompleted = todos.length === activeTodoCount;
+    const areAllCompleted = todos.length === completedTodoCount;
 
     const newTodos = todos.map((todo) => ({
       ...todo,
@@ -50,7 +55,15 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <TodosContext.Provider
-      value={{ todos, activeTodoCount, addTodo, toggleTodo, toggleTodos, deleteTodo }}
+      value={{
+        todos,
+        activeTodoCount,
+        completedTodoCount,
+        addTodo,
+        toggleTodo,
+        toggleTodos,
+        deleteTodo,
+      }}
     >
       {children}
     </TodosContext.Provider>

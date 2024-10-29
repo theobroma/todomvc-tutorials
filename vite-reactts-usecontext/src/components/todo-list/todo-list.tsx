@@ -3,9 +3,11 @@ import { useContext } from 'react';
 import { TodosContext } from '../../context/todos-context';
 import { TodoItem } from '../todo-item/todo-item';
 import { ToggleAllButton } from '../toggle-all-button/toggle-all-button';
+import { getFilteredTodos } from './todo-list.util';
 
 export const TodoList = () => {
-  const { todos, activeTodoCount, toggleTodos } = useContext(TodosContext);
+  const { todos, activeTodoCount, filter, toggleTodos } = useContext(TodosContext);
+  const filteredTodos = getFilteredTodos(todos, filter);
 
   return (
     <section className="main">
@@ -13,7 +15,7 @@ export const TodoList = () => {
         <ToggleAllButton onChange={toggleTodos} checked={activeTodoCount === 0} />
       )}
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}

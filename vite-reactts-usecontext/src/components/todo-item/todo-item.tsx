@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
-import { TodoInterface } from '../context/todos-context.interface';
-import { TodosContext } from '../context/todos-context';
 import { useContext } from 'react';
+import { TodosContext } from '../../context/todos-context';
+import { TodoInterface } from '../../context/todos-context.interface';
 
 interface Props {
   todo: TodoInterface;

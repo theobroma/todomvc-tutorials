@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { TodosContext } from '../context/todos-context';
 import { TodoTextInput } from '../todo-text-input/todo-text-input';
+import { TodosContext } from '../../context/todos-context';
 
 export const Header = () => {
   const { addTodo } = useContext(TodosContext);

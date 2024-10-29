@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { TodosContext } from '../context/todos-context';
+import { TodosContext } from '../../context/todos-context';
 import { TodoItem } from '../todo-item/todo-item';
 import { ToggleAllButton } from '../toggle-all-button/toggle-all-button';
 

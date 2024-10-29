@@ -1,4 +1,4 @@
-import { OnEventEmptyType } from '../types/on-event.type';
+import { OnEventEmptyType } from '../../types/on-event.type';
 
 interface ToggleAllButtonProps {
   checked: boolean;

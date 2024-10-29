@@ -1,8 +1,7 @@
 // Learn useRef in 11 Minutes : https://www.youtube.com/watch?v=t2ypzz6gJm0&ab_channel=WebDevSimplified
 // https://stackoverflow.com/questions/49278648/alternative-for-events-deprecated-keyboardevent-which-property
 import React, { useState } from 'react';
-
-import { useFocus } from '../hooks/use-focus';
+import { useFocus } from '../../hooks/use-focus';
 
 interface TodoTextInputProps {
   placeholder?: string;

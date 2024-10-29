@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
 import { FilterEnum } from '../../../enums/filter.enum';
+import { OnEventType } from '../../../types/on-event.type';
 
 interface FilterLinkProps {
   filter: FilterEnum;
   currentFilter: FilterEnum;
-  onClick: any;
+  onClick: OnEventType<FilterEnum>;
 }
 
 export const FilterLink = ({
@@ -13,14 +14,18 @@ export const FilterLink = ({
   currentFilter,
   onClick,
   children,
-}: PropsWithChildren<FilterLinkProps>) => (
-  <li>
-    <a
-      href="#/"
-      onClick={onClick(filter)}
-      className={clsx({ selected: currentFilter === filter })}
-    >
-      {children}
-    </a>
-  </li>
-);
+}: PropsWithChildren<FilterLinkProps>) => {
+  const handleClick = () => onClick(filter);
+
+  return (
+    <li>
+      <a
+        href="#/"
+        onClick={handleClick}
+        className={clsx({ selected: currentFilter === filter })}
+      >
+        {children}
+      </a>
+    </li>
+  );
+};

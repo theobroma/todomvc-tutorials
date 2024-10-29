@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { noop } from '../../utils/noop.util';
 import { TodosContext } from '../../context/todos-context';
 import { FilterLink } from './filter-link/filter-link';
 import { pluralize } from '../../utils/pluralize.util';
@@ -10,12 +9,12 @@ export const Footer = () => {
     filter,
     activeTodoCount,
     // completedTodoCount,
-    // changeFilter,
+    changeFilter,
   } = useContext(TodosContext);
 
   const commonProps = {
     currentFilter: filter,
-    onClick: noop,
+    onClick: changeFilter,
   };
 
   return (

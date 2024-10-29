@@ -1,3 +1,41 @@
+import { useContext } from 'react';
+import { noop } from '../../utils/noop.util';
+import { TodosContext } from '../../context/todos-context';
+import { FilterLink } from './filter-link/filter-link';
+import { pluralize } from '../../utils/pluralize.util';
+import { FilterEnum } from '../../enums/filter.enum';
+
 export const Footer = () => {
-  return <div>footer</div>;
+  const {
+    filter,
+    activeTodoCount,
+    // completedTodoCount,
+    // changeFilter,
+  } = useContext(TodosContext);
+
+  const commonProps = {
+    currentFilter: filter,
+    onClick: noop,
+  };
+
+  return (
+    <footer className="footer">
+      <span className="todo-count">
+        <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
+        &nbsp;left
+      </span>
+      <ul className="filters">
+        <FilterLink filter={FilterEnum.ShowAll} {...commonProps}>
+          All
+        </FilterLink>
+        <FilterLink filter={FilterEnum.ShowActive} {...commonProps}>
+          Active
+        </FilterLink>
+        <FilterLink filter={FilterEnum.ShowCompleted} {...commonProps}>
+          Completed
+        </FilterLink>
+      </ul>
+      {/* {completedTodoCount > 0 && <ButtonClear onClick={handleButtonClick} />} */}
+    </footer>
+  );
 };

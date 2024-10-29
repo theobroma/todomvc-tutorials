@@ -4,9 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { TodosContext } from './todos-context';
 import { initialTodos } from './todos-context.initial';
 import { TodoInterface } from './todos-context.interface';
+import { FilterEnum } from '../enums/filter.enum';
 
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);
+  const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ShowAll);
 
   const activeTodoCount = useMemo(
     () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
@@ -53,16 +55,20 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     setTodos(filteredTodos);
   };
 
+  const changeFilter = (filter: FilterEnum) => setFilter(filter);
+
   return (
     <TodosContext.Provider
       value={{
         todos,
         activeTodoCount,
         completedTodoCount,
+        filter,
         addTodo,
         toggleTodo,
         toggleTodos,
         deleteTodo,
+        changeFilter,
       }}
     >
       {children}

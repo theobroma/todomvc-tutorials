@@ -1,7 +1,7 @@
-import { TodosContextProvider } from './context/todos-context.provider';
-import { TodoList } from './components/todo-list/todo-list';
-import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
+import { Header } from './components/header/header';
+import { TodoList } from './components/todo-list/todo-list';
+import { TodosContextProvider } from './context/todos-context.provider';
 
 const App = () => (
   <TodosContextProvider>

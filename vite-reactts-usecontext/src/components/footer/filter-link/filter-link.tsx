@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
+
 import { FilterEnum } from '../../../enums/filter.enum';
 import { OnEventType } from '../../../types/on-event.type';
 

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-
 import { useContext } from 'react';
+
 import { TodosContext } from '../../context/todos-context';
 import { TodoInterface } from '../../context/todos-context.interface';
 

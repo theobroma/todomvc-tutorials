@@ -1,5 +1,5 @@
 import { FilterEnum } from '../enums/filter.enum';
-import { OnEventType, OnEventEmptyType } from '../types/on-event.type';
+import { OnEventEmptyType, OnEventType } from '../types/on-event.type';
 
 export interface TodoInterface {
   id: string;

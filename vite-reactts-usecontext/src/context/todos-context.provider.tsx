@@ -1,10 +1,10 @@
 import { PropsWithChildren, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { FilterEnum } from '../enums/filter.enum';
 import { TodosContext } from './todos-context';
 import { initialTodos } from './todos-context.initial';
 import { TodoInterface } from './todos-context.interface';
-import { FilterEnum } from '../enums/filter.enum';
 
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);

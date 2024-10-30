@@ -4,14 +4,11 @@ import { TodosContext } from '../../context/todos-context';
 import { FilterEnum } from '../../enums/filter.enum';
 import { pluralize } from '../../utils/pluralize.util';
 import { FilterLink } from './filter-link/filter-link';
+import { FooterButtonClear } from './footer-button-clear/footer-button-clear';
 
 export const Footer = () => {
-  const {
-    filter,
-    activeTodoCount,
-    // completedTodoCount,
-    changeFilter,
-  } = useContext(TodosContext);
+  const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } =
+    useContext(TodosContext);
 
   const commonProps = {
     currentFilter: filter,
@@ -35,7 +32,7 @@ export const Footer = () => {
           Completed
         </FilterLink>
       </ul>
-      {/* {completedTodoCount > 0 && <ButtonClear onClick={handleButtonClick} />} */}
+      {completedTodoCount > 0 && <FooterButtonClear onClick={removeCompleted} />}
     </footer>
   );
 };

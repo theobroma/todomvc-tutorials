@@ -40,11 +40,11 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const toggleTodos = () => {
-    const areAllCompleted = todos.length === completedTodoCount;
+    const isAllCompleted = todos.length === completedTodoCount;
 
     const newTodos = todos.map((todo) => ({
       ...todo,
-      completed: !areAllCompleted,
+      completed: !isAllCompleted,
     }));
 
     setTodos(newTodos);
@@ -53,6 +53,11 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const deleteTodo = (id: string) => {
     const filteredTodos = todos.filter((todo) => todo.id !== id);
     setTodos(filteredTodos);
+  };
+
+  const removeCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.completed);
+    setTodos(newTodos);
   };
 
   const changeFilter = (filter: FilterEnum) => setFilter(filter);
@@ -68,6 +73,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
         toggleTodo,
         toggleTodos,
         deleteTodo,
+        removeCompleted,
         changeFilter,
       }}
     >

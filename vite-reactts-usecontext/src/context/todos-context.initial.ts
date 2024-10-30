@@ -27,5 +27,6 @@ export const initialTodosContext: TodosInterface = {
   toggleTodo: noop,
   toggleTodos: noop,
   deleteTodo: noop,
+  removeCompleted: noop,
   changeFilter: noop,
 };

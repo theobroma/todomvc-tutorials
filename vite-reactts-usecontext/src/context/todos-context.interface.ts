@@ -16,5 +16,6 @@ export interface TodosInterface {
   toggleTodo: OnEventType<string>;
   toggleTodos: OnEventEmptyType;
   deleteTodo: OnEventType<string>;
+  removeCompleted: OnEventEmptyType;
   changeFilter: OnEventType<FilterEnum>;
 }

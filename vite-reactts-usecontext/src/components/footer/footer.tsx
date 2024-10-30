@@ -15,24 +15,30 @@ export const Footer = () => {
     onClick: changeFilter,
   };
 
+  const shouldRenderFooter = !!(activeTodoCount || completedTodoCount);
+
   return (
-    <footer className="footer">
-      <span className="todo-count">
-        <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
-        &nbsp;left
-      </span>
-      <ul className="filters">
-        <FilterLink filter={FilterEnum.ShowAll} {...commonProps}>
-          All
-        </FilterLink>
-        <FilterLink filter={FilterEnum.ShowActive} {...commonProps}>
-          Active
-        </FilterLink>
-        <FilterLink filter={FilterEnum.ShowCompleted} {...commonProps}>
-          Completed
-        </FilterLink>
-      </ul>
-      {completedTodoCount > 0 && <FooterButtonClear onClick={removeCompleted} />}
-    </footer>
+    <>
+      {shouldRenderFooter && (
+        <footer className="footer">
+          <span className="todo-count">
+            <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
+            &nbsp;left
+          </span>
+          <ul className="filters">
+            <FilterLink filter={FilterEnum.ShowAll} {...commonProps}>
+              All
+            </FilterLink>
+            <FilterLink filter={FilterEnum.ShowActive} {...commonProps}>
+              Active
+            </FilterLink>
+            <FilterLink filter={FilterEnum.ShowCompleted} {...commonProps}>
+              Completed
+            </FilterLink>
+          </ul>
+          {completedTodoCount > 0 && <FooterButtonClear onClick={removeCompleted} />}
+        </footer>
+      )}
+    </>
   );
 };

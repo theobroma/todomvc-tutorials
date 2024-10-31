@@ -12,6 +12,8 @@ export interface TodosInterface {
   activeTodoCount: number;
   completedTodoCount: number;
   filter: FilterEnum;
+  isEditing: boolean;
+  editingTodoId: null | string;
   addTodo: OnEventType<string>;
   toggleTodo: OnEventType<string>;
   toggleTodos: OnEventEmptyType;

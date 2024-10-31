@@ -9,6 +9,8 @@ import { TodoInterface } from './todos-context.interface';
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);
   const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ShowAll);
+  const [editingTodoId, setEditingTodoId] = useState<null | string>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const activeTodoCount = useMemo(
     () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
@@ -69,6 +71,8 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
         activeTodoCount,
         completedTodoCount,
         filter,
+        isEditing,
+        editingTodoId,
         addTodo,
         toggleTodo,
         toggleTodos,

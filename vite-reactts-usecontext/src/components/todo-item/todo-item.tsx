@@ -3,10 +3,11 @@ import { useContext } from 'react';
 
 import { TodosContext } from '../../context/todos-context';
 import { TodoInterface } from '../../context/todos-context.interface';
+import { TodoEditInput } from '../todo-edit-input/todo-edit-input';
 
 interface Props {
   todo: TodoInterface;
-  // isEditing: boolean;
+  isEditing: boolean;
   // onChange: any;
   // onDoubleClick: any;
   // onClick: any;
@@ -14,7 +15,7 @@ interface Props {
 
 export const TodoItem = ({
   todo,
-  // isEditing,
+  isEditing,
   // onChange,
   // onDoubleClick,
   // onClick,
@@ -28,7 +29,7 @@ export const TodoItem = ({
     <li
       className={clsx({
         completed: todo.completed,
-        //   editing: isEditing,
+        editing: isEditing,
       })}
     >
       <div className="view">
@@ -47,7 +48,7 @@ export const TodoItem = ({
         <button type="button" className="destroy" onClick={handleDeleteTodo} />
       </div>
       {/* isEditing */}
-      {/* {isEditing ? <TodoEditInput /> : null} */}
+      {isEditing ? <TodoEditInput /> : null}
     </li>
   );
 };

@@ -7,23 +7,16 @@ import { TodoEditInput } from '../todo-edit-input/todo-edit-input';
 
 interface Props {
   todo: TodoInterface;
-  isEditing: boolean;
-  // onChange: any;
-  // onDoubleClick: any;
-  // onClick: any;
 }
 
-export const TodoItem = ({
-  todo,
-  isEditing,
-  // onChange,
-  // onDoubleClick,
-  // onClick,
-}: Props) => {
-  const { toggleTodo, deleteTodo } = useContext(TodosContext);
+export const TodoItem = ({ todo }: Props) => {
+  const { editingTodoId, toggleTodo, deleteTodo, editTodo } = useContext(TodosContext);
+
+  const isEditing = editingTodoId === todo.id;
 
   const handleToggleTodo = () => toggleTodo(todo.id);
   const handleDeleteTodo = () => deleteTodo(todo.id);
+  const handleEditTodo = () => editTodo(todo.id);
 
   return (
     <li
@@ -39,10 +32,7 @@ export const TodoItem = ({
           checked={todo.completed}
           onChange={handleToggleTodo}
         />
-        <label
-          htmlFor="itself"
-          //    onDoubleClick={onDoubleClick(todo.id)}
-        >
+        <label htmlFor="itself" onDoubleClick={handleEditTodo}>
           {todo.title}
         </label>
         <button type="button" className="destroy" onClick={handleDeleteTodo} />

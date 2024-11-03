@@ -23,12 +23,12 @@ export const initialTodosContext: TodosInterface = {
   activeTodoCount: 0,
   completedTodoCount: 0,
   filter: FilterEnum.ShowAll,
-  isEditing: false,
   editingTodoId: null,
   addTodo: noop,
   toggleTodo: noop,
   toggleTodos: noop,
   deleteTodo: noop,
+  editTodo: noop,
   removeCompleted: noop,
   changeFilter: noop,
 };

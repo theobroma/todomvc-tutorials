@@ -1,8 +1,51 @@
-import { Suspense } from 'react';
+import { Suspense, useActionState, useOptimistic, useRef } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Link } from 'react-router-dom';
 import { noop } from '../../utils/noop.util';
 import { User } from '../../shared/api';
+import { CreateUserAction } from './actions';
+import { useUsers } from './use-users';
+
+export function CreateUserForm({
+    createUserAction,
+}: {
+    createUserAction: CreateUserAction;
+}) {
+    const [state, dispatch] = useActionState(createUserAction, {
+        email: '',
+        // error: null,
+    });
+
+    const [optimisticState, setOptimisticState] = useOptimistic(state);
+    const form = useRef<HTMLFormElement>(null);
+    return (
+        <form
+            className="flex gap-2"
+            ref={form}
+            action={(formData: FormData) => {
+                setOptimisticState({ email: '' });
+                dispatch(formData);
+                form.current?.reset();
+            }}
+        >
+            <input
+                name="email"
+                type="email"
+                className="border p-2 rounded"
+                defaultValue={optimisticState.email}
+            />
+            <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400"
+                type="submit"
+            >
+                Add
+            </button>
+            {/* {optimisticState.error && (
+                <div className="text-red-500">{optimisticState.error}</div>
+            )} */}
+        </form>
+    );
+}
 
 export const UserCard = ({
     user,
@@ -59,8 +102,11 @@ export function UsersList({
 }
 
 export const UsersPage = () => {
+    const { useUsersList, createUserAction, deleteUserAction } = useUsers();
+
     return (
         <>
+            <CreateUserForm createUserAction={createUserAction} />
             <ErrorBoundary
                 fallbackRender={(e) => (
                     <div className="text-red-500">

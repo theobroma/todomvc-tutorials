@@ -4,13 +4,5 @@ import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    wyw({
-      include: ['**/*.{ts,tsx}'],
-      babelOptions: {
-        presets: ['@babel/preset-typescript', '@babel/preset-react'],
-      },
-    }),
-    react(),
-  ],
+  plugins: [wyw(), react()],
 });

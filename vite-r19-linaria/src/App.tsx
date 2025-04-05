@@ -1,7 +1,9 @@
+import { use } from 'react';
 import { css } from '@linaria/core';
 import { hiDPI, modularScale } from 'polished';
 
-// Write your styles in `css` tag
+import { TodosContext } from '@/context/todos-context';
+
 const header = css`
   text-transform: uppercase;
   font-size: ${modularScale(2)};
@@ -13,8 +15,28 @@ const header = css`
   }
 `;
 
+const list = css`
+  list-style-type: none;
+`;
+
 function App() {
-  return <h1 className={header}>Hello world</h1>;
+  const { todos } = use(TodosContext);
+
+  return (
+    <>
+      <h1 className={header}>Hello world</h1>
+      <ul className={list}>
+        {todos.map((todo) => (
+          <li>
+            <label htmlFor={todo.id}>
+              <input type="checkbox" id={todo.id} /> {todo.title}
+            </label>
+            <button type="button">Delete</button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default App;

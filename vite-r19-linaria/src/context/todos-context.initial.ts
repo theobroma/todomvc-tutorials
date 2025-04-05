@@ -1,5 +1,6 @@
-import { FilterEnum } from '../enums/filter.enum';
-import { noop } from '../utils/noop.util';
+import { FilterEnum } from '@/enums/filter.enum';
+import { noop } from '@/utils/noop.util';
+
 import { TodoInterface, TodosInterface } from './todos-context.interface';
 
 export const initialTodos: TodoInterface[] = [

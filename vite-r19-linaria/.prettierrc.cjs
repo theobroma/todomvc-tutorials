@@ -9,6 +9,8 @@ module.exports = {
   plugins: ['@ianvs/prettier-plugin-sort-imports'],
   // This plugin's options
   importOrder: [
+    '<BUILTIN_MODULES>',
+    '',
     '<THIRD_PARTY_MODULES>',
     '',
     '^(@components|@context|@enums|@hooks|@types|@utils)(/.*)$',

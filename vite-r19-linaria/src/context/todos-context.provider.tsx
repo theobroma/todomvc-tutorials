@@ -1,5 +1,6 @@
-import { FilterEnum } from '@/enums/filter.enum';
 import { PropsWithChildren, useMemo, useState } from 'react';
+
+import { FilterEnum } from '@/enums/filter.enum';
 
 import { TodosContext } from './todos-context';
 import { initialTodos } from './todos-context.initial';

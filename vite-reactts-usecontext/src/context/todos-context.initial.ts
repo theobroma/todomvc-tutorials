@@ -1,18 +1,15 @@
-// TODO: try to replace with crypto.randomUUID()
-import { v4 as uuidv4 } from 'uuid';
-
 import { FilterEnum } from '../enums/filter.enum';
 import { noop } from '../utils/noop.util';
 import { TodoInterface, TodosInterface } from './todos-context.interface';
 
 export const initialTodos: TodoInterface[] = [
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     title: 'drink coffee',
     completed: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     title: 'be awesome',
     completed: true,
   },

@@ -1,5 +1,4 @@
 import { PropsWithChildren, useMemo, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { FilterEnum } from '../enums/filter.enum';
 import { TodosContext } from './todos-context';
@@ -23,7 +22,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
 
   const addTodo = (title: string) => {
     const newTodo = {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       title,
       completed: false,
     };

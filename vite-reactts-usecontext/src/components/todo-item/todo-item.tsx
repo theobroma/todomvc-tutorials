@@ -1,9 +1,9 @@
-import clsx from 'clsx';
 import { useContext } from 'react';
+import clsx from 'clsx';
 
-import { TodosContext } from '../../context/todos-context';
-import { TodoInterface } from '../../context/todos-context.interface';
-import { TodoEditInput } from '../todo-edit-input/todo-edit-input';
+import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
+import { TodosContext } from '@/context/todos-context';
+import { TodoInterface } from '@/context/todos-context.interface';
 
 interface Props {
   todo: TodoInterface;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useFocus } from '../../hooks/use-focus';
+import { useFocus } from '@/hooks/use-focus';
 
 export const TodoEditInput = () => {
   const inputRef = useFocus();

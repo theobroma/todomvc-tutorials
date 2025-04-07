@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 
-import { TodosContext } from '../../context/todos-context';
-import { TodoItem } from '../todo-item/todo-item';
-import { ToggleAllButton } from '../toggle-all-button/toggle-all-button';
+import { TodoItem } from '@/components/todo-item/todo-item';
+import { ToggleAllButton } from '@/components/toggle-all-button/toggle-all-button';
+import { TodosContext } from '@/context/todos-context';
+
 import { getFilteredTodos } from './todo-list.util';
 
 export const TodoList = () => {

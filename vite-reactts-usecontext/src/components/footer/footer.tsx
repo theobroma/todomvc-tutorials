@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 
-import { TodosContext } from '../../context/todos-context';
-import { FilterEnum } from '../../enums/filter.enum';
-import { pluralize } from '../../utils/pluralize.util';
+import { TodosContext } from '@/context/todos-context';
+import { FilterEnum } from '@/enums/filter.enum';
+import { pluralize } from '@/utils/pluralize.util';
+
 import { FilterLink } from './filter-link/filter-link';
 import { FooterButtonClear } from './footer-button-clear/footer-button-clear';
 

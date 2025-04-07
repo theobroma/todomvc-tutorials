@@ -1,5 +1,5 @@
-import { TodoInterface } from '../../context/todos-context.interface';
-import { FilterEnum } from '../../enums/filter.enum';
+import { TodoInterface } from '@/context/todos-context.interface';
+import { FilterEnum } from '@/enums/filter.enum';
 
 export const getFilteredTodos = (todos: TodoInterface[], filter: FilterEnum) => {
   switch (filter) {

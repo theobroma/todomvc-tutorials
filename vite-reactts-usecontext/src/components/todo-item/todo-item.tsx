@@ -10,13 +10,15 @@ interface Props {
 }
 
 export const TodoItem = ({ todo }: Props) => {
-  const { editingTodoId, toggleTodo, deleteTodo, editTodo } = useContext(TodosContext);
+  const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
+    useContext(TodosContext);
 
   const isEditing = editingTodoId === todo.id;
 
   const handleToggleTodo = () => toggleTodo(todo.id);
   const handleDeleteTodo = () => deleteTodo(todo.id);
   const handleEditTodo = () => editTodo(todo.id);
+  const handleSaveTodo = (title: TodoInterface['title']) => saveTodo(todo.id, title);
 
   return (
     <li
@@ -38,7 +40,9 @@ export const TodoItem = ({ todo }: Props) => {
         <button type="button" className="destroy" onClick={handleDeleteTodo} />
       </div>
       {/* isEditing */}
-      {isEditing ? <TodoEditInput /> : null}
+      {isEditing ? (
+        <TodoEditInput currentTitle={todo.title} onSave={handleSaveTodo} />
+      ) : null}
     </li>
   );
 };

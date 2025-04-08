@@ -1,10 +1,16 @@
 import { useState } from 'react';
 
+import { TodoInterface } from '@/context/todos-context.interface';
 import { useFocus } from '@/hooks/use-focus';
 
-export const TodoEditInput = () => {
+interface TodoEditInputProps {
+  currentTitle?: TodoInterface['title'];
+  onSave: (text: string) => void;
+}
+
+export const TodoEditInput = ({ currentTitle, onSave }: TodoEditInputProps) => {
   const inputRef = useFocus();
-  const [text, setText] = useState('');
+  const [text, setText] = useState(currentTitle || '');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();
@@ -13,7 +19,7 @@ export const TodoEditInput = () => {
 
   // TODO: escape press also triggers this
   const handleBlur = () => {
-    //   dispatch(saveEditTodoAC(text));
+    onSave(text);
   };
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -22,7 +28,7 @@ export const TodoEditInput = () => {
       // dispatch(cancelEditTodoAC());
     }
     if (event.key === 'Enter') {
-      // dispatch(saveEditTodoAC(text));
+      onSave(text);
     }
   };
 

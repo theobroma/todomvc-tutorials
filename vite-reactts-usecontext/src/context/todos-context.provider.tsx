@@ -67,6 +67,14 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     setEditingTodoId(id);
   };
 
+  const saveTodo = (id: any, title: any) => {
+    const tempTodos = [...todos];
+    const index = tempTodos.findIndex((todo) => todo.id === id);
+    tempTodos[index]['title'] = title;
+    setTodos(tempTodos);
+    setEditingTodoId(null);
+  };
+
   return (
     <TodosContext.Provider
       value={{
@@ -82,6 +90,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
         editTodo,
         removeCompleted,
         changeFilter,
+        saveTodo,
       }}
     >
       {children}

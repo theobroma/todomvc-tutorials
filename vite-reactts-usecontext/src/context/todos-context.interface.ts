@@ -20,4 +20,5 @@ export interface TodosInterface {
   editTodo: OnEventType<string>;
   removeCompleted: OnEventEmptyType;
   changeFilter: OnEventType<FilterEnum>;
+  saveTodo: (id: string, title: string) => void;
 }

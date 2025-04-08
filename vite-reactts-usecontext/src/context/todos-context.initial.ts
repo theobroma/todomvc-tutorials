@@ -29,4 +29,5 @@ export const initialTodosContext: TodosInterface = {
   editTodo: noop,
   removeCompleted: noop,
   changeFilter: noop,
+  saveTodo: noop,
 };

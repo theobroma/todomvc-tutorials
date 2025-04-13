@@ -1,30 +1,32 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import clsx from 'clsx';
 
-import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
-import { TodosContext } from '@/context/todos-context';
+// import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
+// import { TodosContext } from '@/context/todos-context';
 import { TodoInterface } from '@/context/todos-context.interface';
+import useTodosStore from '@/store/useTodosStore';
 
 interface Props {
   todo: TodoInterface;
 }
 
 export const TodoItem = ({ todo }: Props) => {
-  const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
-    useContext(TodosContext);
+  // const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
+  //   useContext(TodosContext);
+  const { toggleTodo, deleteTodo, editTodo } = useTodosStore();
 
-  const isEditing = editingTodoId === todo.id;
+  // const isEditing = editingTodoId === todo.id;
 
   const handleToggleTodo = () => toggleTodo(todo.id);
   const handleDeleteTodo = () => deleteTodo(todo.id);
   const handleEditTodo = () => editTodo(todo.id);
-  const handleSaveTodo = (title: TodoInterface['title']) => saveTodo(todo.id, title);
+  // const handleSaveTodo = (title: TodoInterface['title']) => saveTodo(todo.id, title);
 
   return (
     <li
       className={clsx({
         completed: todo.completed,
-        editing: isEditing,
+        // editing: isEditing,
       })}
     >
       <div className="view">
@@ -40,9 +42,9 @@ export const TodoItem = ({ todo }: Props) => {
         <button type="button" className="destroy" onClick={handleDeleteTodo} />
       </div>
       {/* isEditing */}
-      {isEditing ? (
+      {/* {isEditing ? (
         <TodoEditInput currentTitle={todo.title} onSave={handleSaveTodo} />
-      ) : null}
+      ) : null} */}
     </li>
   );
 };

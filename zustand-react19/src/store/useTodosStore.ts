@@ -10,7 +10,7 @@ const toggleTodo = (todos: TodoInterface[], id: TodoInterface['id']): TodoInterf
     completed: todo.id === id ? !todo.completed : todo.completed,
   }));
 
-const toggleAllTodos = (todos: TodoInterface[]): TodoInterface[] => {
+const toggleTodos = (todos: TodoInterface[]): TodoInterface[] => {
   const activeTodoCount = todos.filter((item) => item.completed === false).length;
 
   return todos.map((todo) => ({
@@ -19,7 +19,7 @@ const toggleAllTodos = (todos: TodoInterface[]): TodoInterface[] => {
   }));
 };
 
-const removeTodo = (todos: TodoInterface[], id: TodoInterface['id']): TodoInterface[] =>
+const deleteTodo = (todos: TodoInterface[], id: TodoInterface['id']): TodoInterface[] =>
   todos.filter((todo) => todo.id !== id);
 
 const removeCompleted = (todos: TodoInterface[]): TodoInterface[] =>
@@ -37,7 +37,7 @@ const addTodo = (
   },
 ];
 
-const saveEditTodo = (
+const saveTodo = (
   todos: TodoInterface[],
   editingTodoId: TodoInterface['id'] | null,
   newTitle: TodoInterface['title'],
@@ -53,12 +53,12 @@ export interface StoreInterface {
   filter: FilterEnum;
   editingTodoId: TodoInterface['id'] | null;
   addTodo: (text: TodoInterface['title']) => void;
-  saveEditTodo: (text: TodoInterface['title']) => void;
-  setFilter: (newFilter: FilterEnum) => void;
-  setEditTodoID: (id: TodoInterface['id']) => void;
+  saveTodo: (text: TodoInterface['title']) => void;
+  changeFilter: (newFilter: FilterEnum) => void;
+  editTodo: (id: TodoInterface['id']) => void;
   toggleTodo: (id: TodoInterface['id']) => void;
-  toggleAllTodos: () => void;
-  removeTodo: (id: TodoInterface['id']) => void;
+  toggleTodos: () => void;
+  deleteTodo: (id: TodoInterface['id']) => void;
   removeCompleted: () => void;
 }
 
@@ -77,23 +77,28 @@ const useTodosStore = create<StoreInterface>()(
             title: 'be awesome',
             completed: true,
           },
+          {
+            id: crypto.randomUUID(),
+            title: 'learn zustand',
+            completed: true,
+          },
         ],
         filter: FilterEnum.ShowAll,
         editingTodoId: null,
-        setFilter: (newFilter: FilterEnum) =>
+        changeFilter: (newFilter: FilterEnum) =>
           set((state) => ({
             ...state,
             filter: newFilter,
           })),
-        setEditTodoID: (id: TodoInterface['id']) =>
+        editTodo: (id: TodoInterface['id']) =>
           set((state) => ({
             ...state,
             editingTodoId: id,
           })),
-        removeTodo: (id: TodoInterface['id']) =>
+        deleteTodo: (id: TodoInterface['id']) =>
           set((state) => ({
             ...state,
-            todos: removeTodo(state.todos, id),
+            todos: deleteTodo(state.todos, id),
           })),
         removeCompleted: () =>
           set((state) => ({
@@ -105,20 +110,20 @@ const useTodosStore = create<StoreInterface>()(
             ...state,
             todos: toggleTodo(state.todos, id),
           })),
-        toggleAllTodos: () =>
+        toggleTodos: () =>
           set((state) => ({
             ...state,
-            todos: toggleAllTodos(state.todos),
+            todos: toggleTodos(state.todos),
           })),
         addTodo: (text: TodoInterface['title']) =>
           set((state) => ({
             ...state,
             todos: addTodo(state.todos, text),
           })),
-        saveEditTodo: (text: TodoInterface['title']) =>
+        saveTodo: (text: TodoInterface['title']) =>
           set((state) => ({
             ...state,
-            todos: saveEditTodo(state.todos, state.editingTodoId, text),
+            todos: saveTodo(state.todos, state.editingTodoId, text),
             editingTodoId: null,
           })),
       }),

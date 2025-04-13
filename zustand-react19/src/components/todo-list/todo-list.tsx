@@ -1,14 +1,20 @@
-import { useContext } from 'react';
+import { useMemo } from 'react';
 
 import { TodoItem } from '@/components/todo-item/todo-item';
 import { ToggleAllButton } from '@/components/toggle-all-button/toggle-all-button';
-import { TodosContext } from '@/context/todos-context';
+import useTodosStore from '@/store/useTodosStore';
 
 import { getFilteredTodos } from './todo-list.util';
 
 export const TodoList = () => {
-  const { todos, activeTodoCount, filter, toggleTodos } = useContext(TodosContext);
+  // const { todos, activeTodoCount, filter, toggleTodos } = useContext(TodosContext);
+  const { todos, filter, toggleTodos } = useTodosStore();
   const filteredTodos = getFilteredTodos(todos, filter);
+
+  const activeTodoCount = useMemo(
+    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
+    [todos],
+  );
 
   return (
     <section className="main">

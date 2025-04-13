@@ -1,15 +1,30 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 
-import { TodosContext } from '@/context/todos-context';
+// import { TodosContext } from '@/context/todos-context';
+import { useMemo } from 'react';
+
 import { FilterEnum } from '@/enums/filter.enum';
+import useTodosStore from '@/store/useTodosStore';
 import { pluralize } from '@/utils/pluralize.util';
 
 import { FilterLink } from './filter-link/filter-link';
 import { FooterButtonClear } from './footer-button-clear/footer-button-clear';
 
 export const Footer = () => {
-  const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } =
-    useContext(TodosContext);
+  // const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } =
+  //   useContext(TodosContext);
+
+  const { todos, filter, changeFilter, removeCompleted } = useTodosStore();
+
+  const activeTodoCount = useMemo(
+    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
+    [todos],
+  );
+
+  const completedTodoCount = useMemo(
+    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 1 : 0), 0),
+    [todos],
+  );
 
   const commonProps = {
     currentFilter: filter,

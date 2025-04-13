@@ -4,6 +4,8 @@ import { devtools, persist } from 'zustand/middleware';
 import { TodoInterface } from '@/context/todos-context.interface';
 import { FilterEnum } from '@/enums/filter.enum';
 
+import { StoreInterface } from './store.interface';
+
 const toggleTodo = (todos: TodoInterface[], id: TodoInterface['id']): TodoInterface[] =>
   todos.map((todo) => ({
     ...todo,
@@ -46,21 +48,6 @@ const saveTodo = (
   todos[index].title = newTitle;
   return todos;
 };
-
-// Zustand implementation
-export interface StoreInterface {
-  todos: TodoInterface[];
-  filter: FilterEnum;
-  editingTodoId: TodoInterface['id'] | null;
-  addTodo: (text: TodoInterface['title']) => void;
-  saveTodo: (text: TodoInterface['title']) => void;
-  changeFilter: (newFilter: FilterEnum) => void;
-  editTodo: (id: TodoInterface['id']) => void;
-  toggleTodo: (id: TodoInterface['id']) => void;
-  toggleTodos: () => void;
-  deleteTodo: (id: TodoInterface['id']) => void;
-  removeCompleted: () => void;
-}
 
 const useTodosStore = create<StoreInterface>()(
   devtools(

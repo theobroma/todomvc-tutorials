@@ -14,7 +14,8 @@
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "todomvc-app-css": "^2.4.3"
+    "todomvc-app-css": "^2.4.3",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

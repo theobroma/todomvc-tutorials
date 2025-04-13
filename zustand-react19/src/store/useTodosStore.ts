@@ -48,7 +48,7 @@ const saveEditTodo = (
 };
 
 // Zustand implementation
-type Store = {
+export interface StoreInterface {
   todos: TodoInterface[];
   filter: FilterEnum;
   editingTodoId: TodoInterface['id'] | null;
@@ -60,12 +60,12 @@ type Store = {
   toggleAllTodos: () => void;
   removeTodo: (id: TodoInterface['id']) => void;
   removeCompleted: () => void;
-};
+}
 
-const useTodosStore = create<Store>()(
+const useTodosStore = create<StoreInterface>()(
   devtools(
     persist(
-      (set): Store => ({
+      (set): StoreInterface => ({
         todos: [
           {
             id: crypto.randomUUID(),

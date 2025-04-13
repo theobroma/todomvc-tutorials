@@ -15,6 +15,8 @@ module.exports = {
     '<TYPES>',
     '<TYPES>^[.]',
     '',
+    '^(@/components)(/.*)$',
+    '^[.](/components)(/.*)$',
     '^(@/context)(/.*)$',
     '^[.](/context)(/.*)$',
     '^(@/enums)(/.*)$',

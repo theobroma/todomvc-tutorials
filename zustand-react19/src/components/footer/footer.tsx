@@ -4,7 +4,7 @@
 import { useMemo } from 'react';
 
 import { FilterEnum } from '@/enums/filter.enum';
-import useTodosStore from '@/store/useTodosStore';
+import useTodosStore from '@/store/store';
 import { pluralize } from '@/utils/pluralize.util';
 
 import { FilterLink } from './filter-link/filter-link';

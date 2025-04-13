@@ -1,7 +1,7 @@
 // import { useContext } from 'react';
 
 import { TodoTextInput } from '@/components/todo-text-input/todo-text-input';
-import useTodosStore from '@/store/useTodosStore';
+import useTodosStore from '@/store/store';
 
 // import { TodosContext } from '@/context/todos-context';
 

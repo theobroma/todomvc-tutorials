@@ -4,7 +4,7 @@ import clsx from 'clsx';
 // import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
 // import { TodosContext } from '@/context/todos-context';
 import { TodoInterface } from '@/context/todos-context.interface';
-import useTodosStore from '@/store/useTodosStore';
+import useTodosStore from '@/store/store';
 
 interface Props {
   todo: TodoInterface;

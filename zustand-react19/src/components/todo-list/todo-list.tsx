@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { TodoItem } from '@/components/todo-item/todo-item';
 import { ToggleAllButton } from '@/components/toggle-all-button/toggle-all-button';
-import useTodosStore from '@/store/useTodosStore';
+import useTodosStore from '@/store/store';
 
 import { getFilteredTodos } from './todo-list.util';
 

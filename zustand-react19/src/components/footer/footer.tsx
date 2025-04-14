@@ -1,6 +1,3 @@
-// import { useContext } from 'react';
-
-// import { TodosContext } from '@/context/todos-context';
 import { useMemo } from 'react';
 
 import { FilterEnum } from '@/enums/filter.enum';
@@ -11,9 +8,6 @@ import { FilterLink } from './filter-link/filter-link';
 import { FooterButtonClear } from './footer-button-clear/footer-button-clear';
 
 export const Footer = () => {
-  // const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } =
-  //   useContext(TodosContext);
-
   const { todos, filter, changeFilter, removeCompleted } = useTodosStore();
 
   const activeTodoCount = useMemo(

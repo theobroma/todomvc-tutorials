@@ -1,12 +1,7 @@
-// import { useContext } from 'react';
-
 import { TodoTextInput } from '@/components/todo-text-input/todo-text-input';
 import useTodosStore from '@/store/store';
 
-// import { TodosContext } from '@/context/todos-context';
-
 export const Header = () => {
-  // const { addTodo } = useContext(TodosContext);
   const { addTodo } = useTodosStore();
 
   const handleSave = (text: string) => {

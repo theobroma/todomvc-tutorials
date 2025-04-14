@@ -7,7 +7,6 @@ import useTodosStore from '@/store/store';
 import { getFilteredTodos } from './todo-list.util';
 
 export const TodoList = () => {
-  // const { todos, activeTodoCount, filter, toggleTodos } = useContext(TodosContext);
   const { todos, filter, toggleTodos } = useTodosStore();
   const filteredTodos = getFilteredTodos(todos, filter);
 

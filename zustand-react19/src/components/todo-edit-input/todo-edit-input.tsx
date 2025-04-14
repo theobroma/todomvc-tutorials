@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { TodoInterface } from '@/context/todos-context.interface';
 import { useFocus } from '@/hooks/use-focus';
+import { TodoInterface } from '@/store/store.interface';
 
 interface TodoEditInputProps {
   currentTitle?: TodoInterface['title'];

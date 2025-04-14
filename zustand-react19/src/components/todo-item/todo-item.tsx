@@ -1,18 +1,13 @@
-// import { useContext } from 'react';
 import clsx from 'clsx';
 
-// import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
-// import { TodosContext } from '@/context/todos-context';
-import { TodoInterface } from '@/context/todos-context.interface';
 import useTodosStore from '@/store/store';
+import { TodoInterface } from '@/store/store.interface';
 
 interface Props {
   todo: TodoInterface;
 }
 
 export const TodoItem = ({ todo }: Props) => {
-  // const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
-  //   useContext(TodosContext);
   const { toggleTodo, deleteTodo, editTodo } = useTodosStore();
 
   // const isEditing = editingTodoId === todo.id;

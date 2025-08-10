@@ -3,18 +3,20 @@ import { noop } from '@/utils/noop.util';
 
 import { TodoInterface, TodosInterface } from './todos-context.interface';
 
-export const initialTodos: TodoInterface[] = [
-  {
-    id: crypto.randomUUID(),
-    title: 'drink coffee',
-    completed: false,
-  },
-  {
-    id: crypto.randomUUID(),
-    title: 'be awesome',
-    completed: true,
-  },
-];
+export const initialTodos: TodoInterface[] = [];
+
+// export const initialTodos: TodoInterface[] = [
+//   {
+//     id: crypto.randomUUID(),
+//     title: 'drink coffee',
+//     completed: false,
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     title: 'be awesome',
+//     completed: true,
+//   },
+// ];
 
 export const initialTodosContext: TodosInterface = {
   todos: initialTodos,

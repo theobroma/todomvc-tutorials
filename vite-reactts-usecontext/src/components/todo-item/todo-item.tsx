@@ -34,7 +34,7 @@ export const TodoItem = ({ todo }: Props) => {
           checked={todo.completed}
           onChange={handleToggleTodo}
         />
-        <label htmlFor="itself" onDoubleClick={handleEditTodo}>
+        <label htmlFor="itself" data-testid="todo-title" onDoubleClick={handleEditTodo}>
           {todo.title}
         </label>
         <button type="button" className="destroy" onClick={handleDeleteTodo} />

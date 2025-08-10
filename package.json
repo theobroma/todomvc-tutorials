@@ -1,0 +1,19 @@
+{
+    "name": "todomvc-tutorials",
+    "private": false,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "cd vite-reactts-usecontext && npm run build",
+        "serve": "cd vite-reactts-usecontext && serve -s dist",
+        "predeploy": "cd vite-reactts-usecontext && npm run build",
+        "deploy": "gh-pages -d vite-reactts-usecontext/dist"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "gh-pages": "^6.3.0"
+    },
+    "engines": {
+        "node": "^22.x"
+    }
+}

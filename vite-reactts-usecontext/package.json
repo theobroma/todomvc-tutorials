@@ -3,13 +3,15 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://theobroma.github.io/todomvc-tutorials",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
-    "tsc": "bash -c tsc"
+    "tsc": "bash -c tsc",
+    "serve": "serve -s dist"
   },
   "dependencies": {
     "clsx": "^2.1.1",

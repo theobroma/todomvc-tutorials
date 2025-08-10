@@ -26,6 +26,7 @@ export const TodoItem = ({ todo }: Props) => {
         completed: todo.completed,
         editing: isEditing,
       })}
+      data-testid="todo-item"
     >
       <div className="view">
         <input

@@ -51,4 +51,5 @@ export default tseslint.config({
 
 ## :link: Usefull links
 
--[Starter with ESLint9](https://medium.com/@ihor.ivlievv/eslint-and-prettier-set-up-tutorial-37b523871ef8)
+- [Starter with ESLint9](https://medium.com/@ihor.ivlievv/eslint-and-prettier-set-up-tutorial-37b523871ef8)
+- [Local Storage](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/)

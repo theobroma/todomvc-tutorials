@@ -22,7 +22,7 @@ export const Footer = () => {
     <>
       {shouldRenderFooter && (
         <footer className="footer">
-          <span className="todo-count">
+          <span className="todo-count" data-testid="todo-count">
             <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
             &nbsp;left
           </span>

@@ -25,14 +25,14 @@ export const TodoTextInput = ({
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();
     onSave(value);
-    setText(' ');
+    setText('');
   };
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value.trim();
     if (event.key === 'Enter') {
       onSave(value);
-      setText(' ');
+      setText('');
     }
   };
 

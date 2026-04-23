@@ -2,26 +2,23 @@ import { FilterEnum } from '@/enums/filter.enum';
 import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
 import { TodosContext } from './todos-context';
-import { initialTodos } from './todos-context.initial';
 import { TodoInterface } from './todos-context.interface';
 
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
-  const [todos, setTodos] = useState<TodoInterface[]>(initialTodos);
   const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ShowAll);
   const [editingTodoId, setEditingTodoId] = useState<null | string>(null);
+  const [todos, setTodos] = useState<TodoInterface[]>(() => {
+    try {
+      const stored = localStorage.getItem('react-todos');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem('react-todos', JSON.stringify(todos));
   }, [todos]);
-
-  useEffect(() => {
-    const todos = JSON.parse(
-      localStorage.getItem('react-todos') as any,
-    ) as TodoInterface[];
-    if (todos) {
-      setTodos(todos);
-    }
-  }, []);
 
   const activeTodoCount = useMemo(
     () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),

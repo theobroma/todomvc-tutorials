@@ -4,12 +4,14 @@ import { PropsWithChildren, useEffect, useMemo, useState } from 'react';
 import { TodosContext } from './todos-context';
 import { TodoInterface } from './todos-context.interface';
 
+const LOCAL_STORAGE_KEY = 'react-todos';
+
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ShowAll);
   const [editingTodoId, setEditingTodoId] = useState<null | string>(null);
   const [todos, setTodos] = useState<TodoInterface[]>(() => {
     try {
-      const stored = localStorage.getItem('react-todos');
+      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
@@ -17,7 +19,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   });
 
   useEffect(() => {
-    localStorage.setItem('react-todos', JSON.stringify(todos));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
   const activeTodoCount = useMemo(

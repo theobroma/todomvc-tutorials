@@ -32,6 +32,8 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
     [todos],
   );
 
+  const changeFilter = (filter: FilterEnum) => setFilter(filter);
+
   const addTodo = (title: string) => {
     const newTodo = {
       id: crypto.randomUUID(),
@@ -43,36 +45,31 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const toggleTodo = (id: string) => {
-    const newTodos = todos.map((todo) => ({
-      ...todo,
-      completed: todo.id === id ? !todo.completed : todo.completed,
-    }));
-
-    setTodos(newTodos);
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
   };
 
   const toggleTodos = () => {
-    const isAllCompleted = todos.length === completedTodoCount;
+    setTodos((prevTodos) => {
+      const isAllCompleted = prevTodos.every((todo) => todo.completed);
 
-    const newTodos = todos.map((todo) => ({
-      ...todo,
-      completed: !isAllCompleted,
-    }));
-
-    setTodos(newTodos);
+      return prevTodos.map((todo) => ({
+        ...todo,
+        completed: !isAllCompleted,
+      }));
+    });
   };
 
   const deleteTodo = (id: string) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(filteredTodos);
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const removeCompleted = () => {
-    const newTodos = todos.filter((todo) => !todo.completed);
-    setTodos(newTodos);
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed));
   };
-
-  const changeFilter = (filter: FilterEnum) => setFilter(filter);
 
   const editTodo = (id: string) => {
     setEditingTodoId(id);

@@ -34,14 +34,17 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
 
   const changeFilter = (filter: FilterEnum) => setFilter(filter);
 
-  const addTodo = (title: string) => {
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title,
-      completed: false,
-    };
+  const createTodo = (title: string): TodoInterface => ({
+    id: crypto.randomUUID(),
+    title,
+    completed: false,
+  });
 
-    setTodos([...todos, newTodo]);
+  const addTodo = (title: string) => {
+    const trimmed = title.trim();
+    if (!trimmed) return;
+
+    setTodos((prev) => [...prev, createTodo(trimmed)]);
   };
 
   const toggleTodo = (id: string) => {
@@ -83,7 +86,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <TodosContext.Provider
+    <TodosContext
       value={{
         todos,
         activeTodoCount,
@@ -101,6 +104,6 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </TodosContext.Provider>
+    </TodosContext>
   );
 };

@@ -79,10 +79,9 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const saveTodo = (id: string, title: string) => {
-    const tempTodos = [...todos];
-    const index = tempTodos.findIndex((todo) => todo.id === id);
-    tempTodos[index]['title'] = title;
-    setTodos(tempTodos);
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === id ? { ...todo, title } : todo)),
+    );
     setEditingTodoId(null);
   };
 

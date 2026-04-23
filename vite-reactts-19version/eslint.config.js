@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
+import reactCompiler from 'eslint-plugin-react-compiler';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
@@ -22,6 +23,7 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'react-compiler': reactCompiler,
       // prettier-ignore
       'prettier': prettierPlugin,
     },
@@ -29,6 +31,7 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'prettier/prettier': 'error', // Report prettier issues as ESLint errors
       'no-console': 'warn', // Забороняємо використання всіх console.*
+      'react-compiler/react-compiler': 'error', // Включаємо правило для React Compiler
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@typescript-eslint/no-unused-vars': [
         'error',

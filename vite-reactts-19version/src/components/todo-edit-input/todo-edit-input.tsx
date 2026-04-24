@@ -12,8 +12,7 @@ export const TodoEditInput = ({ currentTitle, onSave }: TodoEditInputProps) => {
   const [text, setText] = useState(currentTitle || '');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value.trim();
-    setText(value);
+    setText(event.currentTarget.value);
   };
 
   // TODO: escape press also triggers this

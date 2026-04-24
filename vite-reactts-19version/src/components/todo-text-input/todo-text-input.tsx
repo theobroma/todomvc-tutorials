@@ -16,21 +16,18 @@ export const TodoTextInput = ({
   const [text, setText] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value.trim();
-    setText(value);
+    setText(event.currentTarget.value);
   };
 
   // TODO: escape press also triggers this
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value.trim();
-    onSave(value);
+    setText(event.currentTarget.value);
     setText('');
   };
 
   const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value.trim();
     if (event.key === 'Enter') {
-      onSave(value);
+      onSave(event.currentTarget.value);
       setText('');
     }
   };

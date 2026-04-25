@@ -8,6 +8,7 @@ module.exports = {
   // Since prettier 3.0, manually specifying plugins is required
   plugins: ['@ianvs/prettier-plugin-sort-imports'],
   // This plugin's options
+  // prettier-ignore
   importOrder: [
     '<THIRD_PARTY_MODULES>',
     '',

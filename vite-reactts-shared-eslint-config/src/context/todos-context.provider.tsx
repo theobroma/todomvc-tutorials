@@ -10,15 +10,8 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   const [editingTodoId, setEditingTodoId] = useState<null | string>(null);
   const { todos, setTodos } = useTodos();
 
-  const activeTodoCount = useMemo(
-    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0),
-    [todos],
-  );
-
-  const completedTodoCount = useMemo(
-    () => todos?.reduce((acc, todo) => acc + (todo.completed ? 1 : 0), 0),
-    [todos],
-  );
+  const activeTodoCount = useMemo(() => todos?.reduce((acc, todo) => acc + (todo.completed ? 0 : 1), 0), [todos]);
+  const completedTodoCount = useMemo(() => todos?.reduce((acc, todo) => acc + (todo.completed ? 1 : 0), 0), [todos]);
 
   const changeFilter = (filter: FilterEnum) => setFilter(filter);
 
@@ -36,11 +29,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const toggleTodo = (id: string) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    );
+    setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
 
   const toggleTodos = () => {
@@ -67,9 +56,7 @@ export const TodosContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const saveTodo = (id: string, title: string) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => (todo.id === id ? { ...todo, title } : todo)),
-    );
+    setTodos((prevTodos) => prevTodos.map((todo) => (todo.id === id ? { ...todo, title } : todo)));
     setEditingTodoId(null);
   };
 

@@ -8,10 +8,7 @@ interface TodoTextInputProps {
   onSave: (text: string) => void;
 }
 
-export const TodoTextInput = ({
-  placeholder = 'What needs to be done?',
-  onSave,
-}: TodoTextInputProps) => {
+export const TodoTextInput = ({ placeholder = 'What needs to be done?', onSave }: TodoTextInputProps) => {
   const inputRef = useFocus();
   const [text, setText] = useState('');
 

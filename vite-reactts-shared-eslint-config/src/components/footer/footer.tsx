@@ -7,8 +7,7 @@ import { FilterLink } from './filter-link/filter-link';
 import { FooterButtonClear } from './footer-button-clear/footer-button-clear';
 
 export const Footer = () => {
-  const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } =
-    useContext(TodosContext);
+  const { filter, activeTodoCount, completedTodoCount, removeCompleted, changeFilter } = useContext(TodosContext);
 
   const commonProps = {
     currentFilter: filter,
@@ -22,7 +21,8 @@ export const Footer = () => {
       {shouldRenderFooter && (
         <footer className="footer">
           <span className="todo-count" data-testid="todo-count">
-            <strong>{activeTodoCount}</strong>&nbsp;{pluralize(activeTodoCount, 'item')}
+            <strong>{activeTodoCount}</strong>&nbsp;
+            {pluralize(activeTodoCount, 'item')}
             &nbsp;left
           </span>
           <ul className="filters">

@@ -11,9 +11,7 @@ export const TodoList = () => {
 
   return (
     <section className="main">
-      {!!todos.length && (
-        <ToggleAllButton onChange={toggleTodos} checked={activeTodoCount === 0} />
-      )}
+      {!!todos.length && <ToggleAllButton onChange={toggleTodos} checked={activeTodoCount === 0} />}
       <ul className="todo-list">
         {filteredTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />

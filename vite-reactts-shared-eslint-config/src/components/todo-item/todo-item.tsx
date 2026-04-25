@@ -9,8 +9,7 @@ interface Props {
 }
 
 export const TodoItem = ({ todo }: Props) => {
-  const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
-    useContext(TodosContext);
+  const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } = useContext(TodosContext);
 
   const isEditing = editingTodoId === todo.id;
 
@@ -28,21 +27,14 @@ export const TodoItem = ({ todo }: Props) => {
       data-testid="todo-item"
     >
       <div className="view">
-        <input
-          className="toggle"
-          type="checkbox"
-          checked={todo.completed}
-          onChange={handleToggleTodo}
-        />
+        <input className="toggle" type="checkbox" checked={todo.completed} onChange={handleToggleTodo} />
         <label htmlFor="itself" data-testid="todo-title" onDoubleClick={handleEditTodo}>
           {todo.title}
         </label>
         <button type="button" className="destroy" onClick={handleDeleteTodo} />
       </div>
       {/* isEditing */}
-      {isEditing ? (
-        <TodoEditInput currentTitle={todo.title} onSave={handleSaveTodo} />
-      ) : null}
+      {isEditing ? <TodoEditInput currentTitle={todo.title} onSave={handleSaveTodo} /> : null}
     </li>
   );
 };

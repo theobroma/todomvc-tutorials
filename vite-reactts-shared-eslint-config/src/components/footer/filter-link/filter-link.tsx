@@ -9,21 +9,12 @@ interface FilterLinkProps {
   onClick: OnEventType<FilterEnum>;
 }
 
-export const FilterLink = ({
-  filter,
-  currentFilter,
-  onClick,
-  children,
-}: PropsWithChildren<FilterLinkProps>) => {
+export const FilterLink = ({ filter, currentFilter, onClick, children }: PropsWithChildren<FilterLinkProps>) => {
   const handleClick = () => onClick(filter);
 
   return (
     <li>
-      <a
-        href="#/"
-        onClick={handleClick}
-        className={clsx({ selected: currentFilter === filter })}
-      >
+      <a href="#/" onClick={handleClick} className={clsx({ selected: currentFilter === filter })}>
         {children}
       </a>
     </li>

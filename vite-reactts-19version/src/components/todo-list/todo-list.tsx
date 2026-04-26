@@ -16,7 +16,12 @@ export const TodoList = () => {
       )}
       <ul className="todo-list">
         {filteredTodos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem
+            key={todo.id}
+            id={todo.id}
+            title={todo.title}
+            completed={todo.completed}
+          />
         ))}
       </ul>
     </section>

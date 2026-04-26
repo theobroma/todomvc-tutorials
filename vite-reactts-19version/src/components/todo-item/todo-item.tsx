@@ -4,25 +4,21 @@ import { TodoInterface } from '@/context/todos-context.interface';
 import clsx from 'clsx';
 import { useContext } from 'react';
 
-interface Props {
-  todo: TodoInterface;
-}
-
-export const TodoItem = ({ todo }: Props) => {
+export const TodoItem = ({ id, title, completed }: TodoInterface) => {
   const { editingTodoId, toggleTodo, deleteTodo, editTodo, saveTodo } =
     useContext(TodosContext);
 
-  const isEditing = editingTodoId === todo.id;
+  const isEditing = editingTodoId === id;
 
-  const handleToggleTodo = () => toggleTodo(todo.id);
-  const handleDeleteTodo = () => deleteTodo(todo.id);
-  const handleEditTodo = () => editTodo(todo.id);
-  const handleSaveTodo = (title: TodoInterface['title']) => saveTodo(todo.id, title);
+  const handleToggleTodo = () => toggleTodo(id);
+  const handleDeleteTodo = () => deleteTodo(id);
+  const handleEditTodo = () => editTodo(id);
+  const handleSaveTodo = (title: TodoInterface['title']) => saveTodo(id, title);
 
   return (
     <li
       className={clsx({
-        completed: todo.completed,
+        completed: completed,
         editing: isEditing,
       })}
       data-testid="todo-item"
@@ -31,18 +27,16 @@ export const TodoItem = ({ todo }: Props) => {
         <input
           className="toggle"
           type="checkbox"
-          checked={todo.completed}
+          checked={completed}
           onChange={handleToggleTodo}
         />
         <label htmlFor="itself" data-testid="todo-title" onDoubleClick={handleEditTodo}>
-          {todo.title}
+          {title}
         </label>
         <button type="button" className="destroy" onClick={handleDeleteTodo} />
       </div>
       {/* isEditing */}
-      {isEditing ? (
-        <TodoEditInput currentTitle={todo.title} onSave={handleSaveTodo} />
-      ) : null}
+      {isEditing ? <TodoEditInput currentTitle={title} onSave={handleSaveTodo} /> : null}
     </li>
   );
 };

@@ -2,15 +2,23 @@ import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
 import { TodosContext } from '@/context/todos-context';
 import { TodoInterface } from '@/context/todos-context.interface';
 import { OnEventType } from '@/types/on-event.type';
+import { noop } from '@/utils/noop.util';
 import clsx from 'clsx';
 import { useContext } from 'react';
 
 interface TodoItemProps extends TodoInterface {
-  toggleTodo: OnEventType<string>;
+  toggleTodo?: OnEventType<string>;
+  deleteTodo?: OnEventType<string>;
 }
 
-export const TodoItem = ({ id, title, completed, toggleTodo }: TodoItemProps) => {
-  const { editingTodoId, deleteTodo, editTodo, saveTodo } = useContext(TodosContext);
+export const TodoItem = ({
+  id,
+  title,
+  completed,
+  toggleTodo = noop,
+  deleteTodo = noop,
+}: TodoItemProps) => {
+  const { editingTodoId, editTodo, saveTodo } = useContext(TodosContext);
 
   const isEditing = editingTodoId === id;
 
@@ -37,7 +45,12 @@ export const TodoItem = ({ id, title, completed, toggleTodo }: TodoItemProps) =>
         <label htmlFor="itself" data-testid="todo-title" onDoubleClick={handleEditTodo}>
           {title}
         </label>
-        <button type="button" className="destroy" onClick={handleDeleteTodo} />
+        <button
+          type="button"
+          className="destroy"
+          aria-label="delete todo"
+          onClick={handleDeleteTodo}
+        />
       </div>
       {/* isEditing */}
       {isEditing ? <TodoEditInput currentTitle={title} onSave={handleSaveTodo} /> : null}

@@ -1,27 +1,27 @@
 import { TodoEditInput } from '@/components/todo-edit-input/todo-edit-input';
-import { TodosContext } from '@/context/todos-context';
 import { TodoInterface } from '@/context/todos-context.interface';
 import { OnEventType } from '@/types/on-event.type';
 import { noop } from '@/utils/noop.util';
 import clsx from 'clsx';
-import { useContext } from 'react';
 
 interface TodoItemProps extends TodoInterface {
+  isEditing?: boolean;
   toggleTodo?: OnEventType<string>;
   deleteTodo?: OnEventType<string>;
+  editTodo?: OnEventType<string>;
+  saveTodo?: (id: string, title: string) => void;
 }
 
 export const TodoItem = ({
   id,
   title,
   completed,
+  isEditing = false,
   toggleTodo = noop,
   deleteTodo = noop,
+  editTodo = noop,
+  saveTodo = noop,
 }: TodoItemProps) => {
-  const { editingTodoId, editTodo, saveTodo } = useContext(TodosContext);
-
-  const isEditing = editingTodoId === id;
-
   const handleToggleTodo = () => toggleTodo(id);
   const handleDeleteTodo = () => deleteTodo(id);
   const handleEditTodo = () => editTodo(id);

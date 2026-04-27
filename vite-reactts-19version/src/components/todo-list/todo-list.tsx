@@ -6,7 +6,8 @@ import { useContext } from 'react';
 import { getFilteredTodos } from './todo-list.util';
 
 export const TodoList = () => {
-  const { todos, activeTodoCount, filter, toggleTodos } = useContext(TodosContext);
+  const { todos, activeTodoCount, filter, toggleTodos, toggleTodo } =
+    useContext(TodosContext);
   const filteredTodos = getFilteredTodos(todos, filter);
 
   return (
@@ -21,6 +22,7 @@ export const TodoList = () => {
             id={todo.id}
             title={todo.title}
             completed={todo.completed}
+            toggleTodo={toggleTodo}
           />
         ))}
       </ul>

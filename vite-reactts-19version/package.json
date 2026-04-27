@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,json}\" ",
+    "lint:profile": "TIMING=1 eslint ./src --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",

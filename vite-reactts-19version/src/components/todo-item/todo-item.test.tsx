@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
 import { TodoItem } from './todo-item';
@@ -41,5 +42,30 @@ describe('TodoItem', () => {
     await userEvent.click(button);
 
     expect(deleteTodo).toHaveBeenCalledWith(todoId);
+  });
+
+  it('enters edit mode on double click', async () => {
+    const todoId = '4';
+    const todoTitle = 'Test edit todo';
+
+    const Wrapper = () => {
+      const [editingId, setEditingId] = React.useState<string | null>(null);
+
+      return (
+        <TodoItem
+          id={todoId}
+          title={todoTitle}
+          completed={false}
+          isEditing={editingId === todoId}
+          editTodo={setEditingId}
+        />
+      );
+    };
+
+    render(<Wrapper />);
+
+    await userEvent.dblClick(screen.getByText(todoTitle));
+
+    expect(screen.getByDisplayValue(todoTitle)).toBeInTheDocument();
   });
 });

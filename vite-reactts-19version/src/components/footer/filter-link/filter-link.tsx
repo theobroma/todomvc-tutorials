@@ -3,6 +3,8 @@ import { OnEventType } from '@/types/on-event.type';
 import clsx from 'clsx';
 import { PropsWithChildren } from 'react';
 
+import { filterToHref } from './filter-link.util';
+
 interface FilterLinkProps {
   filter: FilterEnum;
   currentFilter: FilterEnum;
@@ -20,7 +22,7 @@ export const FilterLink = ({
   return (
     <li>
       <a
-        href="#/"
+        href={filterToHref[filter]}
         onClick={handleClick}
         className={clsx({ selected: currentFilter === filter })}
       >

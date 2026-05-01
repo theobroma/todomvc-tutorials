@@ -9,7 +9,7 @@ export const initialTodosContext: TodosInterface = {
   todos: initialTodos,
   activeTodoCount: 0,
   completedTodoCount: 0,
-  filter: FilterEnum.ShowAll,
+  filter: FilterEnum.All,
   editingTodoId: null,
   addTodo: noop,
   toggleTodo: noop,

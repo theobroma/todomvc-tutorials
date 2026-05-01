@@ -31,13 +31,13 @@ export const FooterView = ({
         &nbsp;left
       </span>
       <ul className="filters">
-        <FilterLink filter={FilterEnum.ShowAll} {...commonProps}>
+        <FilterLink filter={FilterEnum.All} {...commonProps}>
           All
         </FilterLink>
-        <FilterLink filter={FilterEnum.ShowActive} {...commonProps}>
+        <FilterLink filter={FilterEnum.Active} {...commonProps}>
           Active
         </FilterLink>
-        <FilterLink filter={FilterEnum.ShowCompleted} {...commonProps}>
+        <FilterLink filter={FilterEnum.Completed} {...commonProps}>
           Completed
         </FilterLink>
       </ul>

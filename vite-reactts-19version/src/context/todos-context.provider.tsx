@@ -6,7 +6,7 @@ import { useTodos } from './todos-context.hook';
 import { TodoInterface } from './todos-context.interface';
 
 export const TodosContextProvider = ({ children }: PropsWithChildren) => {
-  const [filter, setFilter] = useState<FilterEnum>(FilterEnum.ShowAll);
+  const [filter, setFilter] = useState<FilterEnum>(FilterEnum.All);
   const [editingTodoId, setEditingTodoId] = useState<null | string>(null);
   const { todos, setTodos } = useTodos();
 

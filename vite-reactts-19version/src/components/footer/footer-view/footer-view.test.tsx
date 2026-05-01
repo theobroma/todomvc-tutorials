@@ -10,7 +10,7 @@ describe('FooterView', () => {
       <FooterView
         activeTodoCount={3}
         completedTodoCount={1}
-        filter={FilterEnum.ShowAll}
+        filter={FilterEnum.All}
         changeFilter={() => {}}
         removeCompleted={() => {}}
       />,

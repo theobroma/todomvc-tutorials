@@ -3,11 +3,11 @@ import { FilterEnum } from '@/enums/filter.enum';
 
 export const getFilteredTodos = (todos: TodoInterface[], filter: FilterEnum) => {
   switch (filter) {
-    case FilterEnum.ShowAll:
+    case FilterEnum.All:
       return todos;
-    case FilterEnum.ShowActive:
+    case FilterEnum.Active:
       return todos.filter((todo) => !todo.completed);
-    case FilterEnum.ShowCompleted:
+    case FilterEnum.Completed:
       return todos.filter((todo) => todo.completed);
     default:
       throw new Error(`Unknown filter: ${filter}`);
